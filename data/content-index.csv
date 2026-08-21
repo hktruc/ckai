@@ -1,0 +1,4 @@
+id,status,pillar,topic,angle,structure,objective,duration_target,created,published_date,platform,title
+TEST-0001,review,ai-human,ai-dependency,paradox,paradox-insight,authority,60,2026-08-20,,,"[SMOKE TEST — không tính production] Cái nguy hiểm không phải AI trả lời sai"
+CKAI-0001,approved,chanh-kien,bien-minh-ham-muon,buc-binh-phong,story-conflict-lesson,authority,60,2026-08-20,,,Bức bình phong
+CKAI-0002,approved,ai-human,don-tai-lieu-thanh-markdown,mot-prompt-don-sach,practical-tool-walkthrough,education,60,2026-08-21,,,1 prompt dọn sạch tài liệu thành Markdown
