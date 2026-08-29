@@ -38,15 +38,18 @@ const catalog=JSON.parse(readFileSync(join(musicRoot,'03_catalog/music-library.j
 const tracks=Array.isArray(catalog)?catalog:(catalog.tracks??catalog.music_library??[]);
 check(mp3s.length===22,`Music local asset count ${mp3s.length} != 22`);
 check(tracks.length===22,`Music catalog count ${tracks.length} != 22`);
+check(catalog.phase_2_audio_engine_status==='VALIDATED','Music registry Phase 2 Audio Engine state is not VALIDATED');
+check(catalog.phase_2_audio_engine_document==='engine/audio-engine-v1.md','Music registry Audio Engine document reference is missing');
 
 for(const required of [
   ['PROJECT.md','CKAI-0005 FINAL AUDIO V2: PUBLISHED'],
   ['PROJECT.md','CKAI-0006 PRACTICAL CONSISTENCY TEST 01: V1.2 LOCKED'],
   ['PROJECT.md','AUDIO DIRECTION V1: VALIDATED'],
-  ['PROJECT.md','PHASE 2 AUDIO: NOT STARTED / DEPENDENCY CLEARED'],
+  ['PROJECT.md','PHASE 2 AUDIO ENGINE V1: VALIDATED'],
   ['MASTER_BLUEPRINT.md','AUD-03 | Audio Direction V1 evidence consolidation | VALIDATED'],
-  ['MASTER_BLUEPRINT.md','AUD-04 | Phase 2 Audio Engine | NOT_STARTED'],
+  ['MASTER_BLUEPRINT.md','AUD-04 | Phase 2 Audio Engine | VALIDATED'],
   ['engine/audio-direction-v1.md','Status: `VALIDATED`'],
+  ['engine/audio-engine-v1.md','Status: `VALIDATED`'],
   ['engine/visual-director.md','Practical != dashboard']
 ]) check(read(required[0]).includes(required[1]),`Canonical state missing: ${required[0]} -> ${required[1]}`);
 

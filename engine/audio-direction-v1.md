@@ -2,7 +2,7 @@
 
 Status: `VALIDATED`
 Scope: creative audio direction and human review guidance
-Boundary: this document does not select tracks, place SFX, mix/master audio or implement Phase 2 Audio Engine.
+Boundary: this document remains the creative authority; the bounded machine implementation is [`audio-engine-v1.md`](audio-engine-v1.md) and cannot grant creative PASS.
 
 ## Evidence basis
 
@@ -117,8 +117,8 @@ Answer every item from the actual decoded candidate:
 
 `PASS` requires every applicable item to pass. Otherwise return `REVISE` with the failing listening observation. Machine checks may block a failure; they do not self-award creative PASS.
 
-## AUD-03 closure and AUD-04 boundary
+## AUD-03 closure and AUD-04 implementation boundary
 
 Audio Direction V1 is validated from CKAI-0004 failure evidence, CKAI-0005 published evidence, CKAI-0006 locked evidence, the 22-track library and explicit Product Owner learnings. Reusable rules, candidates and content-specific choices are separated above.
 
-This clears the evidence dependency for `AUD-04`. Phase 2 Audio Engine remains `NOT_STARTED`: no auto-selection, placement, mixing, mastering or scoring logic is authorized or implemented by this document.
+This direction cleared the evidence dependency for `AUD-04`. The validated Phase 2 implementation automates canonical resolution, candidate support ranking and technical mechanics while keeping final selection, perceptual listening and creative approval human-gated. This document itself remains direction rather than executable policy.

@@ -1,6 +1,8 @@
 import type {AnimationManifest} from '../../animation/src/model';
 import type {VoicePlan} from '../../voice/src/model';
 import type {RetentionQaRecord} from './retention';
+import type {AudioProductionContract} from '../../audio/src/model';
+import type {MusicBedSegment} from '../../audio/src/model';
 
 export type ReviewMode = 'production' | 'reverse-audit-proof';
 export type ReviewCheck = 'pending' | 'PASS' | 'BLOCKED' | 'REVISE';
@@ -43,6 +45,10 @@ export type FinishingAudioAsset = {
   fadeInSeconds?: number;
   fadeOutSeconds?: number;
   duckUnderVoiceDb?: number;
+  bedSegments?: MusicBedSegment[];
+  canonicalTrackId?: string;
+  canonicalSourceSha256?: string;
+  provenanceRef?: string;
   required: boolean;
   sha256: string;
   unresolvedIssue?: string;
@@ -94,6 +100,7 @@ export type FinalReviewManifest = {
   musicMode: OptionalAudioMode;
   sfxMode: OptionalAudioMode;
   finishingAudioAssets: FinishingAudioAsset[];
+  audioProduction: AudioProductionContract;
   voiceGainDb: 0;
   editorialCoherenceCheck: ReviewCheck;
   visualComprehensionCheck: ReviewCheck;

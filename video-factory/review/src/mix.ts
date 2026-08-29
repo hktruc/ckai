@@ -14,5 +14,7 @@ export const finishingGainAtTime = (
   const fadeOut = asset.fadeOutSeconds ? Math.min(1, Math.max(0, remaining / asset.fadeOutSeconds)) : 1;
   const underVoice = voiceWindows.some((window) => absoluteSeconds >= window.startSeconds && absoluteSeconds < window.endSeconds);
   const duck = asset.type === 'music' && underVoice ? linearGain(asset.duckUnderVoiceDb ?? -8) : 1;
-  return linearGain(asset.gainDb) * fadeIn * fadeOut * duck;
+  const bedSegment = asset.type === 'music' ? asset.bedSegments?.find((segment) => absoluteSeconds >= segment.startSeconds && absoluteSeconds < segment.endSeconds) : undefined;
+  const semanticBed = bedSegment?.behavior === 'SILENCE' ? 0 : linearGain(bedSegment?.gainDeltaDb ?? 0);
+  return linearGain(asset.gainDb) * fadeIn * fadeOut * duck * semanticBed;
 };

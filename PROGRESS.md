@@ -282,6 +282,14 @@
 - Separated VERIFIED, CANDIDATE, CONTENT_SPECIFIC and REJECTED learning. No production-specific loudness/mix number was promoted into a universal rule; existing `CKAI_SHORT_FORM_MASTERING_V1` remains the technical policy.
 - Closed `AUD-03` as VALIDATED. `AUD-04` dependency is cleared and its state is now NOT_STARTED; no Audio Engine code, auto-selection/placement/mix, render, library expansion, locked-output mutation or CKAI-0007 work occurred.
 
+### 2026-08-29 — AUD-04 Phase 2 Audio Engine
+
+- Audited existing STEP 06/07 voice, finishing assets, semantic cue binding, deterministic ducking, actual-binary QA, `CKAI_SHORT_FORM_MASTERING_V1`, generic production adapter and CKAI-0004/0005/0006 evidence without modifying locked artifacts.
+- Added `CKAI_AUDIO_PRODUCTION_V1` as an extension of the canonical Final Review contract: exact narration identity, deterministic five-track candidate shortlist from the canonical 22-track registry, human narration-context selection, complete semantic bed plan, semantic SFX/`NO_SFX`, mastering reference, technical/phone/perceptual QA and human approval provenance.
+- Candidate scoring is shortlist support only. Final music, bed gain deltas, SFX assets, decoded-mix listening and phone-speaker creative PASS remain human-gated. Dual voice remains CANDIDATE.
+- Reused existing STEP 07 render/mix/master/QA implementation. Added canonical track/hash/provenance enforcement, visible failure gates and 12 focused Audio Engine regressions; review suite remains 25/25 PASS.
+- Closed `AUD-04` as VALIDATED. No new Content ID/video/render/provider call/library expansion, locked production mutation, CKAI-0007 work or Golden claim occurred.
+
 ## Trạng thái hiện tại (snapshot)
 
 - **6 skill:** `/ck-idea`, `/ck-expand`, `/ck-script`, `/ck-review`, `/ck-publish`, `/ck-learn`.
@@ -289,13 +297,13 @@
 - **2 content đã `published`:** `CKAI-0003` và `CKAI-0005` — cả hai có approved script, transcript actual và delivery-delta; CKAI-0005 là `animated-voice` nên không tạo natural-voice observation.
 - **Chưa có performance data** (`data/performance.csv` còn trống) — chưa chạy `/ck-learn` lần nào.
 - **Calibration:** 4 round, tạm dừng theo yêu cầu Trực; còn khoảng trống (quan điểm giáo dục, mở rộng cơ chế "bẻ cong lý lẽ" sang lĩnh vực khác...) có thể hỏi tiếp khi Trực chủ động muốn.
-- **Creative quality:** `CKAI_MARKET_TASTE_STANDARD_V1` active; CKAI-0004 is the completed `Production Baseline V1` while its historical Phase 1K output remains the ≈2/10 Creative Reset baseline. CKAI-0005 Generalization Test 01 PASS; V1.1 remains ≈6.7/10/not Golden and Final Audio V2 was published. CKAI-0006 is locked at V1.2 as `Practical Visual Baseline V1`; no V1.3. Architecture expansion/Phase 1L remain frozen; Audio Direction V1 is VALIDATED; Phase 2 Audio Engine is NOT_STARTED with dependency cleared; Golden status is unawarded.
+- **Creative quality:** `CKAI_MARKET_TASTE_STANDARD_V1` active; CKAI-0004 is the completed `Production Baseline V1` while its historical Phase 1K output remains the ≈2/10 Creative Reset baseline. CKAI-0005 Generalization Test 01 PASS; V1.1 remains ≈6.7/10/not Golden and Final Audio V2 was published. CKAI-0006 is locked at V1.2 as `Practical Visual Baseline V1`; no V1.3. Architecture expansion/Phase 1L remain frozen; Audio Direction V1 and bounded Phase 2 Audio Engine V1 are VALIDATED; Golden status is unawarded.
 - **Voice/Provider:** existing Vbee quota is authorized for all CKAI production tasks; dual cast remains `HN - Minh Quân` + `HN - Ngọc Huyền`; auto-purchase and paid fallback remain false.
-- **Music Library:** CKAI Music Library V1 Round 2 is complete with `22 KEEP / 22 downloaded` across six practical families. CKAI-0006 uses `CKAI-MUSIC-0015 — Close Up`; selection remains content-specific and does not create an automatic Audio Engine rule.
+- **Music Library:** CKAI Music Library V1 Round 2 is complete with `22 KEEP / 22 downloaded` across six practical families. Engine ranking reads canonical metadata directly; CKAI-0006's `CKAI-MUSIC-0015 — Close Up` remains content-specific and no rank grants final approval.
 
 ## Việc có thể làm tiếp
 
-- **NOW:** `AUD-04 — Phase 2 Audio Engine` is the next architectural task, `NOT_STARTED`; begin only under a separate explicit Product Owner + ChatGPT instruction.
-- **NEXT:** if AUD-04 is authorized, keep all automation bounded by Audio Direction V1 and human listening gates before autonomy expands.
-- **LATER:** collect real performance data and run `/ck-learn`; design publishing/performance ingestion only under a separate explicit instruction.
-- Do not start CKAI-0007, resume STEP 09/Phase 1L, open Phase 2 Audio Engine or build publishing automation without explicit Product Owner + ChatGPT instruction.
+- **NOW:** no active task. `GLD-02` is the next Golden-first quality prerequisite and remains CANDIDATE; it was not started here.
+- **NEXT:** only after authoritative Golden evidence may `AUT-02` bounded autonomy expand. `LRN-02` can proceed independently when real published metrics are supplied.
+- **LATER:** publishing/performance integration remains separately authorized and manual meanwhile.
+- Do not start CKAI-0007, resume STEP 09/Phase 1L, produce a new creative test or build publishing automation without explicit Product Owner + ChatGPT instruction.

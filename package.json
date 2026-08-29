@@ -32,6 +32,7 @@
     "visual-intelligence:reselect-1j": "tsx video-factory/visual-intelligence/scripts/reselect-phase1j.ts",
     "visual-intelligence:probe-1k": "tsx video-factory/visual-intelligence/scripts/probe-phase1k.ts",
     "visual-intelligence:compare-1h": "tsx video-factory/visual-intelligence/scripts/compare-phase1h.ts",
+    "audio:test": "tsx --test video-factory/audio/tests/*.test.ts",
     "audio:generate-original": "tsx video-factory/review/scripts/generate-original-audio.ts",
     "audio:validate-original": "tsx video-factory/review/scripts/validate-original-audio.ts",
     "review:render-ckai0004-v4": "tsx video-factory/review/scripts/render-ckai0004-v4.ts",

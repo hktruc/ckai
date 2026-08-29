@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "CKAI_AUDIO_PRODUCTION_V1",
+  "title": "CKAI Audio Production Contract V1",
+  "type": "object",
+  "required": ["schemaVersion", "contentId", "contentMode", "authority", "automationBoundary", "narration", "music", "bed", "sfx", "mix", "qa", "humanCreativeApproval"],
+  "properties": {
+    "schemaVersion": {"const": "CKAI_AUDIO_PRODUCTION_V1"},
+    "contentId": {"type": "string", "minLength": 1},
+    "contentMode": {"enum": ["THINKING", "PRACTICAL"]},
+    "narration": {
+      "type": "object",
+      "required": ["sourcePath", "sha256", "durationSeconds", "density"],
+      "properties": {
+        "sourcePath": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"},
+        "durationSeconds": {"type": "number", "exclusiveMinimum": 0},
+        "density": {"enum": ["LOW", "MEDIUM", "HIGH"]}
+      },
+      "additionalProperties": false
+    },
+    "music": {"type": "object"},
+    "bed": {"type": "object"},
+    "sfx": {"type": "object"},
+    "mix": {"type": "object"},
+    "qa": {"type": "object"},
+    "authority": {"type": "object"},
+    "automationBoundary": {"type": "object"},
+    "humanCreativeApproval": {"type": "object"}
+  },
+  "additionalProperties": true
+}

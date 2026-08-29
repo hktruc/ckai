@@ -3,11 +3,12 @@ import {resolve, sep} from 'node:path';
 import {sha256} from '../../voice/src/segment';
 import {probeAudio, probeAudioLevels} from '../../voice/src/media';
 import type {FinalReviewManifest, ReviewMode} from './model';
+import {canonicalTrackAudioPath, resolveCanonicalTrack} from '../../audio/src/library';
 
 export const validateFinishingAudio = (review: FinalReviewManifest, mode: ReviewMode, timelineSeconds?: number): string[] => {
   const errors: string[] = [];
   const workspace = resolve(process.cwd());
-  const allowedRoots = [resolve(workspace, 'generated'), resolve(workspace, 'video-factory/review/assets')];
+  const allowedRoots = [resolve(workspace, 'generated'), resolve(workspace, 'video-factory/review/assets'), resolve(workspace, 'content/references/audio/music-library-v1/01_original_audio')];
   for (const type of ['music', 'sfx'] as const) {
     const modeValue = type === 'music' ? review.musicMode : review.sfxMode;
     const assets = review.finishingAudioAssets.filter((asset) => asset.type === type);
@@ -25,6 +26,20 @@ export const validateFinishingAudio = (review: FinalReviewManifest, mode: Review
     if (!existsSync(absolute)) { errors.push(`${asset.id} audio asset is missing`); continue; }
     if (sha256(readFileSync(absolute)) !== asset.sha256) errors.push(`${asset.id} checksum mismatch`);
     if (asset.type === 'music' && asset.gainDb > -12) errors.push(`${asset.id} music gain exceeds voice-dominant ceiling -12 dB`);
+    if (asset.type === 'music' && mode === 'production') {
+      if (!asset.canonicalTrackId || !asset.canonicalSourceSha256 || !asset.provenanceRef) errors.push(`${asset.id} production music must reference canonical track ID, source hash and provenance`);
+      else try {
+        const track = resolveCanonicalTrack(asset.canonicalTrackId, workspace);
+        if (track.sha256.toUpperCase() !== asset.canonicalSourceSha256.toUpperCase()) errors.push(`${asset.id} canonical music source hash is stale`);
+        if (asset.provenanceRef !== track.track_evidence_path) errors.push(`${asset.id} provenance reference does not match the canonical registry`);
+        const canonicalPath = resolve(workspace, canonicalTrackAudioPath(track));
+        if (absolute.startsWith(resolve(workspace, 'content/references/audio/music-library-v1')) && absolute !== canonicalPath) errors.push(`${asset.id} canonical music path does not match its registry record`);
+      } catch (error) { errors.push(`${asset.id} canonical music reference failed: ${(error as Error).message}`); }
+    }
+    if (asset.type === 'music' && asset.bedSegments?.length) {
+      if (asset.bedSegments[0]?.startSeconds !== asset.startSeconds) errors.push(`${asset.id} bed automation must start with the music asset`);
+      for (const segment of asset.bedSegments) if (!segment.semanticPurpose.trim() || segment.endSeconds <= segment.startSeconds) errors.push(`${asset.id} has invalid semantic bed automation`);
+    }
     if (asset.type === 'sfx' && asset.gainDb > -3) errors.push(`${asset.id} SFX gain exceeds technical ceiling -3 dB`);
     if (asset.startSeconds < 0 || (asset.durationSeconds !== undefined && asset.durationSeconds <= 0)) errors.push(`${asset.id} timing is invalid`);
     if ((asset.fadeInSeconds ?? 0) < 0 || (asset.fadeOutSeconds ?? 0) < 0) errors.push(`${asset.id} fade timing is invalid`);

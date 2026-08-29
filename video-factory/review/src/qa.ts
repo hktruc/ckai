@@ -12,6 +12,7 @@ import {inspectActualBinaryExperience} from './experience';
 import {evaluateRuntimeRetention, SHORT_FORM_RETENTION_POLICY_V1} from './retention';
 import {planRetention, planSceneSemantics} from '../../visual-intelligence/src/planning';
 import {evaluateActualRenderedVideo} from '../../visual-intelligence/src/qa';
+import {validateAudioProductionContract} from '../../audio/src/qa';
 
 export type ReviewQaResult = {pass: boolean; errors: string[]};
 
@@ -22,6 +23,10 @@ export const runReviewQa = (input: ReviewRuntimeInput, mode: ReviewMode, require
   errors.push(...upstream.errors);
   errors.push(...validateCaptions(review, voicePlan));
   errors.push(...validateFinishingAudio(review, mode, input.animation.totalSeconds));
+  if (review.audioProduction) {
+    const audioContractQa = validateAudioProductionContract(review.audioProduction, {requireRender: requirePreview, requireHumanApproval: review.exportHandoffStatus === 'READY'});
+    errors.push(...audioContractQa.errors.map((error) => `AUDIO_ENGINE: ${error}`));
+  } else if (mode === 'production') errors.push('AUDIO_ENGINE: canonical production requires CKAI_AUDIO_PRODUCTION_V1');
   errors.push(...validateIssues(review.issues));
   if (mode === 'production') {
     const retention = evaluateRuntimeRetention(voicePlan, input.animation);

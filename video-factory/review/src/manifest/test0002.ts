@@ -2,6 +2,7 @@ import {TEST_0002} from '../../../animation/src/manifest/test0002';
 import type {VoicePlan, VoiceSegment} from '../../../voice/src/model';
 import {deriveCaptions} from '../captions';
 import type {FinalReviewManifest} from '../model';
+import {chooseIntentionalSilence, createAudioProductionDraft, planSemanticSfx} from '../../../audio/src';
 
 const sourceChain: FinalReviewManifest['sourceChain'] = [
   {stage: 'script', path: 'content/scripts/TEST-0002_prompt-don-markdown-script-contract.md', sha256: '2D1279FC87A3E303FCD2B651A5D57FDAFA6D72E034404BDD16566A6A8EC9C82C'},
@@ -20,6 +21,11 @@ const captionPolicy: FinalReviewManifest['captionPolicy'] = {
 
 export const createTest0002ReviewManifest = (voicePlan: VoicePlan): FinalReviewManifest => {
   const runtimeCaptionPolicy = structuredClone(captionPolicy);
+  const audioProduction = planSemanticSfx(chooseIntentionalSilence(createAudioProductionDraft({
+    contentId: 'TEST-0002', contentMode: 'PRACTICAL',
+    narration: {sourcePath: 'generated/voice/TEST-0002/master.wav', sha256: '0641AB84EBBD485D859F98DC1F84E29FF54411D3D153718F5BD9607D77F6CB5C', durationSeconds: 49, density: 'MEDIUM'},
+    semanticIntent: ['reverse-audit proof'], emotionalTrajectory: ['technical verification'],
+  }), 'Reverse-audit fixture intentionally exercises the valid no-music path.'), {decision: 'NO_SFX', rationale: 'Reverse-audit fixture intentionally exercises the valid no-SFX path.'});
   const review: FinalReviewManifest = {
     id: 'TEST-0002-FinalReview', contentId: 'TEST-0002', inputEligibility: 'legacy-approved-reverse-audit', sourceChain,
     sourceVoiceSnapshot: 'generated/voice/TEST-0002/voice-plan.generated.json',
@@ -28,7 +34,7 @@ export const createTest0002ReviewManifest = (voicePlan: VoicePlan): FinalReviewM
     sourceVoiceAudioSha256: '0641AB84EBBD485D859F98DC1F84E29FF54411D3D153718F5BD9607D77F6CB5C',
     sourceVoicePreview: 'generated/previews/TEST-0002-voice.mp4',
     sourceVoicePreviewSha256: '02C98D7BF78BE72D1855EA305938767933BA4C971ECB59F88C07B76ADD9815EF',
-    captionMode: 'on', captionPolicy: runtimeCaptionPolicy, captions: [], musicMode: 'none', sfxMode: 'none', finishingAudioAssets: [], voiceGainDb: 0,
+    captionMode: 'on', captionPolicy: runtimeCaptionPolicy, captions: [], musicMode: 'none', sfxMode: 'none', finishingAudioAssets: [], audioProduction, voiceGainDb: 0,
     editorialCoherenceCheck: 'PASS', visualComprehensionCheck: 'PASS', audiovisualSyncCheck: 'PASS', captionCheck: 'PASS',
     musicCheck: 'PASS', sfxCheck: 'PASS', truthEvidenceCheck: 'PASS', brandReviewCheck: 'PASS', technicalVideoQa: 'PASS', audioQa: 'PASS',
     issues: [], finalReview: 'pass', humanDecision: 'not-applicable', exportHandoffStatus: 'BLOCKED',

@@ -11,5 +11,5 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
-  "include": ["video-factory/animation/**/*.ts", "video-factory/animation/**/*.tsx", "video-factory/voice/**/*.ts", "video-factory/review/**/*.ts", "video-factory/review/**/*.tsx", "video-factory/export/**/*.ts", "video-factory/verification/**/*.ts", "video-factory/visual-intelligence/**/*.ts"]
+  "include": ["video-factory/animation/**/*.ts", "video-factory/animation/**/*.tsx", "video-factory/audio/**/*.ts", "video-factory/voice/**/*.ts", "video-factory/review/**/*.ts", "video-factory/review/**/*.tsx", "video-factory/export/**/*.ts", "video-factory/verification/**/*.ts", "video-factory/visual-intelligence/**/*.ts"]
 }

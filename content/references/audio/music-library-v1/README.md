@@ -31,7 +31,7 @@ Nguồn cũ tại `C:\Users\Admin\Documents\Codex\2026-08-27\ti-p-t-c-d-n\output
 
 ## Boundary sử dụng
 
-Audio direction canonical nằm tại [`../../../../engine/audio-direction-v1.md`](../../../../engine/audio-direction-v1.md). Music Library chỉ cung cấp local asset, provenance/license và descriptive fit metadata; không tự chọn track hoặc cấp production approval.
+Audio direction canonical nằm tại [`../../../../engine/audio-direction-v1.md`](../../../../engine/audio-direction-v1.md); bounded engine contract nằm tại [`../../../../engine/audio-engine-v1.md`](../../../../engine/audio-engine-v1.md). Music Library chỉ cung cấp local asset, provenance/license và descriptive fit metadata. Engine có thể rank candidate có rationale nhưng không tự chọn final track hoặc cấp production approval.
 
 Music phải được audition dưới actual narration. `VOICE-FIRST` không có nghĩa là làm nhạc biến mất; full-bed suitability, repetition comfort, editability và spectral clearance đều phải được nghe trong content context. Family/fit score không phải deterministic selector.
 

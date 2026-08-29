@@ -175,7 +175,8 @@ External API chỉ là capability provider có authorization/cost/evidence bound
 │   ├── content-scoring.md
 │   ├── learning-rules.md
 │   ├── script-engine.md      ← STEP 02 canonical Script Engine
-│   ├── audio-direction-v1.md ← Audio Direction V1; human-gated, chưa phải Audio Engine
+│   ├── audio-direction-v1.md ← Audio Direction V1; creative authority, human-gated
+│   ├── audio-engine-v1.md    ← Phase 2 bounded machine contract + autonomy boundary
 │   ├── storyboard-engine.md  ← STEP 03 canonical Storyboard Engine
 │   ├── visual-director.md    ← STEP 04 canonical Visual Director
 │   ├── animation-engine.md   ← STEP 05 canonical Animation Engine
@@ -704,7 +705,7 @@ Current program state:
 ARCHITECTURE EXPANSION: FROZEN
 PHASE 1L: FROZEN / NOT STARTED
 AUDIO DIRECTION V1: VALIDATED / HUMAN-GATED / NO AUTO-SELECTION
-PHASE 2 AUDIO: NOT STARTED / DEPENDENCY CLEARED
+PHASE 2 AUDIO ENGINE V1: VALIDATED / BOUNDED AUTOMATION / HUMAN CREATIVE GATE
 CKAI MUSIC LIBRARY V1: ROUND 2 COMPLETE / 22 KEEP / 22 DOWNLOADED / MULTI-FAMILY LOCAL SHELF READY
 CREATIVE RESET: ACTIVE
 GENERALIZATION TEST 01: PASS / HUMAN CONFIRMED
@@ -720,19 +721,21 @@ GOLDEN STATUS: UNAWARDED
 
 Golden-first development is now canonical: `GOLDEN CREATIVE OUTPUT → UNDERSTAND WHY IT WORKS → ENCODE CAPABILITY → AUTOMATE → TEST ON ANOTHER CONTENT ID`. Initial target is a 10–15 second Golden Sequence at authoritative Market/Taste ≥8, configured critical floor ≥7, and `VISIBLE_CREATIVE_DELTA: STEP_CHANGE` before whole-video automation or architecture expansion resumes. Creative North Star structure is at [`content/references/creative-north-star/README.md`](content/references/creative-north-star/README.md); no references are invented.
 
-CKAI-0005 has completed styleframes, a 13.5-second motion prototype, Full Production V1 and a separate V1.1 surgical repair as creative-reset evidence. Direct Product Owner + ChatGPT review scored V1 at approximately 6.3–6.6/10 and V1.1 at approximately 6.7/10: Generalization Test 01 passed and V1.1 is the current best visual version, but neither is Golden. The earlier A/B prototypes are preserved as development evidence and are superseded by the published Final Audio V2. Phase 2 Audio Engine is still not started.
+CKAI-0005 has completed styleframes, a 13.5-second motion prototype, Full Production V1 and a separate V1.1 surgical repair as creative-reset evidence. Direct Product Owner + ChatGPT review scored V1 at approximately 6.3–6.6/10 and V1.1 at approximately 6.7/10: Generalization Test 01 passed and V1.1 is the current best visual version, but neither is Golden. The earlier A/B prototypes are preserved as development evidence and are superseded by the published Final Audio V2. They remain immutable evidence for the bounded Phase 2 Audio Engine rather than a universal mix preset.
 
-CKAI-0006 Practical Consistency Test is closed at V1.2 and is the Product Owner-confirmed `Practical Visual Baseline V1`. Voice + music are accepted for this evidence item. The locked result formalizes practical routing: direct workflow/action/result imagery; broadcast/editorial moving-image language; workflow as content; UI as one actor in the visual world; animation as a tool rather than a visual philosophy. No V1.3 is opened. This completion does not assert publication, Golden status or Phase 2 Audio Engine readiness.
+CKAI-0006 Practical Consistency Test is closed at V1.2 and is the Product Owner-confirmed `Practical Visual Baseline V1`. Voice + music are accepted for this evidence item. The locked result formalizes practical routing: direct workflow/action/result imagery; broadcast/editorial moving-image language; workflow as content; UI as one actor in the visual world; animation as a tool rather than a visual philosophy. No V1.3 is opened. This completion does not assert publication or Golden status; its audio remains immutable evidence rather than an engine default.
 
 Product Owner review preserved CKAI-0006 content, voice, music and mix while rejecting V1's slide/landing-page/dashboard visual grammar. V1.1 is preserved as an intermediate visual-only repair; V1.2 is the locked final state. Historical binaries and QA remain immutable evidence.
 
 Product Owner review of V1.1 then passed aesthetics, practical relevance, readability, audio and engagement while finding repeated headline-plus-screen composition, UI dominance and shot uniformity only partially resolved. V1.2 preserves V1/V1.1 and exact audio, but recuts the visual into material detail, OTS-like interaction, tracking, close inspection, three distinct semantic cutaways, spatial rewrite reconstruction and final hero resolution. Local actual-MP4 QA passes decode, media-shot, shot-variety, mobile and motion-story checks; slide/presentation grammar is conservatively `PARTIAL` and direct Product Owner review remains authoritative.
 
-Following Product Owner feedback that the prototype music was too reduced to register as music, `CKAI-0005-final-audio-v2.mp4` uses `CKAI-MUSIC-0022 — Digital Clouds` as a continuous perceptible full bed plus six semantic SFX events. Actual-file QA records 96.07% music/SFX presence, 10.17 dB active Voice dominance, phone-band PASS and a byte-identical V1.1 H.264 stream. Product Owner confirms Final Audio V2 was published. This closes CKAI-0005 production evidence but does not start Phase 2 Audio Engine or award Golden status.
+Following Product Owner feedback that the prototype music was too reduced to register as music, `CKAI-0005-final-audio-v2.mp4` uses `CKAI-MUSIC-0022 — Digital Clouds` as a continuous perceptible full bed plus six semantic SFX events. Actual-file QA records 96.07% music/SFX presence, 10.17 dB active Voice dominance, phone-band PASS and a byte-identical V1.1 H.264 stream. Product Owner confirms Final Audio V2 was published. This closes CKAI-0005 production evidence without awarding Golden status.
 
-CKAI Music Library V1 is canonical at [`content/references/audio/music-library-v1/`](content/references/audio/music-library-v1/) with 22 Product Owner-confirmed `KEEP` records, 22 verified local MP3 files and complete track-specific provenance/license evidence. Round 1 primaries and its A/B artifacts remain preserved as historical evidence; Round 2 expanded the same shelf across six music families. Library readiness is not automatic music-selection intelligence and does not start Phase 2 Audio Engine.
+CKAI Music Library V1 is canonical at [`content/references/audio/music-library-v1/`](content/references/audio/music-library-v1/) with 22 Product Owner-confirmed `KEEP` records, 22 verified local MP3 files and complete track-specific provenance/license evidence. Round 1 primaries and its A/B artifacts remain preserved as historical evidence; Round 2 expanded the same shelf across six music families. The Phase 2 engine reads this registry directly for deterministic candidate support ranking; library readiness and rank never become final selection authority.
 
-Canonical [`Audio Direction V1`](engine/audio-direction-v1.md) is validated from CKAI-0004 perceptual failure evidence, CKAI-0005 published Final Audio V2, CKAI-0006 locked audio, Music Library V1 and explicit Product Owner learnings. It defines voice hierarchy, perceptible music, narration-context audition, full-bed selection, semantic SFX restraint, phone listening, dual-voice candidate boundaries and human PASS/REVISE review. It does not automate selection, placement, mix/master or start Phase 2 Audio Engine.
+Canonical [`Audio Direction V1`](engine/audio-direction-v1.md) is validated from CKAI-0004 perceptual failure evidence, CKAI-0005 published Final Audio V2, CKAI-0006 locked audio, Music Library V1 and explicit Product Owner learnings. It defines voice hierarchy, perceptible music, narration-context audition, full-bed selection, semantic SFX restraint, phone listening, dual-voice candidate boundaries and human PASS/REVISE review.
+
+Canonical [`Phase 2 Audio Engine V1`](engine/audio-engine-v1.md) implements only bounded mechanics: canonical 22-track provenance resolution, explainable candidate ranking, actual-narration audition identity, complete semantic bed plans, semantic SFX/`NO_SFX`, STEP 07 finishing/mastering integration, visible failures and distinct technical/phone/perceptual gates. Final track selection, perceptual mix review and creative approval remain human-gated. Dual voice remains candidate-only. AUD-04 implementation created no new production video, Content ID, provider use or Golden claim.
 
 Music Library Round 2 subsequently expanded the same canonical V1 shelf to `22 KEEP / 22 downloaded`: the original seven investigative/tension tracks plus three tracks in each of `LOFI_CHILLHOP`, `AMBIENT`, `CORPORATE_UPBEAT_LIGHT`, `MINIMALIST_PIANO_CLASSICAL` and `SOFT_ELECTRONIC_SYNTHWAVE`. Registry metadata includes melody presence, full-bed suitability and reflective/explainer/tech/uplift/warmth fit. CKAI-0006 selected `CKAI-MUSIC-0015 — Close Up` through content-specific production judgment; this does not turn descriptive catalog fields into an Audio Engine or automatic selector.
 
