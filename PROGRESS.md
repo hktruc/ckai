@@ -58,10 +58,18 @@
 - Quy định mới: sau mỗi task đáng kể, phải đồng bộ `MASTER_BLUEPRINT.md` + `PROGRESS.md` + Web Status Board trong cùng work unit.
 - Phát hiện remote GitHub trước mốc này đang **stale** so với các report Codex/local mới hơn; mở P0 reconciliation task thay vì giả định trạng thái đã sync.
 
+### 2026-08-29 — Timeline-first LDP web view
+- Tạo `ldp.html` làm lớp nhìn nhanh cho Product Owner theo yêu cầu mới: ưu tiên **trình tự trước → sau**, **workstream lane**, dependency, current P0/P1 và production evidence thay vì chỉ trình bày các architecture block ngang hàng.
+- LDP đọc từ trái sang phải để thấy tuyến thi công tổng; từng lane cho thấy phase nào DONE / IN PROGRESS / NOT STARTED / FROZEN.
+- CKAI-0004 / 0005 / 0006 được hiển thị riêng như evidence, với CKAI-0006 là active evidence.
+- LDP là visualization layer; `MASTER_BLUEPRINT.md` vẫn là canonical project map và `PROGRESS.md` vẫn là canonical history.
+- Do GitHub App integration không có quyền tự enable GitHub Pages lần đầu, dùng web-render URL bám branch `main` làm link xem ngay; workflow Pages vẫn giữ sẵn để chuyển sang `github.io` khi Pages được bật.
+
 ## Trạng thái hiện tại (snapshot)
 
 - **QLDA canonical map:** `MASTER_BLUEPRINT.md` v1.0.
-- **Web Status Board:** `index.html`, auto-deploy qua GitHub Pages workflow.
+- **Web Status Board:** `index.html`; Pages workflow đã tồn tại nhưng lần enable đầu bị GitHub chặn ở integration permission.
+- **Timeline-first LDP:** `ldp.html`, dùng để ghim và theo dõi tuyến thi công trước–sau.
 - **Architecture:** 8 ARC / 31 phase-level workstreams được mã hóa; task chi tiết nằm trong Blueprint.
 - **Production evidence:** CKAI-0004 = baseline; CKAI-0005 = generalization/audio learning; CKAI-0006 = practical/consistency test đang active.
 - **Current P0:** reconcile local/Codex repo state với GitHub; hoàn tất CKAI-0006; làm rõ Audio Direction V1 trước khi mở Phase 2 Audio Engine.
