@@ -339,6 +339,13 @@
 - Full export regression passed 11/11, including actual codec/profile, full-video SSIM/audio equivalence, corruption rejection, checksum mutation and release-gate tests. System dry-run, publishing/learning, bridge, adapter, quality-governance and project-state validation also passed.
 - Final decision remains `SYSTEM CONSTRUCTION BASELINE COMPLETE`; buildable system work is zero. The four open tasks remain evidence-gated or intentionally frozen.
 
+### 2026-08-29 — Safe Git/GitHub reconciliation
+
+- Fresh audit found seven legitimate remote-only PM/web commits and thirteen local-only canonical implementation/state commits after common ancestor `a950ea0`.
+- Preserved both histories with merge commit `b1a1c68`; local canonical Blueprint/LDP/current state won the three audited conflicts, while the remote Pages workflow, web entry point and historical architecture SVG were retained.
+- Removed the stale 8-ARC homepage claim by routing `index.html` to current `ldp.html`; marked the older SVG as historical and added `ldp.html` to the Pages deployment path filter.
+- Required project-state, lifecycle dry-run, publishing/learning and quality-governance validation passed before normal non-force publication to `origin/main`.
+
 ## Trạng thái hiện tại (snapshot)
 
 - **6 skill:** `/ck-idea`, `/ck-expand`, `/ck-script`, `/ck-review`, `/ck-publish`, `/ck-learn`.
