@@ -258,6 +258,12 @@
 - Actual-MP4 decode, mobile readability, shot variety, media-shot and motion-storytelling checks PASS; slide/presentation grammar remains conservatively `PARTIAL` pending Product Owner review.
 - No V1.3, publishing, CKAI-0007 or new engine work occurred.
 
+### 2026-08-29 — Initial remote Master Blueprint + QLDA web views
+
+- The remote-only history created the first `MASTER_BLUEPRINT.md`, `index.html`, `docs/ckai-master-architecture.svg`, GitHub Pages workflow and timeline-first `ldp.html`.
+- This was legitimate project-management/web deployment work and is preserved by the reconciliation merge. Its 8-ARC/31-phase snapshot and then-current P0 backlog were later superseded by the audited 9-ARC/35-phase/70-task canonical state.
+- `index.html` now routes to the current canonical `ldp.html`; the original SVG is retained but explicitly marked as a historical snapshot. The Pages workflow now watches `ldp.html` directly.
+
 ### 2026-08-29 — Full repository audit + canonical project-state reconciliation
 
 - Product Owner confirmed CKAI-0004 as `Production Baseline V1`, CKAI-0005 Generalization Test 01 as PASS with Final Audio V2 published, and CKAI-0006 locked at V1.2 as `Practical Visual Baseline V1`; no V1.3 is opened.
