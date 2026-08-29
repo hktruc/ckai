@@ -43,3 +43,9 @@ Template placeholders, environment credential placeholders, historical content-s
 ## Non-production proof
 
 `npm run system:dry-run` uses an isolated `TEST-9001` temporary workspace. It demonstrates package → exact fixture Release Approval → `READY_TO_PUBLISH` → canonical fixture delivery evidence → `PUBLISHED` → performance validation → `EXCLUDED_TEST_FIXTURE`, then deletes the workspace. It writes no real publication, metric, content state or generated production artifact.
+
+## Final export regression closure
+
+The previously inconclusive Windows export regression was resolved on 2026-08-29. Node child-process execution inside the managed sandbox returned `EPERM` for the existing local FFmpeg/FFprobe binaries even though those binaries ran directly. Outside that process sandbox, the full single-process export suite terminated normally.
+
+The suite also exposed one stale TEST-only fixture boundary: TEST-0002 had an actual locked review MP4 but its in-memory Audio Engine contract still retained the draft `NOT_RENDERED`/`PENDING` states. The fixture now records only the already-demonstrated technical states (`RENDERED`, mix QA `PASS`, phone-speaker technical proxy `PASS`) while retaining `legacy-approved-reverse-audit`, `humanDecision: not-applicable` and blocked production/publish authority. Final export result: 11/11 tests PASS, including codec/profile inspection, full-video decoded SSIM/audio equivalence, corrupted-media rejection, checksum mutation rejection and release-gate conjunction.

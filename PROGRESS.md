@@ -326,6 +326,13 @@
 - TEST-only dry run proved review package → Release Approval → READY_TO_PUBLISH → publication evidence → PUBLISHED → fixture metric validation → excluded fixture classification, with zero persistent production writes.
 - `LRN-02` remains `NOT_STARTED` because real metrics and therefore real learning evidence do not exist. `GLD-02`/`AUT-02` remain `CANDIDATE`; `VIS-13` remains `FROZEN`. No video, provider call, CKAI-0007, locked artifact or Golden state changed.
 
+### 2026-08-29 — Final system closure verification
+
+- Resolved the previously inconclusive export regression. The apparent non-termination was the combination of a long, buffered full-media suite and Windows sandbox `EPERM` on Node child processes; outside that boundary the suite terminated normally.
+- Updated only the TEST-0002 in-memory reverse-audit fixture to reflect technical QA already demonstrated by its locked review MP4. It remains non-production, human approval remains `not-applicable` and Export/Publish authority remains blocked.
+- Full export regression passed 11/11, including actual codec/profile, full-video SSIM/audio equivalence, corruption rejection, checksum mutation and release-gate tests. System dry-run, publishing/learning, bridge, adapter, quality-governance and project-state validation also passed.
+- Final decision remains `SYSTEM CONSTRUCTION BASELINE COMPLETE`; buildable system work is zero. The four open tasks remain evidence-gated or intentionally frozen.
+
 ## Trạng thái hiện tại (snapshot)
 
 - **6 skill:** `/ck-idea`, `/ck-expand`, `/ck-script`, `/ck-review`, `/ck-publish`, `/ck-learn`.

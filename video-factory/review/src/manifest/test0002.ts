@@ -26,6 +26,8 @@ export const createTest0002ReviewManifest = (voicePlan: VoicePlan): FinalReviewM
     narration: {sourcePath: 'generated/voice/TEST-0002/master.wav', sha256: '0641AB84EBBD485D859F98DC1F84E29FF54411D3D153718F5BD9607D77F6CB5C', durationSeconds: 49, density: 'MEDIUM'},
     semanticIntent: ['reverse-audit proof'], emotionalTrajectory: ['technical verification'],
   }), 'Reverse-audit fixture intentionally exercises the valid no-music path.'), {decision: 'NO_SFX', rationale: 'Reverse-audit fixture intentionally exercises the valid no-SFX path.'});
+  audioProduction.mix = {...audioProduction.mix, renderState: 'RENDERED', technicalQa: 'PASS'};
+  audioProduction.qa.phoneSpeakerTechnicalProxy = 'PASS';
   const review: FinalReviewManifest = {
     id: 'TEST-0002-FinalReview', contentId: 'TEST-0002', inputEligibility: 'legacy-approved-reverse-audit', sourceChain,
     sourceVoiceSnapshot: 'generated/voice/TEST-0002/voice-plan.generated.json',
