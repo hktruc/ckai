@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CKAI Master Blueprint — LDP</title>
+<meta name="description" content="CKAI Master Blueprint — timeline thi công, workstreams, dependencies và current focus."/>
+<style>
+:root{--bg:#07101f;--panel:#0c172b;--panel2:#111e35;--line:#243453;--text:#eef4ff;--muted:#9fb0cc;--blue:#4f8cff;--green:#2ecb79;--purple:#a86bff;--orange:#ff9c43;--cyan:#36c5d0;--gold:#f4c248;--pink:#ff5f9e;--red:#ff5d5d;--done:#2ecb79;--ip:#f4c248;--todo:#6f7f99;--frozen:#65b9ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(180deg,#050b15,#091426 40%,#07101f);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.wrap{max-width:1480px;margin:auto;padding:24px}.hero{display:grid;grid-template-columns:1.55fr .75fr;gap:18px;align-items:stretch}.card{background:linear-gradient(180deg,rgba(17,30,53,.96),rgba(10,20,38,.96));border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.25)}.hero-main{padding:28px}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#75a6ff;font-weight:800}.logo{font-size:46px;font-weight:900;letter-spacing:-.05em}.logo b{color:#f4c248}.hero h1{margin:8px 0 10px;font-size:32px;line-height:1.15}.hero p{margin:0;color:var(--muted);max-width:900px}.north{margin-top:18px;padding:14px 16px;border-left:4px solid #f4c248;background:rgba(244,194,72,.07);border-radius:10px}.hero-side{padding:22px;display:flex;flex-direction:column;justify-content:space-between}.metric{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07)}.metric:last-child{border:0}.metric span{color:var(--muted)}.metric strong{font-size:16px}.pill{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:12px;margin:4px 4px 0 0}.dot{width:9px;height:9px;border-radius:50%;display:inline-block}.done{background:var(--done)}.ip{background:var(--ip)}.todo{background:var(--todo)}.frozen{background:var(--frozen)}
+.section{margin-top:18px;padding:22px}.section h2{margin:0 0 5px;font-size:21px}.sub{color:var(--muted);margin-bottom:18px}.flow{display:grid;grid-template-columns:repeat(8,minmax(140px,1fr));gap:10px;align-items:stretch}.stage{position:relative;padding:14px 12px;border:1px solid var(--line);border-radius:14px;background:#0b1629;min-height:106px}.stage:after{content:'→';position:absolute;right:-15px;top:39px;color:#7184a5;font-size:20px;font-weight:800;z-index:2}.stage:last-child:after{display:none}.stage small{font-size:11px;font-weight:800;color:#9eb0ca}.stage b{display:block;margin:5px 0;font-size:14px;line-height:1.25}.stage em{font-style:normal;font-size:11px;color:var(--muted)}.s1{border-top:4px solid var(--blue)}.s2{border-top:4px solid var(--green)}.s3{border-top:4px solid var(--purple)}.s4{border-top:4px solid var(--orange)}.s5{border-top:4px solid var(--cyan)}.s6{border-top:4px solid var(--gold)}.s7{border-top:4px solid #6f8cff}.s8{border-top:4px solid var(--red)}
+.focus{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.focus .item{padding:16px;border-radius:14px;background:#0a1629;border:1px solid var(--line)}.tag{font-size:11px;font-weight:900;letter-spacing:.08em}.p0{color:#ff7777}.p1{color:#f4c248}.item h3{font-size:16px;margin:5px 0}.item p{color:var(--muted);margin:0;font-size:13px}
+.lanes{display:grid;gap:14px}.lane{display:grid;grid-template-columns:235px 1fr;gap:14px;align-items:stretch}.lane-head{padding:15px;border-radius:14px;background:#0b1629;border:1px solid var(--line)}.lane-head .code{font-weight:900;font-size:12px;color:#8fb3ff}.lane-head h3{font-size:15px;margin:4px 0}.lane-head p{font-size:12px;color:var(--muted);margin:0}.steps{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(165px,1fr);gap:9px;overflow-x:auto;padding-bottom:4px}.step{min-width:165px;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0a1426;position:relative}.step:not(:last-child):after{content:'›';position:absolute;right:-8px;top:32%;font-size:22px;color:#647694;z-index:2}.step .ph{font-size:10px;font-weight:900;color:#8ea2c2}.step b{display:block;font-size:13px;margin:3px 0 9px}.status{font-size:10px;font-weight:900;letter-spacing:.06em}.status.done-t{color:var(--done)}.status.ip-t{color:var(--ip)}.status.todo-t{color:#93a1b7}.status.frozen-t{color:var(--frozen)}
+.dep{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.dep .d{padding:14px;border:1px solid var(--line);border-radius:12px;background:#091426}.dep b{font-size:13px}.dep p{margin:5px 0 0;color:var(--muted);font-size:12px}.evidence{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.ev{padding:15px;border:1px solid var(--line);border-radius:14px;background:#091426}.ev .id{font-size:17px;font-weight:900}.ev p{font-size:12px;color:var(--muted);margin:5px 0 0}.active{box-shadow:inset 0 0 0 1px rgba(244,194,72,.25);border-color:#67582b}.links{display:flex;flex-wrap:wrap;gap:10px}.btn{display:inline-flex;text-decoration:none;color:white;padding:10px 13px;border-radius:10px;border:1px solid var(--line);background:#12223d;font-weight:750;font-size:13px}.btn:hover{border-color:#5a78a7;background:#162a4b}.foot{color:#7f91af;text-align:center;padding:22px 0 8px;font-size:12px}
+@media(max-width:1100px){.hero{grid-template-columns:1fr}.flow{grid-template-columns:repeat(4,1fr)}.stage:nth-child(4):after{display:none}.focus,.dep,.evidence{grid-template-columns:1fr 1fr}.lane{grid-template-columns:190px 1fr}}@media(max-width:720px){.wrap{padding:12px}.hero-main{padding:20px}.logo{font-size:36px}.hero h1{font-size:25px}.flow{grid-template-columns:1fr 1fr}.stage:after{display:none}.focus,.dep,.evidence{grid-template-columns:1fr}.lane{grid-template-columns:1fr}.steps{grid-auto-columns:78%}.section{padding:16px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="card hero-main">
+      <div class="eyebrow">CKAI · Chánh Kiến AI · Master Blueprint</div>
+      <div class="logo">CK<b>AI</b></div>
+      <h1>Bản đồ thi công theo thứ tự trước → sau</h1>
+      <p>Không nhìn CKAI như một danh sách module rời. LDP này trình bày công trình theo <b>dòng thi công</b>, các <b>nhóm việc chạy song song</b>, dependency, bằng chứng production và current focus.</p>
+      <div class="north"><b>NORTH STAR:</b> Từ ý tưởng → hệ thống sản xuất → chất lượng tác phẩm → phát hành → học từ thực tế → lặp lại ở mức Golden ~8/10 và hướng tới 9/10+.</div>
+    </div>
+    <aside class="card hero-side">
+      <div>
+        <div class="eyebrow">Current snapshot</div>
+        <div class="metric"><span>Blueprint</span><strong>v1.0</strong></div>
+        <div class="metric"><span>Architecture blocks</span><strong>8 ARC</strong></div>
+        <div class="metric"><span>Active evidence</span><strong>CKAI-0006</strong></div>
+        <div class="metric"><span>Golden target</span><strong>≈ 8/10</strong></div>
+      </div>
+      <div><span class="pill"><i class="dot done"></i>DONE</span><span class="pill"><i class="dot ip"></i>IN PROGRESS</span><span class="pill"><i class="dot todo"></i>NOT STARTED</span><span class="pill"><i class="dot frozen"></i>FROZEN</span></div>
+    </aside>
+  </section>
+
+  <section class="card section">
+    <h2>1. Tuyến thi công chính</h2>
+    <div class="sub">Mỗi stage mở khóa stage sau, nhưng các workstream chất lượng/audio/generalization có thể chạy song song khi foundation đã đủ.</div>
+    <div class="flow">
+      <div class="stage s1"><small>STAGE 1</small><b>NỀN TẢNG & GOVERNANCE</b><em>Content OS · brand truth · lifecycle · project control</em></div>
+      <div class="stage s2"><small>STAGE 2</small><b>VIDEO FACTORY</b><em>Script → visual → assets → render/export</em></div>
+      <div class="stage s3"><small>STAGE 3</small><b>CREATIVE QUALITY</b><em>Art direction · quality gates · North Star</em></div>
+      <div class="stage s4"><small>STAGE 4</small><b>AUDIO DIRECTION</b><em>Music · voice · mix · semantic SFX</em></div>
+      <div class="stage s5"><small>STAGE 5</small><b>CONTENT MODES</b><em>Thinking · Practical · mode-specific visual grammar</em></div>
+      <div class="stage s6"><small>STAGE 6</small><b>GENERALIZATION</b><em>Consistency · reuse · bounded autonomy</em></div>
+      <div class="stage s7"><small>STAGE 7</small><b>PUBLISH & LEARN</b><em>Delivery learning · performance evidence</em></div>
+      <div class="stage s8"><small>STAGE 8</small><b>GOLDEN MASTER</b><em>8/10 repeatable → signature 9/10+ path</em></div>
+    </div>
+  </section>
+
+  <section class="card section">
+    <h2>2. Việc phải làm ngay</h2><div class="sub">Priority stack hiện tại — side quest không được làm mất các mục này.</div>
+    <div class="focus">
+      <div class="item"><span class="tag p0">P0 · PROJECT STATE</span><h3>Reconcile Codex/local ↔ GitHub</h3><p>Remote GitHub từng bị stale so với implementation mới. Phải đồng bộ evidence thực tế về canonical repo.</p></div>
+      <div class="item active"><span class="tag p0">P0 · ACTIVE EVIDENCE</span><h3>Hoàn tất CKAI-0006</h3><p>Practical / Consistency Test. Kết quả phải feed trở lại ARC-02, ARC-05 và ARC-06.</p></div>
+      <div class="item"><span class="tag p0">P0 · AUDIO</span><h3>Freeze Audio Direction V1</h3><p>Hoàn thiện direction + licensed music library trước khi mở Phase 2 Audio Engine.</p></div>
+      <div class="item"><span class="tag p1">P1 · CREATIVE</span><h3>Populate Creative North Star</h3><p>Tạo benchmark có provenance và anchor rõ mức 7 / 8 / 9.</p></div>
+      <div class="item"><span class="tag p1">P1 · AUTONOMY</span><h3>Đo manual handholding</h3><p>Biết chính xác con người đang can thiệp ở đâu trước khi scale automation.</p></div>
+      <div class="item"><span class="tag p1">P1 · LEARNING</span><h3>Đóng loop publish → learning</h3><p>Đưa delivery/performance evidence quay trở lại system rules có kiểm soát.</p></div>
+    </div>
+  </section>
+
+  <section class="card section">
+    <h2>3. Workstreams theo nhóm việc</h2><div class="sub">Đọc từ trái sang phải trong từng lane. Đây là phần giúp nhìn rõ “việc trước → việc sau”.</div>
+    <div class="lanes">
+      <div class="lane"><div class="lane-head"><div class="code">ARC-01</div><h3>Governance & Content OS</h3><p>Giữ hướng, truth, lifecycle và continuity.</p></div><div class="steps"><div class="step"><span class="ph">PH-01</span><b>Content OS Foundation</b><span class="status done-t">DONE</span></div><div class="step"><span class="ph">PH-02</span><b>Content Lifecycle Engine</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-03</span><b>Agent/API Modernization</b><span class="status ip-t">IN PROGRESS</span></div><div class="step active"><span class="ph">PH-04</span><b>Project Control & Continuity</b><span class="status ip-t">IN PROGRESS</span></div></div></div>
+      <div class="lane"><div class="lane-head"><div class="code">ARC-02</div><h3>Visual Production System</h3><p>Từ script thành video có thể kiểm soát.</p></div><div class="steps"><div class="step"><span class="ph">PH-01</span><b>Video Factory Foundation</b><span class="status done-t">DONE</span></div><div class="step"><span class="ph">PH-02</span><b>Script → Visual Pipeline</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-03</span><b>Assets & Provenance</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-04</span><b>Rendering & Export</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-05</span><b>Automation & Validation</b><span class="status ip-t">IN PROGRESS</span></div></div></div>
+      <div class="lane"><div class="lane-head"><div class="code">ARC-03</div><h3>Creative Quality</h3><p>Không dừng ở technical pass.</p></div><div class="steps"><div class="step"><span class="ph">PH-01</span><b>Creative Quality Standard</b><span class="status done-t">DONE</span></div><div class="step"><span class="ph">PH-02</span><b>Art Direction System</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-03</span><b>Quality Control Gates</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-04</span><b>North Star & Benchmark</b><span class="status todo-t">NOT STARTED / CANDIDATE</span></div></div></div>
+      <div class="lane"><div class="lane-head"><div class="code">ARC-04</div><h3>Audio / Music / Voice</h3><p>Direction trước, engine sau.</p></div><div class="steps"><div class="step"><span class="ph">PH-01</span><b>Music Library</b><span class="status ip-t">IN PROGRESS</span></div><div class="step active"><span class="ph">PH-02</span><b>Audio Direction</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-03</span><b>Voice System</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-04</span><b>Music Bed & Semantic SFX</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-05</span><b>Phase 2 Audio Engine</b><span class="status frozen-t">FROZEN</span></div></div></div>
+      <div class="lane"><div class="lane-head"><div class="code">ARC-05</div><h3>Content Modes</h3><p>Mỗi dạng nội dung có grammar phù hợp.</p></div><div class="steps"><div class="step"><span class="ph">PH-01</span><b>Mode Taxonomy</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-02</span><b>THINKING / Chánh Kiến</b><span class="status done-t">VALIDATED</span></div><div class="step active"><span class="ph">PH-03</span><b>PRACTICAL / Tuyệt Chiêu</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-04</span><b>Future Modes</b><span class="status frozen-t">FROZEN / CANDIDATE</span></div></div></div>
+      <div class="lane"><div class="lane-head"><div class="code">ARC-06</div><h3>Consistency & Generalization</h3><p>Chứng minh hệ thống không chỉ chạy được một case.</p></div><div class="steps"><div class="step"><span class="ph">PH-01</span><b>Baseline Evidence</b><span class="status done-t">CKAI-0004 · DONE</span></div><div class="step"><span class="ph">PH-02</span><b>Generalization Test 01</b><span class="status done-t">CKAI-0005 · DONE</span></div><div class="step active"><span class="ph">PH-03</span><b>Practical / Consistency</b><span class="status ip-t">CKAI-0006 · ACTIVE</span></div><div class="step"><span class="ph">PH-04</span><b>Reusability / Autonomy / Scale</b><span class="status todo-t">NOT STARTED</span></div></div></div>
+      <div class="lane"><div class="lane-head"><div class="code">ARC-08</div><h3>Publish / Delivery / Learning</h3><p>Đưa evidence thật trở lại hệ thống.</p></div><div class="steps"><div class="step"><span class="ph">PH-01</span><b>Publishing Package</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-02</span><b>Delivery Learning</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-03</span><b>Performance Learning</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-04</span><b>Feedback → Evolution</b><span class="status todo-t">NOT STARTED</span></div></div></div>
+      <div class="lane"><div class="lane-head"><div class="code">ARC-07</div><h3>Golden Master</h3><p>Đích đến chất lượng, không chỉ kiến trúc.</p></div><div class="steps"><div class="step"><span class="ph">PH-01</span><b>Golden Target Definition</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-02</span><b>Benchmark System</b><span class="status todo-t">NOT STARTED</span></div><div class="step"><span class="ph">PH-03</span><b>Golden 8/10 Roadmap</b><span class="status ip-t">IN PROGRESS</span></div><div class="step"><span class="ph">PH-04</span><b>9/10+ Masterpiece Path</b><span class="status todo-t">NOT STARTED</span></div></div></div>
+    </div>
+  </section>
+
+  <section class="card section">
+    <h2>4. Dependency quan trọng</h2><div class="sub">Những chỗ không nên “nhảy cóc”.</div>
+    <div class="dep">
+      <div class="d"><b>Governance → Production</b><p>Không có truth/lifecycle ổn định thì automation chỉ khuếch đại sai.</p></div>
+      <div class="d"><b>Creative Direction → Golden Benchmark</b><p>Không thể đo 8/10 nếu chưa xác định rõ thế nào là “đẹp đúng CKAI”.</p></div>
+      <div class="d"><b>Audio Direction → Audio Engine</b><p>ARC-04.PH-05 giữ FROZEN đến khi Audio Direction V1 đủ rõ.</p></div>
+      <div class="d"><b>Evidence → Generalization → Autonomy</b><p>Không promote một video tốt thành rule; cần repetition trước khi scale.</p></div>
+    </div>
+  </section>
+
+  <section class="card section">
+    <h2>5. Production evidence</h2><div class="sub">Video là bằng chứng phát triển hệ thống, không phải dự án độc lập.</div>
+    <div class="evidence">
+      <div class="ev"><div class="id">CKAI-0004</div><b>Production Baseline V1</b><p>Neo baseline cho ARC-06.PH-01.</p></div>
+      <div class="ev"><div class="id">CKAI-0005</div><b>Generalization Test 01</b><p>Evidence cho generalization + audio learning.</p></div>
+      <div class="ev active"><div class="id">CKAI-0006</div><b>Practical / Consistency Test</b><p>Active evidence: direct workflow imagery + consistency + production friction.</p></div>
+    </div>
+  </section>
+
+  <section class="card section">
+    <h2>6. Canonical files</h2><div class="sub">LDP là lớp nhìn nhanh. Trạng thái chi tiết vẫn lấy từ Blueprint + Progress.</div>
+    <div class="links">
+      <a class="btn" href="https://github.com/hktruc/ckai/blob/main/MASTER_BLUEPRINT.md" target="_blank">MASTER_BLUEPRINT.md</a>
+      <a class="btn" href="https://github.com/hktruc/ckai/blob/main/PROGRESS.md" target="_blank">PROGRESS.md</a>
+      <a class="btn" href="https://github.com/hktruc/ckai" target="_blank">GitHub Repository</a>
+      <a class="btn" href="https://github.com/hktruc/ckai/blob/main/index.html" target="_blank">Status Board source</a>
+    </div>
+  </section>
+  <div class="foot">CKAI LDP · Living Delivery/Development Plan · baseline 2026-08-29 · Master Blueprint remains canonical.</div>
+</div>
+</body>
+</html>
