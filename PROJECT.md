@@ -424,6 +424,10 @@ Canonical division:
 
 Codex có thể structure evidence hoặc persist artifact được giao, nhưng không tự trở thành editorial authority và không tự chạy trọn discover → select → write → approve → produce thiếu ChatGPT editorial judgment ở creative gates.
 
+### Codex Model Cost Governance
+
+`TERRA` là default cho routine implementation/validation/Git/audit; `LUNA` dùng cho mechanical work đơn giản khi available; `SOL` chỉ là escalation cho architectural ambiguity thật, Terra failure, Creative Direction hoặc quality judgment 7/8/9, hay explicit Product Owner/ChatGPT recommendation. Quy tắc đầy đủ nằm tại `AGENTS.md`; scope lớn, nhiều file, test lâu hoặc report dài không tự biện minh cho Sol.
+
 ### Independent authority gates
 
 System/technical gate + ChatGPT editorial/operator review + direct Product Owner Content/Release Approval là các lớp độc lập. ChatGPT output/delegated acceptance không phải hai Product Owner checkpoints. Không actor nào override factual/technical hard failure.

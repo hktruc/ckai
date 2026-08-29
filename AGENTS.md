@@ -40,6 +40,14 @@ Khi build hoặc review, kiểm tra:
 
 Six workflow canonical nằm tại .agents/skills/ck-*/SKILL.md. .claude/skills/ chỉ là compatibility shim mỏng; không sửa workflow logic ở shim.
 
+## Model Cost Governance
+
+- **TERRA = default Codex model.** Dùng cho implementation có scope rõ, file change, test, Git, LDP/Blueprint/Progress, metadata, validation, debugging thông thường và audit routine.
+- **LUNA = low-cost mechanical work** khi model này available: search, formatting, rename, metadata edit đơn giản và deterministic check đơn giản.
+- **SOL = escalation only.** Chỉ dùng cho architectural decision khó/mơ hồ, difficult debugging sau khi Terra không thể giải quyết đáng tin cậy, Creative Direction, Golden-quality review, đánh giá output-quality 7/8/9, hoặc khi Product Owner/ChatGPT yêu cầu rõ.
+- **Default escalation rule:** bắt đầu bằng Terra; chỉ Terra → Sol khi có architectural ambiguity thật, Terra không resolve reliably, creative-quality judgment cần thiết, hoặc Product Owner/ChatGPT recommend Sol. Không escalate chỉ vì task lớn, nhiều file, test lâu hoặc report dài.
+- Routine work không dùng Sol mặc định. Tests, builds và command execution dùng model rẻ nhất vẫn đủ năng lực vì tool runtime không tự cần premium reasoning. Giữ scope hẹp và report concise.
+
 ## Nguyên tắc bắt buộc
 
 - Markdown-first, local-first; không tự thêm web app, API, database, hosting, dashboard hay multi-agent architecture.
