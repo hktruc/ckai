@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ckai-production-job-v1",
+  "title": "CKAI Production Job v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "jobId", "contentId", "requestedAction", "createdAt", "source", "approval", "providerPolicy"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "jobId": {"type": "string", "pattern": "^(JOB|SMOKE)-[A-Z0-9][A-Z0-9_-]{5,79}$"},
+    "contentId": {"type": "string", "pattern": "^(CKAI|TEST)-[0-9]{4}$"},
+    "requestedAction": {"enum": ["smoke-no-provider", "production-preflight", "generic-adapter-proof", "produce-to-review-package"]},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "source": {
+      "type": "object", "additionalProperties": false, "required": ["artifactPath", "sha256"],
+      "properties": {"artifactPath": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}}
+    },
+    "approval": {
+      "type": "object", "additionalProperties": false,
+      "required": ["type", "decision", "approvedBy", "approvedAt", "basis", "contentFingerprintSha256"],
+      "properties": {
+        "type": {"const": "content-approval"}, "decision": {"const": "approved"}, "approvedBy": {"const": "product-owner"},
+        "approvedAt": {"type": "string", "format": "date-time"}, "basis": {"type": "string", "minLength": 1},
+        "contentFingerprintSha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}
+      }
+    },
+    "providerPolicy": {
+      "type": "object", "additionalProperties": false, "required": ["allowVbeeQuota", "autoPurchaseCredits", "allowPaidFallback"],
+      "properties": {
+        "allowVbeeQuota": {"type": "boolean"},
+        "allowOpenAIImageGeneration": {"type": "boolean", "default": false},
+        "allowOpenAIVision": {"type": "boolean", "default": false},
+        "maxOpenAIImageUsd": {"type": ["number", "null"], "minimum": 0},
+        "autoPurchaseCredits": {"const": false},
+        "allowPaidFallback": {"const": false}
+      }
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"requestedAction": {"enum": ["produce-to-review-package", "generic-adapter-proof"]}}}, "then": {"properties": {"contentId": {"pattern": "^CKAI-[0-9]{4}$"}}}},
+    {"if": {"properties": {"requestedAction": {"enum": ["smoke-no-provider", "production-preflight"]}}}, "then": {"properties": {"contentId": {"pattern": "^TEST-[0-9]{4}$"}}}},
+    {"if": {"properties": {"requestedAction": {"enum": ["smoke-no-provider", "production-preflight", "generic-adapter-proof"]}}}, "then": {"properties": {"providerPolicy": {"properties": {"allowVbeeQuota": {"const": false}, "allowOpenAIImageGeneration": {"enum": [false]}, "allowOpenAIVision": {"enum": [false]}}}}}}
+  ]
+}

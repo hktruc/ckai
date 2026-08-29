@@ -1,0 +1,6 @@
+File CSV đính kèm là dữ liệu bán hàng thử nghiệm. Hãy tạo một file Excel .xlsx có thể tải xuống với đúng hai sheet sau:
+
+1. "Raw Data": giữ nguyên đầy đủ và đúng thứ tự 12 dòng từ CSV, rồi thêm cột "Revenue". Mỗi ô Revenue phải là công thức Excel thực sự tính Units × Unit Price, không phải giá trị dán cứng.
+2. "Summary": có Total Revenue bằng công thức tham chiếu sheet Raw Data; có bảng Revenue by Region cho North, Central và South bằng công thức SUMIF hoặc SUMIFS tham chiếu Raw Data; và có một biểu đồ cột hoặc thanh "Revenue by Region" lấy categories và values từ chính bảng summary đó.
+
+Hãy giữ nguyên tên cột nguồn, không thêm dữ liệu ngoài CSV và chỉ trả về file .xlsx cùng một mô tả rất ngắn.

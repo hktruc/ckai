@@ -1,0 +1,92 @@
+{
+  "CKAI_NARRATOR_PRIMARY": {
+    "provider": "vbee",
+    "voiceCode": "hn_male_minhquan_yt-stable",
+    "displayName": "HN - Minh Quân",
+    "languageCode": "vi-VN",
+    "gender": "male",
+    "qualityTier": "production-candidate",
+    "selectionStatus": "production-approved",
+    "providerMetadata": {
+      "voiceOwnership": "VBEE",
+      "demoUrl": "https://vbee.s3.ap-southeast-1.amazonaws.com/audios/demo/vbee/hn_male_minhquan_yt-stable.mp3",
+      "creditFactor": 1,
+      "realtimeCompatible": true
+    },
+    "productionAllowed": true,
+    "productionApprovedMapping": true,
+    "voiceSelectionCheck": "PASS",
+    "defaultFor": "ckai-production-narration"
+  },
+  "CKAI_SECONDARY": {
+    "provider": "vbee",
+    "voiceCode": "hn_female_ngochuyen_full_48k-fhg",
+    "displayName": "HN - Ngọc Huyền",
+    "languageCode": "vi-VN",
+    "gender": "female",
+    "qualityTier": "production-candidate",
+    "selectionStatus": "production-approved",
+    "providerMetadata": {
+      "voiceOwnership": "VBEE",
+      "demoUrl": "https://vbee.s3.ap-southeast-1.amazonaws.com/audios/demo/vbee/hn_female_ngochuyen_fast_news_48k-thg.mp3",
+      "creditFactor": 1,
+      "realtimeCompatible": true
+    },
+    "productionAllowed": true,
+    "productionApprovedMapping": true,
+    "voiceSelectionCheck": "PASS"
+  },
+  "VBEE_AUDITION_NGOC_HUYEN": {
+    "provider": "vbee",
+    "voiceCode": "hn_female_ngochuyen_full_48k-fhg",
+    "displayName": "HN - Ngọc Huyền",
+    "languageCode": "vi-VN",
+    "gender": "female",
+    "qualityTier": "production-candidate",
+    "selectionStatus": "candidate",
+    "providerMetadata": {
+      "voiceOwnership": "VBEE",
+      "demoUrl": "https://vbee.s3.ap-southeast-1.amazonaws.com/audios/demo/vbee/hn_female_ngochuyen_fast_news_48k-thg.mp3",
+      "creditFactor": 1,
+      "realtimeCompatible": true
+    },
+    "productionAllowed": false
+  },
+  "VBEE_AUDITION_LAN_TRINH": {
+    "provider": "vbee",
+    "voiceCode": "sg_female_lantrinh_vdts_48k-fhg",
+    "displayName": "SG - Lan Trinh",
+    "languageCode": "vi-VN",
+    "gender": "female",
+    "qualityTier": "production-candidate",
+    "selectionStatus": "candidate",
+    "providerMetadata": {
+      "voiceOwnership": "VBEE",
+      "demoUrl": "https://vbee.s3.ap-southeast-1.amazonaws.com/audios/demo/vbee/sg_female_lantrinh_fast_vdts_48k_cs-thg.mp3",
+      "creditFactor": 1,
+      "realtimeCompatible": true
+    },
+    "productionAllowed": false
+  },
+  "LOCAL_VI_NARRATOR_PROOF": {
+    "provider": "piper",
+    "voiceCode": "vi_VN-vais1000-medium",
+    "gender": "unknown",
+    "qualityTier": "technical-preview",
+    "selectionStatus": "approved-for-proof",
+    "modelPathEnv": "PIPER_VAIS1000_MODEL",
+    "license": "CC-BY-4.0 dataset; Piper runtime GPL-3.0",
+    "productionAllowed": false
+  },
+  "LOCAL_VI_AI_PROOF": {
+    "provider": "piper",
+    "voiceCode": "vi_VN-vivos-x_low",
+    "gender": "unknown",
+    "qualityTier": "technical-preview",
+    "selectionStatus": "approved-for-proof",
+    "speakerId": 0,
+    "modelPathEnv": "PIPER_VIVOS_MODEL",
+    "license": "CC-BY-NC-SA-4.0 dataset; reverse-audit proof only; Piper runtime GPL-3.0",
+    "productionAllowed": false
+  }
+}

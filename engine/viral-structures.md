@@ -3,7 +3,7 @@ type: engine
 scope: viral-structures
 ---
 
-# Video Structures (12)
+# Video Structures (12 cấu trúc biên tập + 1 tutorial flow)
 
 Hệ thống phải **chọn structure dựa trên nội dung** — không random structure chỉ để tạo sự khác nhau. Dùng bảng "Khi nào dùng" để chọn structure phù hợp nhất với Big Idea đã chốt.
 
@@ -21,6 +21,12 @@ Hệ thống phải **chọn structure dựa trên nội dung** — không rando
 | 10 | `question-exploration-answer` | Question → Exploration → Answer | Khi Big Idea trả lời trực tiếp một câu hỏi lớn mà audience hay tự hỏi |
 | 11 | `prediction-reason-implication` | Prediction → Reason → Implication | Khi nói về xu hướng/tương lai (AI, việc làm...) — cẩn trọng gắn `NEEDS_VERIFICATION` nếu là dự đoán mang tính khẳng định |
 | 12 | `analogy-connection-insight` | Analogy → Connection → Insight | Khi Big Idea trừu tượng, cần một phép loại suy đời sống để làm rõ |
+
+### Tutorial flow cho Practical AI
+
+| Code | Structure | Khi nào dùng |
+|---|---|---|
+| `practical-tool-walkthrough` | Hook → Vấn đề → Cách dùng tool → Demo/Result → Human Layer ngắn → CTA (nếu phù hợp) | Chỉ cho L1/L2 khi giá trị chính là hướng dẫn một thao tác/workflow cụ thể; không dùng để né chọn 1 trong 12 structure khi Big Idea vốn là nghịch lý, sai lầm, so sánh hoặc câu chuyện |
 
 ## Nguyên tắc chọn structure
 

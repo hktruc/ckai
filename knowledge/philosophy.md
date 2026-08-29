@@ -86,7 +86,7 @@ Log chi tiết theo từng round (BELIEF/HYPOTHESIS/EXPERIENCE/FRAMEWORK/câu n�
 
 **Điều đang giúp định vị "Chánh kiến trong thời đại AI" khác với các kênh lân cận**
 
-- **Khác kênh AI-tool:** không nói tới cách dùng tính năng/prompt AI — mọi nội dung về AI xoay quanh cơ chế nhận thức (AI phản chiếu người dùng, AI không phải kho kiến thức khách quan) chứ không phải hướng dẫn công cụ.
+- **Khác kênh AI-tool thuần túy:** calibration ban đầu tập trung vào cơ chế nhận thức (AI phản chiếu người dùng, không phải nguồn khách quan). Chiến lược hiện tại vẫn cho phép tutorial L1/L2 và dòng “Tuyệt chiêu AI”, nhưng không để toàn kênh trở thành spam tool/trend; xem `PROJECT.md` §26 và §28.
 - **Khác kênh self-help chung chung:** sẵn sàng phản biện thẳng một niềm tin phổ biến trong chính giới phát triển bản thân ("AI giúp thấu hiểu bản thân") thay vì lặp lại nó, và có lý do cụ thể (dựa trên trải nghiệm thật, không chỉ cảm tính).
 - **Khác kênh tâm thức thuần túy:** định nghĩa "nghiệp" chủ động **không dùng ngôn ngữ Phật học**, chuyển thành một phương pháp thực hành thế tục, có thể tự làm (ghi chép lại thói quen lặp lại) — không yêu cầu người xem có nền tảng tôn giáo để hiểu.
 - **Khác kênh năng suất/productivity:** câu chuyện quá tải không được ông đóng khung như một vấn đề quản lý thời gian — bên dưới nó là một câu hỏi hiện sinh chưa có lời giải ("làm gì mới thật sự có ý nghĩa"), không chỉ là mẹo làm việc hiệu quả hơn.

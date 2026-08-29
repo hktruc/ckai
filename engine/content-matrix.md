@@ -18,7 +18,7 @@ PILLAR × TOPIC × ANGLE × VIDEO STRUCTURE × AUDIENCE × OBJECTIVE
 1. **Pillar** — 1 trong 6 pillar, xem [`../knowledge/content-pillars.md`](../knowledge/content-pillars.md)
 2. **Topic** — chủ đề rộng bên trong pillar đó
 3. **Angle** — góc nhìn cụ thể vào topic (xem [`hook-library.md`](hook-library.md) để biết các loại angle)
-4. **Video Structure** — 1 trong 12 cấu trúc, xem [`viral-structures.md`](viral-structures.md)
+4. **Video Structure** — 1 trong 12 cấu trúc biên tập; riêng L1/L2 tutorial có thể dùng `practical-tool-walkthrough`, xem [`viral-structures.md`](viral-structures.md)
 5. **Audience** — phân khúc cụ thể trong audience chung (xem [`../knowledge/audience.md`](../knowledge/audience.md))
 6. **Objective** — Primary Objective, xem `../PROJECT.md` §11
 

@@ -1,0 +1,22 @@
+{
+  "contentId": "CKAI-0004",
+  "sceneId": "SC-01",
+  "semanticObjective": "Interrupt confidence in a fluent causal answer before the viewer treats it as knowledge.",
+  "emotionalObjective": "Controlled unease followed by intellectual alertness, without alarmism.",
+  "keyVisualIdea": "A polished causal statement appears complete, while an unlit evidentiary gap prevents it from closing into certainty.",
+  "metaphor": "An incomplete evidentiary circuit rather than a literal magnifying glass or broken warning icon.",
+  "subject": "A near-complete causal statement and the missing evidence interval that keeps it unresolved.",
+  "environment": "Dark editorial space with tactile graphite material and one restrained amber attention cue.",
+  "visualTension": "Verbal fluency pulls toward closure while the evidence structure remains visibly incomplete.",
+  "composition": "Asymmetric vertical field; statement occupies the upper-middle zone and the unresolved interval controls the lower eye path.",
+  "cameraFraming": "Close editorial framing with generous edge-safe negative space for 9:16 and 1:1 crops.",
+  "lighting": "Narrow directional light reveals the polished statement but stops before the missing interval.",
+  "depthMateriality": "Matte graphite layers, shallow physical separation and restrained atmospheric falloff.",
+  "negativeSpace": "The missing-evidence interval remains an active empty region, not decorative space.",
+  "colorTreatment": "Near-black graphite, warm off-white type and one low-saturation amber attention edge.",
+  "typographyRelationship": "Typography is embedded in the conceptual field and remains the truth-bearing layer; imagery never rewrites it.",
+  "cropSafeRegions": "Core statement and evidence interval remain inside the central 70% width and 68% height.",
+  "animationOpportunities": ["controlled light reveal", "evidence interval remains unresolved", "subtle camera drift"],
+  "truthStatus": "CONCEPTUAL",
+  "forbiddenCliches": ["magnifying glass", "warning triangle", "literal fracture", "generic AI brain", "floating neon geometry"]
+}

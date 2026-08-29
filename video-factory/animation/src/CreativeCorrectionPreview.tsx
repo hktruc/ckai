@@ -1,0 +1,39 @@
+import {AbsoluteFill, Sequence} from 'remotion';
+import type {AnimationManifest} from './model';
+import {createSceneArtDirection, type VisualArchetype} from './visual-system/grammar';
+import {VisualScene} from './visual-system/VisualScene';
+import {DEFAULT_VISUAL_PRESET_ID} from './visual-system/preset';
+
+export const CREATIVE_PROOF_FRAMES: ReadonlyArray<{archetype: VisualArchetype; marketText: string[]; minimumFontSize: number; nonTextObjects: number; truthLabel?: string}> = Object.freeze([
+  {archetype: 'typography-hero', marketText: ['ĐỪNG VỘI TIN.', 'HÃY KIỂM CHỨNG.'], minimumFontSize: 112, nonTextObjects: 0},
+  {archetype: 'object-metaphor', marketText: ['DỮ KIỆN RÕ.', 'SUY LUẬN ĐỨNG SAU.'], minimumFontSize: 72, nonTextObjects: 2},
+  {archetype: 'proof-artifact', marketText: ['ĐẦU VÀO ĐƯỢC TRUY VẾT', 'Đầu ra có thể đối chiếu'], minimumFontSize: 34, nonTextObjects: 3, truthLabel: 'BIỂU DIỄN TRỰC QUAN · KHÔNG PHẢI ẢNH CHỤP GIAO DIỆN THẬT'},
+  {archetype: 'comparison-transformation', marketText: ['CÂU TRẢ LỜI', 'QUYẾT ĐỊNH CÓ CĂN CỨ'], minimumFontSize: 68, nonTextObjects: 2},
+  {archetype: 'conclusion-payoff', marketText: ['CHẬM MỘT NHỊP.', 'RÕ THÊM MỘT TẦNG.'], minimumFontSize: 104, nonTextObjects: 1},
+]);
+
+const copy = [
+  'ĐỪNG VỘI TIN.\nHÃY KIỂM CHỨNG.',
+  'DỮ KIỆN RÕ.\nSUY LUẬN ĐỨNG SAU.',
+  'nguồn.csv · hàng 17\ngiá trị: 42 · trạng thái: hợp lệ\nđối chiếu: PASS',
+  'CÂU TRẢ LỜI\nQUYẾT ĐỊNH CÓ CĂN CỨ',
+  'CHẬM MỘT NHỊP.\nRÕ THÊM MỘT TẦNG.',
+];
+
+const directions = [
+  createSceneArtDirection({semanticFunction: 'key insight focus reveal', archetype: 'typography-hero', primaryFocus: copy[0], primaryVisualConcept: 'A decisive editorial interruption', primaryVisualObject: 'overscale Vietnamese typography', visualMetaphor: '', compositionStrategy: 'off-centre type mass balanced by active dark field', lightingStrategy: 'restrained-ambient', depthStrategy: 'flat-intentional', linePurpose: 'none', supportingElements: [], hierarchy: 'The statement is the frame', emotionalTone: 'calm authority', continuity: 'verbal tension opens into a material metaphor', strongAttractors: 1, kineticRole: 'short-conclusion', emphasisText: 'HÃY KIỂM CHỨNG.', proof: {classification: 'none', truthLabel: '', provenance: '', evidenceAssetAvailable: false}}),
+  createSceneArtDirection({semanticFunction: 'abstract concept tension', archetype: 'object-metaphor', primaryFocus: copy[1], primaryVisualConcept: 'Separating fact from inference', primaryVisualObject: 'edge-lit graphite sphere and cast shadow', visualMetaphor: 'A lit solid fact casting the uncertain inference behind it', compositionStrategy: 'dimensional object dominates upper-right; short text anchors lower-left', lightingStrategy: 'directional-edge', depthStrategy: 'foreground-background', linePurpose: 'none', supportingElements: ['cast shadow'], hierarchy: 'Object first; language resolves meaning', emotionalTone: 'disciplined tension', continuity: 'material object becomes traceable evidence', strongAttractors: 2, proof: {classification: 'conceptual-metaphor', truthLabel: 'ẨN DỤ KHÁI NIỆM', provenance: 'phase-1-creative-correction', evidenceAssetAvailable: false}}),
+  createSceneArtDirection({semanticFunction: 'proof evidence result', archetype: 'proof-artifact', primaryFocus: copy[2], primaryVisualConcept: 'A traceable input-transformation-output chain', primaryVisualObject: 'representative source rows and transformed result artifact', visualMetaphor: '', compositionStrategy: 'vertical evidence chain with a purposeful connector', lightingStrategy: 'localized-glow', depthStrategy: 'shadow-separation', linePurpose: 'connect', supportingElements: ['truth label'], hierarchy: 'Input and result precede the honest representation label', emotionalTone: 'forensic confidence', continuity: 'evidence resolves into a decision comparison', strongAttractors: 2, proof: {classification: 'visual-representation', truthLabel: 'BIỂU DIỄN TRỰC QUAN · KHÔNG PHẢI ẢNH CHỤP GIAO DIỆN THẬT', provenance: 'phase-1 synthetic no-provider fixture', evidenceAssetAvailable: true}}),
+  createSceneArtDirection({semanticFunction: 'comparison before after transformation', archetype: 'comparison-transformation', primaryFocus: copy[3], primaryVisualConcept: 'Unstructured answer transformed into a grounded decision', primaryVisualObject: 'two materially distinct document states', visualMetaphor: '', compositionStrategy: 'vertical before/after transformation with change carried by structure and light', lightingStrategy: 'dark-to-light', depthStrategy: 'perspective', linePurpose: 'connect', supportingElements: ['input lines', 'resolved output marker'], hierarchy: 'The lower resolved state wins', emotionalTone: 'clarifying momentum', continuity: 'transformation opens the final light payoff', strongAttractors: 2, kineticRole: 'before-after', proof: {classification: 'visual-representation', truthLabel: 'BIỂU DIỄN CHUYỂN ĐỔI', provenance: 'phase-1 synthetic no-provider fixture', evidenceAssetAvailable: true}}),
+  createSceneArtDirection({semanticFunction: 'conclusion final principle', archetype: 'conclusion-payoff', primaryFocus: copy[4], primaryVisualConcept: 'A conclusion that feels physically resolved', primaryVisualObject: 'distilled statement above a warm light aperture', visualMetaphor: 'Clarity arriving as controlled light', compositionStrategy: 'centred type suspended over atmospheric payoff', lightingStrategy: 'backlight', depthStrategy: 'atmospheric', linePurpose: 'reveal', supportingElements: ['light aperture'], hierarchy: 'One final statement', emotionalTone: 'earned calm', continuity: 'terminal visual resolution', strongAttractors: 2, kineticRole: 'short-conclusion', emphasisText: 'RÕ THÊM', proof: {classification: 'none', truthLabel: '', provenance: '', evidenceAssetAvailable: false}}),
+];
+
+export const CREATIVE_CORRECTION_MANIFEST: AnimationManifest = {
+  id: 'CKAI-Phase1-Creative-Correction', type: 'short-form-animation', sourceVisualDirection: 'phase-1-creative-correction-no-provider-fixture', sourceVisualDirectionSha256: '0'.repeat(64), inputEligibility: 'legacy-approved-reverse-audit', upstreamAnimationHandoffStatus: 'BLOCKED', width: 1080, height: 1920, fps: 30, totalSeconds: 5, visualPresetId: DEFAULT_VISUAL_PRESET_ID,
+  scenes: directions.map((artDirection, index) => ({id: `SC-0${index + 1}` as `SC-0${number}`, startSeconds: index, endSeconds: index + 1, purpose: CREATIVE_PROOF_FRAMES[index].archetype, requiredAssetIds: [`A${index + 1}`], requiredProofIds: [], requiredCaveatIds: [], motion: ['reveal'], artDirection})),
+  assets: Object.fromEntries(copy.map((value, index) => [`A${index + 1}`, {id: `A${index + 1}`, kind: 'text' as const, value, source: 'phase-1-creative-correction-no-provider-fixture', truthLabel: directions[index].proof.truthLabel || 'Visual Foundation demonstration'}])),
+  proofIds: [], caveatIds: [], technicalQa: 'BLOCKED', animationReview: 'pending', humanDecision: 'not-applicable', unresolvedBlockers: ['creative evidence only; no production authority'], voiceHandoffStatus: 'BLOCKED',
+  voiceHandoff: {sourceScript: 'none', implementationRef: 'video-factory/animation/src/CreativeCorrectionPreview.tsx', technicalPreviewLocation: 'generated/previews/visual-foundation-creative-correction', totalDurationSeconds: 5, hardMaximumSecondsExclusive: 60, sceneSlots: copy.map((spokenCopy, index) => ({sceneId: `SC-0${index + 1}` as `SC-0${number}`, startSeconds: index, endSeconds: index + 1, spokenCopy, pauseWindows: []})), pronunciationSensitiveText: [], proofCaveatTiming: [], audioGenerated: false},
+};
+
+export const CreativeCorrectionPreview = () => <AbsoluteFill>{CREATIVE_CORRECTION_MANIFEST.scenes.map((scene, index) => <Sequence key={scene.id} from={index * 30} durationInFrames={30}><VisualScene manifest={CREATIVE_CORRECTION_MANIFEST} index={index} /></Sequence>)}</AbsoluteFill>;

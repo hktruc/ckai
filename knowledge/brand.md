@@ -47,7 +47,7 @@ Luôn khuyến khích người xem **tự suy nghĩ** — không đưa ra kết 
 
 ## Văn phong Script — VĂN NÓI
 
-Đây là video người thật nói trước camera. Script phải là **văn nói**, không phải:
+Dù final asset dùng animation, Spoken Copy vẫn phải là **văn nói tự nhiên**, không phải:
 
 - bài báo
 - blog
@@ -71,14 +71,42 @@ Luôn khuyến khích người xem **tự suy nghĩ** — không đưa ra kết 
 - câu tương đối ngắn
 - có nhịp (rhythm) — đọc lên nghe tự nhiên như đang nói chuyện, không như đọc văn bản
 - không lạm dụng thuật ngữ
-- có khoảng dừng (để nhấn ý, để thở khi quay)
-- độ dài video: 45–90 giây
-- **mặc định ưu tiên khoảng 60 giây**
+- có khoảng dừng (để nhấn ý và tạo nhịp delivery)
+- video final: dưới 60 giây
+- script target mặc định 50 giây; estimate phải ≤55 giây để chừa breathing room cho dựng
+- công thức và gate duration: [`../engine/script-engine.md`](../engine/script-engine.md) §4
 
 ### Cách tự kiểm tra "có phải văn nói không"
 
 Đọc to script lên. Nếu nghe giống đang đọc một bài luận hoặc một bài báo — chưa đạt, cần viết lại. Nếu nghe giống một người bạn thông minh đang kể cho bạn nghe một điều họ vừa nhận ra — đạt.
 
 ---
+## Visual direction cho animation
+
+Visual identity production chưa có đủ learning để khóa thành design system lớn. Visual Director dùng hai lớp sau:
+
+### Stable brand constraints
+
+- Visual phải làm rõ narrative/function trước khi làm đẹp; decoration không có chức năng nên bỏ.
+- Cảm giác tổng thể bình tĩnh, đáng tin, không giật gân hoặc tạo authority giả bằng pseudo-data.
+- Proof, truth label và caveat phải trung thực, đủ visibility; mockup/metaphor không được trình bày như actual evidence.
+- Thiết kế native `vertical-9x16`, ưu tiên mobile readability và một attention priority rõ mỗi scene.
+- Cùng object/semantic role phải nhất quán xuyên scene; không đổi representation vô cớ.
+- Visual không được làm claim mạnh hơn Script/Storyboard hoặc biến observation thành fact.
+- `tuyet-chieu-ai`: usefulness, step order, result/proof và limitation quan trọng hơn decoration.
+- `chanh-kien`: visual phục vụ reasoning/reframing; không ép thành tutorial, slide deck literal hoặc chart giả.
+
+### Experimental visual choices
+
+Các lựa chọn sau được phép thử theo từng video nhưng **chưa phải brand invariant**:
+
+- palette và exact color roles;
+- font family/exact typography treatment;
+- flat hay dimensional, texture và illustration treatment;
+- mức độ UI-like/text-led/illustration-led;
+- transition feel và semantic motion vocabulary.
+
+Mỗi Visual Direction phải ghi experimental choices + rationale. Chỉ graduate thành stable constraint sau production/performance learning đủ rõ và Product Owner xác nhận.
+
 
 Xem thêm: [`content-pillars.md`](content-pillars.md) · [`audience.md`](audience.md) · [`../engine/hook-library.md`](../engine/hook-library.md)

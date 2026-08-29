@@ -1,0 +1,39 @@
+{
+  "manifest_version": "1.0",
+  "id": "CKAI_MUSIC_LIBRARY_ROUND1_CKAI_0005_AUDITION",
+  "date": "2026-08-29",
+  "purpose": "Internal production-context comparison only; not a new final A/B production. Pre-existing synthetic A/B prototypes remain untouched.",
+  "source": {
+    "visual_master_path": "generated/final/CKAI-0005/v1-1/CKAI-0005-full-production-v1-1.mp4",
+    "visual_master_sha256": "34A1895A8533278FA949AC13C927B6C83AD87A3368618CEDAD5B6701B09641B8",
+    "h264_stream_sha256": "F6BECC04DB47E13868B73C3695BF9760D30657064576311D9AB3E421F39BB274",
+    "narration_path": "generated/voice/CKAI-0005/master.wav",
+    "narration_sha256": "C4C6A92707063AD71493F3C77F081E3B2DB3060E2EE005A754C4CEDB18839710",
+    "duration_seconds": 43.328
+  },
+  "common_audition_contract": {
+    "music_input": "First 43.328 seconds; source loop permitted only when the track is shorter than the film",
+    "music_normalization": "I=-24 LUFS, TP=-6 dBTP, LRA=12",
+    "fade_in_seconds": 0.45,
+    "fade_out_start_seconds": 42.55,
+    "fade_out_seconds": 0.778,
+    "ducking": "Narration-keyed sidechain compression; threshold 0.012, ratio 6, attack 15 ms, release 240 ms",
+    "video_policy": "Copy unchanged H.264 stream",
+    "final_mix_authority": "NONE"
+  },
+  "auditions": [
+    {"track_id": "CKAI-MUSIC-0001", "path": "generated/audio-auditions/CKAI-0005/round-01/CKAI-MUSIC-0001-context-audition.mp4", "sha256": "A8CE0691362236CEDA9865FC5D79F8E885E6187C973830D68A698DD1932AE08E", "duration_seconds": 43.328, "audio_decode": "PASS", "video_stream_identical_to_v1_1": true},
+    {"track_id": "CKAI-MUSIC-0002", "path": "generated/audio-auditions/CKAI-0005/round-01/CKAI-MUSIC-0002-context-audition.mp4", "sha256": "B6215397C85B0785180FB0B602C0F0EB10F6D609D10659E708B81745BC5E2BCB", "duration_seconds": 43.328, "audio_decode": "PASS", "video_stream_identical_to_v1_1": true},
+    {"track_id": "CKAI-MUSIC-0003", "path": "generated/audio-auditions/CKAI-0005/round-01/CKAI-MUSIC-0003-context-audition.mp4", "sha256": "DB9DEF340A8458FCCA3BE75BE93F33AF58EB3DCFB354A4F4CF2FC57FD2783B97", "duration_seconds": 43.328, "audio_decode": "PASS", "video_stream_identical_to_v1_1": true},
+    {"track_id": "CKAI-MUSIC-0004", "path": "generated/audio-auditions/CKAI-0005/round-01/CKAI-MUSIC-0004-context-audition.mp4", "sha256": "89308CA23640B7705C32EC746670FC0C557AE9C22FD702C8F71C5542AC56C1D7", "duration_seconds": 43.328, "audio_decode": "PASS", "video_stream_identical_to_v1_1": true},
+    {"track_id": "CKAI-MUSIC-0005", "path": "generated/audio-auditions/CKAI-0005/round-01/CKAI-MUSIC-0005-context-audition.mp4", "sha256": "D947F3D123CB90F9590EC33571EFC45B8E1684F9A680A8E5DEFFDF9A55BF7243", "duration_seconds": 43.328, "audio_decode": "PASS", "video_stream_identical_to_v1_1": true},
+    {"track_id": "CKAI-MUSIC-0006", "path": "generated/audio-auditions/CKAI-0005/round-01/CKAI-MUSIC-0006-context-audition.mp4", "sha256": "B922B1D229E0CB4D08DC8462DACF2FF4E5647D054173C8CCA8D7DDEE7CEC76C3", "duration_seconds": 43.328, "audio_decode": "PASS", "video_stream_identical_to_v1_1": true},
+    {"track_id": "CKAI-MUSIC-0007", "path": "generated/audio-auditions/CKAI-0005/round-01/CKAI-MUSIC-0007-context-audition.mp4", "sha256": "17D34D73771C027E2F171B7E323C8A003B84FB8A932444500C7C51D55B67C752", "duration_seconds": 43.328, "audio_decode": "PASS", "video_stream_identical_to_v1_1": true}
+  ],
+  "diagnostics": {
+    "contact_sheet": "generated/audio-auditions/CKAI-0005/round-01/round-01-wave-spectrum-contact-sheet.png",
+    "per_track_pattern": "generated/audio-auditions/CKAI-0005/round-01/<TRACK-ID>-wave-spectrum.png"
+  },
+  "provider_usage": {"downloaded_free_tracks": 7, "paid_provider_calls": 0, "unexpected_paid_actions": 0},
+  "boundaries": {"phase_2_audio_engine": "NOT_STARTED", "round1_library_track_final_ab_mix": "NOT_STARTED", "preexisting_synthetic_ab_prototypes": "PRESERVED_UNCHANGED", "publishing": "NOT_PERFORMED"}
+}

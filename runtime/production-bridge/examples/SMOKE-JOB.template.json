@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "jobId": "SMOKE-YYYYMMDD-UNIQUE",
+  "contentId": "TEST-0003",
+  "requestedAction": "smoke-no-provider",
+  "createdAt": "YYYY-MM-DDTHH:mm:ss.sssZ",
+  "source": {
+    "artifactPath": "content/approved/TEST-0003_bridge-smoke.md",
+    "sha256": "REPLACE_WITH_64_HEX_SHA256"
+  },
+  "approval": {
+    "type": "content-approval",
+    "decision": "approved",
+    "approvedBy": "product-owner",
+    "approvedAt": "YYYY-MM-DDTHH:mm:ss.sssZ",
+    "basis": "Explicit smoke fixture approval; not market-facing production.",
+    "contentFingerprintSha256": "REPLACE_WITH_SAME_64_HEX_SHA256"
+  },
+  "providerPolicy": {
+    "allowVbeeQuota": false,
+    "autoPurchaseCredits": false,
+    "allowPaidFallback": false
+  }
+}
+

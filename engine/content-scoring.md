@@ -30,6 +30,12 @@ Mỗi idea được ước lượng (không cần công thức cứng, dùng đ�
 
 Đây là ước lượng định tính để giúp Trực so sánh nhanh 5 idea, không phải điểm số tuyệt đối chính xác.
 
+## AI Tip Candidate Scoring
+
+Candidate Tuyệt chiêu AI dùng scoring 0–100 có trọng số và hard gates riêng tại [`ai-tips-intelligence.md`](ai-tips-intelligence.md) §5–§7.
+
+Không tái sử dụng Idea Score hoặc Hook Score cho candidate: hai loại điểm phục vụ quyết định khác nhau. Candidate score bắt buộc có breakdown, rationale, verification và testability gate.
+
 ## Nguyên tắc chung
 
 - Điểm số là công cụ hỗ trợ quyết định, không thay thế quyết định của Trực.

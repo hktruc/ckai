@@ -1,4 +1,8 @@
 # BRIEF XÂY DỰNG CONTENT OS
+
+> **LEGACY REFERENCE — KHÔNG PHẢI SSOT.** Đây là brief đầu vào được giữ lại để bảo toàn lịch sử và nguồn gốc quyết định. Quy tắc hiện hành nằm trong [`PROJECT.md`](PROJECT.md); nếu có khác biệt, `PROJECT.md` được ưu tiên.
+
+
 ## Dự án: CHÁNH KIẾN TRONG THỜI ĐẠI AI
 
 ## 1. BỐI CẢNH DỰ ÁN

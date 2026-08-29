@@ -14,7 +14,7 @@ platform:
 
 # /ck-expand — "AI đang khiến con người ngày càng lười suy nghĩ"
 
-_(Smoke test — chạy theo logic `.claude/skills/ck-expand/SKILL.md`. ID `TEST-*` = dữ liệu thử hệ thống, không phải content production — xem `PROJECT.md` mục 16.)_
+_(Smoke test — chạy theo logic `.agents/skills/ck-expand/SKILL.md`. ID `TEST-*` = dữ liệu thử hệ thống, không phải content production — xem `PROJECT.md` mục 16.)_
 
 ## Big Idea gốc
 

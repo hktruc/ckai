@@ -1,0 +1,20 @@
+import {mkdirSync, readFileSync, writeFileSync} from 'node:fs';
+import {dirname} from 'node:path';
+import {sha256} from '../../voice/src/segment';
+import {inspectDecodedMediaEquivalence} from '../src/equivalence';
+import {inspectExportMedia} from '../src/media';
+import {runExportQa} from '../src/qa';
+import type {ReleaseManifest} from '../src/model';
+import {loadTest0002ExportInput} from './runtime';
+
+const input = loadTest0002ExportInput();
+input.exportManifest.mediaInspection = inspectExportMedia(input.exportManifest.outputPath);
+input.exportManifest.decodedMediaEquivalence = inspectDecodedMediaEquivalence(input.exportManifest.sourceReviewPreview, input.exportManifest.outputPath);
+input.exportManifest.outputSha256 = sha256(readFileSync(input.exportManifest.outputPath));
+const qa = runExportQa(input, 'reverse-audit-proof', true);
+if (!qa.pass) throw new Error(qa.errors.join('\n'));
+const release: ReleaseManifest = {...input.exportManifest, sourceReview: input.reviewInput.review, generatedAt: new Date().toISOString()};
+const output = 'generated/exports/TEST-0002/TEST-0002_v1_release.generated.json';
+mkdirSync(dirname(output), {recursive: true});
+writeFileSync(output, JSON.stringify(release, null, 2));
+console.log(JSON.stringify({path: input.exportManifest.outputPath, sha256: input.exportManifest.outputSha256, inspection: input.exportManifest.mediaInspection, publishHandoffStatus: input.exportManifest.publishHandoffStatus}, null, 2));

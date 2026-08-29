@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["node"]
+  },
+  "include": ["video-factory/animation/**/*.ts", "video-factory/animation/**/*.tsx", "video-factory/voice/**/*.ts", "video-factory/review/**/*.ts", "video-factory/review/**/*.tsx", "video-factory/export/**/*.ts", "video-factory/verification/**/*.ts", "video-factory/visual-intelligence/**/*.ts"]
+}

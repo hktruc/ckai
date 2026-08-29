@@ -1,0 +1,27 @@
+{
+  "assetId": "CKAI-0004-SC-04-EVIDENCE-01",
+  "contentId": "CKAI-0004",
+  "sceneId": "SC-04",
+  "sourceType": "REAL_CAPTURE",
+  "source": "content/candidates/AITIP-0005_tach-du-kien-suy-luan-chua-biet.md",
+  "provenance": "Canonical AITIP-0005 E1 direct-test record referenced by approved CKAI-0004 claim S2.",
+  "sha256": "D7EFBE18DDBDCAD0D3443554DA49F90ADDC25771BFAD3AD18F5516655DCDA1D0",
+  "rightsStatus": "APPROVED_INTERNAL",
+  "truthStatus": "ACTUAL_EVIDENCE",
+  "productionApproval": {
+    "status": "APPROVED",
+    "by": "canonical-content-approval",
+    "at": "2026-08-24T08:38:05.3270355Z",
+    "basis": "The exact direct-test outcome and mandatory proof treatment are included in Product Owner-approved CKAI-0004 STEP 02."
+  },
+  "cropMetadata": {
+    "mobileSafe": true,
+    "safeRegion": "Central 76% width and 72% height",
+    "focalRegion": "Hypothesis status plus the four requested evidence variables"
+  },
+  "safeAnimationMetadata": {
+    "allowed": ["crop reveal", "signal progression", "subtle parallax between source and derived field"],
+    "prohibited": ["rewrite source text", "simulate provider UI", "remove truth label", "crop away provenance"],
+    "maximumScale": 1.12
+  }
+}

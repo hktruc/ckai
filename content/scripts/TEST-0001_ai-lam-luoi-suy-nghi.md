@@ -14,7 +14,7 @@ platform:
 
 # /ck-script — TEST-0001
 
-_(Smoke test — chạy theo logic `.claude/skills/ck-script/SKILL.md`. ID `TEST-*` = dữ liệu thử hệ thống, không phải content production — xem `PROJECT.md` mục 16.)_
+_(Smoke test — chạy theo logic `.agents/skills/ck-script/SKILL.md`. ID `TEST-*` = dữ liệu thử hệ thống, không phải content production — xem `PROJECT.md` mục 16.)_
 
 ## Working Title
 
@@ -102,7 +102,7 @@ Không áp dụng.
 
 # /ck-review — TEST-0001
 
-_(Smoke test — chạy theo logic `.claude/skills/ck-review/SKILL.md`)_
+_(Smoke test — chạy theo logic `.agents/skills/ck-review/SKILL.md`)_
 
 1. **Hook** — Đạt. Nghịch lý rõ, Stop Power cao, script phía sau giải thích đúng điều hook hứa hẹn (không clickbait).
 2. **Retention** — Đạt. Câu ngắn, có khoảng dừng, mỗi đoạn dẫn sang đoạn sau, kết bằng hành động cụ thể.

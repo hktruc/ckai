@@ -1,0 +1,40 @@
+{
+  "manifest_version": "1.0",
+  "migration_date": "2026-08-29",
+  "source_location": "C:\\Users\\Admin\\Documents\\Codex\\2026-08-27\\ti-p-t-c-d-n\\outputs\\CKAI Music Library V1",
+  "destination_location": "D:\\0_Agent\\01_CKAI\\content\\references\\audio\\music-library-v1",
+  "source_disposition": "LEGACY_NON_CANONICAL_BACKUP_UNTOUCHED",
+  "copy_verification": {
+    "source_file_count": 4,
+    "destination_file_count_before_integration": 4,
+    "source_directory_count_excluding_root": 8,
+    "destination_directory_count_before_integration_excluding_root": 8,
+    "source_total_bytes": 6801,
+    "destination_total_bytes_before_integration": 6801,
+    "sha256_mismatch_count": 0,
+    "status": "PASS"
+  },
+  "source_files": [
+    {
+      "relative_path": "README.md",
+      "bytes": 819,
+      "sha256": "02FC529C82F9BE4448E3A2B6982DFA4B900FB0AA2F794EA5738248C3E3925311"
+    },
+    {
+      "relative_path": "02_license_evidence/mixkit/mixkit_stock_music_free_license_2026-08-27.md",
+      "bytes": 889,
+      "sha256": "0D2B1551E7A1D8693FF489403F1BFF86DF0AF88555ECF134CC1622DDE4BC1DF6"
+    },
+    {
+      "relative_path": "02_license_evidence/pixabay/pixabay_license_summary_2026-08-27.md",
+      "bytes": 885,
+      "sha256": "0685AB65158D7B92BC56F3656CC63293EEF915B5B585AFEDA3BCE4DD3032D141"
+    },
+    {
+      "relative_path": "04_review_notes/shortlist_round_01.md",
+      "bytes": 4208,
+      "sha256": "349EC0631161553150EC890B46DD47043000AD567CC80FB2F3B75B8733A8845D"
+    }
+  ],
+  "integration_note": "README.md and 04_review_notes/shortlist_round_01.md were intentionally updated only after the exact-copy hash check. Both license evidence files remain byte-identical to source."
+}

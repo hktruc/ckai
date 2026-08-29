@@ -1,0 +1,20 @@
+{
+  "id": "CKAI-VBEE-EXISTING-QUOTA-AUTHORIZATION",
+  "status": "ACTIVE",
+  "authorizedBy": "product-owner",
+  "authorizedAt": "2026-08-29",
+  "scope": "all-ckai-production-tasks",
+  "provider": "vbee",
+  "useExistingQuota": true,
+  "autoPurchaseCredits": false,
+  "allowPaidFallback": false,
+  "approvedVoiceAliases": [
+    "CKAI_NARRATOR_PRIMARY",
+    "CKAI_SECONDARY"
+  ],
+  "approvedVoices": [
+    "HN - Minh Quân",
+    "HN - Ngọc Huyền"
+  ],
+  "runtimeContract": "Each actual production job must still materialize allowVbeeQuota=true from this authorization; smoke and preflight remain provider-free."
+}

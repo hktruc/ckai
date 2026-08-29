@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "active_standard": "CKAI_MARKET_TASTE_STANDARD_V1",
+  "standards": {
+    "CKAI_MARKET_TASTE_STANDARD_V1": {
+      "standard_version": "1.0.0",
+      "effective_date": "2026-08-28",
+      "change_notes": "Initial Product Owner and ChatGPT Market/Taste governance reset. Establishes the 2/10 baseline, 7/8/9 thresholds, human taste authority, Golden Sequence strategy, and release-eligibility conjunction.",
+      "authority": "PRODUCT_OWNER_AND_CHATGPT",
+      "governing_principles": [
+        "THE_VIDEO_IS_THE_PRODUCT",
+        "ARCHITECTURE_QUALITY_NE_PRODUCT_QUALITY",
+        "TEST_PASS_NE_CREATIVE_QUALITY",
+        "SEMANTIC_CORRECTNESS_NE_MARKET_READINESS",
+        "SYSTEM_IMPROVEMENT_NE_VIEWER_PERCEIVED_IMPROVEMENT",
+        "OUTPUT_QUALITY_GT_TOOL_LOYALTY",
+        "BETTER_THAN_BEFORE_IS_NOT_A_QUALITY_GATE"
+      ],
+      "thresholds": {
+        "market_ready_minimum": 7.0,
+        "ckai_golden_target": 8.0,
+        "aspirational_target": 9.0,
+        "critical_dimension_floor": 7.0
+      },
+      "score_scale": {
+        "0": {"label": "BROKEN_UNUSABLE", "market_ready": false, "definition": "Corrupted, unfinished, debug-contaminated, or not reasonably consumable."},
+        "1": {"label": "RAW_TECHNICAL_EXPERIMENT", "market_ready": false, "definition": "The system emits video, but not a credible creative product."},
+        "2": {"label": "TECHNICAL_PROTOTYPE_AI_ENGINE_DEMO", "market_ready": false, "definition": "Visually primitive, template/generative, low-authorship output that is not acceptable for commercial publication."},
+        "3": {"label": "BEGINNER_AMATEUR", "market_ready": false, "definition": "Some intentional choices exist, but execution remains visibly amateur."},
+        "4": {"label": "HOBBYIST_EXPERIMENT", "market_ready": false, "definition": "Understandable basic composition/effects with immature creative execution; explicitly not market ready."},
+        "5": {"label": "HOBBYIST_EXPERIMENT", "market_ready": false, "definition": "Recognizable style attempts and basic finish, but not commercially premium or market ready."},
+        "6": {"label": "SEMI_PROFESSIONAL", "market_ready": false, "definition": "Could be posted in some contexts, but below CKAI professional commercial readiness."},
+        "7": {"label": "PROFESSIONAL_COMMERCIALLY_DELIVERABLE", "market_ready": true, "definition": "Minimum market-ready level: competent art direction, pacing, composition, and credible professional finish."},
+        "8": {"label": "PREMIUM_COMMERCIALLY_COMPETITIVE", "market_ready": true, "definition": "Current CKAI Golden floor: memorable idea, sophisticated execution, authorship, taste, retention potential, and low template feel."},
+        "9": {"label": "TOP_TIER_STUDIO_AGENCY", "market_ready": true, "definition": "Outstanding authorship, originality, polish, and emotional/visual control."},
+        "10": {"label": "BENCHMARK_CATEGORY_DEFINING", "market_ready": true, "definition": "Rare, exceptional work capable of becoming a reference itself."}
+      },
+      "dimensions": {
+        "SCROLL_STOP_HOOK": {"weight": 1.0, "critical": true, "applies_to": "ALL_VISUAL"},
+        "ART_DIRECTION": {"weight": 1.0, "critical": true, "applies_to": "ALL_VISUAL"},
+        "VISUAL_ORIGINALITY": {"weight": 1.0, "critical": false, "applies_to": "ALL_VISUAL"},
+        "COMPOSITION": {"weight": 1.0, "critical": false, "applies_to": "ALL_VISUAL"},
+        "VISUAL_STORYTELLING": {"weight": 1.0, "critical": true, "applies_to": "ALL_VISUAL"},
+        "MOTION_EDITING": {"weight": 1.0, "critical": true, "applies_to": "ALL_VISUAL"},
+        "TYPOGRAPHY": {"weight": 1.0, "critical": false, "applies_to": "ALL_VISUAL"},
+        "SEMANTIC_CLARITY": {"weight": 1.0, "critical": false, "applies_to": "ALL_VISUAL"},
+        "EMOTIONAL_INTELLECTUAL_IMPACT": {"weight": 1.0, "critical": false, "applies_to": "ALL_VISUAL"},
+        "PREMIUM_FINISH": {"weight": 1.0, "critical": true, "applies_to": "ALL_VISUAL"},
+        "RETENTION_EXPERIENCE": {"weight": 1.0, "critical": false, "applies_to": "ALL_VISUAL"},
+        "TEMPLATE_AI_GENERIC_RESISTANCE": {"weight": 1.0, "critical": true, "applies_to": "ALL_VISUAL"},
+        "EVIDENCE_PRESENTATION": {"weight": 1.0, "critical": false, "applies_to": "REAL_EVIDENCE"},
+        "SOURCE_LEGIBILITY": {"weight": 1.0, "critical": false, "applies_to": "REAL_EVIDENCE"},
+        "PROOF_DIRECTION": {"weight": 1.0, "critical": false, "applies_to": "REAL_EVIDENCE"}
+      },
+      "audio_scope": {
+        "included_in_v1_visual_taste_score": false,
+        "reason": "Phase 2 Audio has not started; future sound dimensions require a separately versioned decision."
+      },
+      "human_taste_authority": {
+        "required_score_authority": "HUMAN_CHATGPT_CREATIVE_DIRECTOR",
+        "machine_may_diagnose": true,
+        "machine_may_authoritatively_award_7_plus": false,
+        "without_human_review_status": "MARKET_TASTE_ACCEPTANCE_PENDING"
+      },
+      "creative_director_questions": [
+        "Would I stop scrolling in the opening seconds?",
+        "If muted, would I still want to continue watching?",
+        "Could representative frames stand alone as professionally art-directed images?",
+        "Does the work feel designed rather than generated?",
+        "Is there a memorable visual idea?",
+        "Does the motion feel authored rather than templated?",
+        "Does every major visual decision appear intentional?",
+        "Does the typography feel editorial rather than presentation-like?",
+        "Does the video avoid the look of an AI explainer/template engine?",
+        "Would I confidently place the CKAI brand on this?",
+        "Would I be comfortable delivering this to a paying client?",
+        "Would a sophisticated client plausibly pay for this creative quality?",
+        "Does it visually compete with strong contemporary professional short-form work?"
+      ],
+      "review_perspectives": {
+        "ARTIST_CREATIVE_DIRECTOR": ["authorship", "taste", "intentional composition", "restraint", "surprise", "memorable idea", "coherent visual language"],
+        "PROFESSIONAL_MOTION_VIDEO_EXPERT": ["controlled timing", "meaningful motion", "sophisticated choreography", "earned transitions", "strong hierarchy", "production-grade execution"],
+        "INVESTOR": ["meaningful product advantage", "confidence in creative moat", "output more impressive than architecture explanation"],
+        "PAYING_CLIENT": ["willingness to pay", "brand publishability", "expensive appearance", "creative-team replacement without visible quality loss"]
+      },
+      "visible_creative_delta": {
+        "target_for_current_reset": "STEP_CHANGE",
+        "levels": {
+          "NONE": "A viewer cannot reliably distinguish meaningful improvement.",
+          "MINOR": "Details improve, but the market-level impression remains almost unchanged.",
+          "MEANINGFUL": "A normal viewer or creative reviewer perceives clear qualitative improvement.",
+          "STEP_CHANGE": "The output visibly moves into a different quality class."
+        },
+        "time_discipline": "A substantial iteration that consumes meaningful working time without a clear human-visible quality jump is a product-level failure."
+      },
+      "status_contract": [
+        "architecture_status",
+        "integration_status",
+        "machine_technical_status",
+        "creative_quality_status",
+        "market_readiness_score",
+        "taste_gate",
+        "golden_candidate",
+        "release_candidate_eligible",
+        "human_creative_director_verdict"
+      ],
+      "baseline": {
+        "content_id": "CKAI-0004",
+        "stage": "PHASE_1K",
+        "approximate_market_readiness": 2.0,
+        "authority": "PRODUCT_OWNER_AND_CHATGPT",
+        "product_quality_status": "PRODUCT_FAILURE",
+        "note": "Current Creative Reset baseline, not permanent historical truth for every future review."
+      },
+      "program_state": {
+        "architecture_expansion": "FROZEN",
+        "phase_1l": "FROZEN_NOT_STARTED",
+        "phase_2_audio": "NOT_STARTED",
+        "ckai_music_library_v1": "ROUND2_COMPLETE_22_KEEP_22_DOWNLOADED_READY_FOR_PRODUCTION_USE",
+        "creative_reset": "ACTIVE",
+        "generalization_test_01": "PASS_HUMAN_CONFIRMED",
+        "ckai_0005_full_v1_market_taste": "6.3_TO_6.6_NOT_GOLDEN",
+        "ckai_0005_targeted_repair": "V1_1_HUMAN_REVIEWED_APPROX_6_7_NOT_GOLDEN",
+        "ckai_0005_audio_creative_prototype": "SUPERSEDED_BY_FINAL_AUDIO_V2_PUBLISHED",
+        "ckai_0005_final_audio_v2": "PUBLISHED_AUDIO_LEARNING_INGESTED",
+        "ckai_0006_consistency_test": "V1_2_LOCKED_PRACTICAL_VISUAL_BASELINE_V1",
+        "audio_direction_v1": "IN_PROGRESS_NOT_FULLY_VALIDATED",
+        "phase_2_audio_engine": "FROZEN_BY_AUDIO_DIRECTION_V1"
+      },
+      "golden_sequence": {
+        "duration_seconds_min": 10,
+        "duration_seconds_max": 15,
+        "required_overall_score": 8.0,
+        "required_critical_dimension_floor": 7.0,
+        "required_visible_creative_delta": "STEP_CHANGE",
+        "final_authority": "HUMAN_CHATGPT_CREATIVE_DIRECTOR",
+        "completion_may_be_declared_by_machine": false,
+        "strategy": ["GOLDEN_CREATIVE_OUTPUT", "UNDERSTAND_WHY_IT_WORKS", "ENCODE_CAPABILITY", "AUTOMATE", "TEST_ON_ANOTHER_CONTENT_ID"]
+      },
+      "release_eligibility": {
+        "all_required": ["TECHNICAL_GATES_PASS", "MARKET_TASTE_GATE_PASS", "HUMAN_APPROVAL"],
+        "never_auto_publish": true
+      },
+      "creative_north_star": {
+        "location": "content/references/creative-north-star/README.md",
+        "references_must_be_real_and_deliberately_selected": true,
+        "invented_references_forbidden": true
+      },
+      "tool_policy": {
+        "principle": "OUTPUT_QUALITY_GT_TOOL_LOYALTY",
+        "code_native_is_a_tool_not_ckai_visual_identity": true,
+        "diagram_only_when_best_communication_medium": true,
+        "default_aesthetic_forbidden": ["dots", "lines", "nodes", "paths", "cards", "convergence"]
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": "2026-08-23.1",
+  "terms": {
+    "AI": {"spoken": "ây ai", "review": "pending"},
+    "API": {"spoken": "ây pi ai", "review": "pending"},
+    "ChatGPT": {"spoken": "Chát Gi Pi Ti", "review": "pending"},
+    "Claude": {"spoken": "Clót", "review": "pending"},
+    "Gemini": {"spoken": "Gemini", "review": "pending"},
+    "OCR": {"spoken": "ô si a", "review": "pending"},
+    "PDF": {"spoken": "pi đi ép", "review": "pending"},
+    "Markdown": {"spoken": "Mác-đao", "review": "pending"}
+  }
+}

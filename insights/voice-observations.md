@@ -1,7 +1,7 @@
 ---
 type: insights
 scope: voice-observations
-status: empty
+status: in-progress
 ---
 
 # Voice Observations (Delivery Learning)
@@ -20,7 +20,8 @@ Ghi nhận theo 3 cấp độ — không suy rộng vội, xem định nghĩa đ
 
 ## Observations
 
-_(chưa có entry nào)_
+### CKAI-0003 — 2026-08-22
+- **Observation:** Xưng "mình" xuyên suốt khi nói thật, dù script viết "tôi". Mở rộng 1 ví dụ sâu (script) thành 4 ví dụ song song liên tiếp (AI, công việc, chạy bộ, thiện nguyện) mà không dùng story cụ thể nào từ `my-stories.md` — mọi ví dụ ở mức khái quát. Key Sentence (câu hỏi đóng khung, ngắn, in đậm trong script) được nói ra sớm hơn trong luồng nói và dài/lỏng hơn nhiều so với bản viết, không giữ dạng câu hỏi gọn dễ nhớ. Có 1 cụm gần với "đừng vội tin" xuất hiện tự nhiên (dù có thể lỗi STT). Video kết bằng câu tổng kết hướng đi, không có CTA hành động cụ thể như script thiết kế. Thời lượng thực tế dài hơn nhiều so với target — chi tiết đầy đủ xem [`../content/published/CKAI-0003_nhin-nhu-no-dang-la_delivery-delta.md`](../content/published/CKAI-0003_nhin-nhu-no-dang-la_delivery-delta.md).
 
 ## Possible Patterns
 

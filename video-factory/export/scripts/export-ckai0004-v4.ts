@@ -1,0 +1,64 @@
+import {existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync} from 'node:fs';
+import {dirname, relative, resolve} from 'node:path';
+import {spawnSync} from 'node:child_process';
+import {parseFrontmatter} from '../../animation/src/engine/upstream';
+import type {AnimationManifest} from '../../animation/src/model';
+import type {VoicePlan} from '../../voice/src/model';
+import {sha256} from '../../voice/src/segment';
+import type {FinalReviewManifest} from '../../review/src/model';
+import {runReviewQa} from '../../review/src/qa';
+import {createGenericExportDraft} from '../src/manifest/generic';
+import {ffmpegArguments} from '../src/profile';
+import {inspectExportMedia} from '../src/media';
+import {inspectDecodedMediaEquivalence} from '../src/equivalence';
+import {runExportQa} from '../src/qa';
+import type {ReleaseManifest} from '../src/model';
+import {assembleExistingReviewPackage, bridgePaths} from '../../../runtime/production-bridge/src/core.mjs';
+
+const root=process.cwd(); const contentId='CKAI-0004'; const releaseVersion=4;
+const acceptedPreviewSha='9B38FC998E5EA7E4062AB2B9D904ECAF933A6EB5CB451BE4DC2CD64A2B136EF3';
+const rel=(path:string)=>relative(root,path).replaceAll('\\','/');
+const hash=(path:string)=>sha256(readFileSync(path));
+const atomicWrite=(path:string,value:string)=>{mkdirSync(dirname(path),{recursive:true}); const temporary=`${path}.${process.pid}.tmp`; writeFileSync(temporary,value,'utf8'); renameSync(temporary,path);};
+const atomicJson=(path:string,value:unknown)=>atomicWrite(path,`${JSON.stringify(value,null,2)}\n`);
+const requireFile=(path:string)=>{if(!existsSync(path)) throw new Error(`Required canonical input missing: ${rel(path)}`);};
+
+const reviewArtifactPath=resolve('content/reviews/CKAI-0004_tach-du-kien-suy-luan-chua-biet_final-review-v4.md');
+const reviewSnapshotPath=resolve('generated/review/CKAI-0004/v4/final-review.generated.json');
+const reviewPreviewPath=resolve('generated/previews/CKAI-0004-review-v4.mp4');
+const approvedScriptPath=resolve('content/approved/CKAI-0004_tach-du-kien-suy-luan-chua-biet.md');
+for(const path of [reviewArtifactPath,reviewSnapshotPath,reviewPreviewPath,approvedScriptPath]) requireFile(path);
+if(hash(reviewPreviewPath)!==acceptedPreviewSha) throw new Error('Accepted STEP07 review binary hash is stale');
+
+const reviewSnapshotSha=hash(reviewSnapshotPath); const reviewFields=parseFrontmatter(readFileSync(reviewArtifactPath,'utf8'));
+const acceptedFields:Record<string,string>={input_eligibility:'production',technical_review:'PASS',final_review:'pass',human_decision:'approved',export_handoff_status:'READY',unresolved_issues:'none',operator_acceptance_by:'chatgpt-work'};
+for(const [field,value] of Object.entries(acceptedFields)) if(reviewFields[field]!==value) throw new Error(`Canonical Final Review acceptance requires ${field}=${value}`);
+if(!Number.isFinite(Date.parse(String(reviewFields.operator_acceptance_at??''))) || String(reviewFields.operator_acceptance_source_sha256??'').toUpperCase()!==reviewSnapshotSha || !String(reviewFields.operator_acceptance_basis??'').toUpperCase().includes(acceptedPreviewSha)) throw new Error('Canonical Final Review acceptance provenance/hash is invalid');
+
+const technicalReview=JSON.parse(readFileSync(reviewSnapshotPath,'utf8')) as FinalReviewManifest;
+if(technicalReview.reviewPreview.path!==rel(reviewPreviewPath) || technicalReview.reviewPreview.sha256!==acceptedPreviewSha) throw new Error('STEP07 snapshot does not identify the accepted review binary');
+const review:FinalReviewManifest={...technicalReview,finalReview:'pass',humanDecision:'approved',exportHandoffStatus:'READY'};
+const voiceSnapshotPath=resolve(review.sourceVoiceSnapshot); requireFile(voiceSnapshotPath);
+const technicalVoice=JSON.parse(readFileSync(voiceSnapshotPath,'utf8')) as VoicePlan; technicalVoice.finalReviewInputStatus='BLOCKED'; delete technicalVoice.finalReviewExportHandoffStatus;
+const voiceArtifact=review.sourceChain.find((item)=>item.stage==='voice'); if(!voiceArtifact) throw new Error('STEP07 source chain has no Voice artifact');
+const voiceFields=parseFrontmatter(readFileSync(resolve(voiceArtifact.path),'utf8'));
+if(voiceFields.voice_review!=='pass'||voiceFields.human_decision!=='approved'||voiceFields.final_review_input_status!=='READY'||voiceFields.operator_acceptance_by!=='chatgpt-work'||String(voiceFields.operator_acceptance_source_sha256??'').toUpperCase()!==review.sourceVoiceSnapshotSha256) throw new Error('Canonical Voice acceptance is invalid or stale');
+const voicePlan:VoicePlan={...technicalVoice,voiceReview:'pass',humanDecision:'approved',finalReviewInputStatus:'READY',unresolvedBlockers:[]};
+const animationPath=resolve(voicePlan.sourceAnimationManifest); requireFile(animationPath); if(hash(animationPath)!==voicePlan.sourceAnimationManifestSha256) throw new Error('Animation manifest checksum mismatch');
+const animation=JSON.parse(readFileSync(animationPath,'utf8')) as AnimationManifest;
+const reviewInput={review,voicePlan,animation}; const reviewQa=runReviewQa(reviewInput,'production',true); if(!reviewQa.pass) throw new Error(`STEP07_SOURCE_GATE_BLOCKED:\n${reviewQa.errors.join('\n')}`);
+
+const exportDraft=createGenericExportDraft({contentId,review,sourceReviewArtifact:rel(reviewArtifactPath),sourceReviewArtifactSha256:hash(reviewArtifactPath),sourceReviewSnapshot:rel(reviewSnapshotPath),sourceReviewSnapshotSha256:reviewSnapshotSha,sourceTranscript:review.sourceChain.find((item)=>item.stage==='script')!.path,releaseVersion});
+const input={exportManifest:exportDraft,reviewInput}; const preQa=runExportQa(input,'production',false); if(!preQa.pass) throw new Error(`EXPORT_INPUT_GATE_BLOCKED:\n${preQa.errors.join('\n')}`);
+const masterPath=resolve(exportDraft.outputPath); const partialPath=masterPath.replace(/\.mp4$/,'.partial.mp4'); const exportArtifactPath=resolve('content/exports/CKAI-0004_tach-du-kien-suy-luan-chua-biet_export-v4.md'); const releaseManifestPath=resolve('generated/exports/CKAI-0004/CKAI-0004_v4_release.generated.json');
+if(existsSync(masterPath)||existsSync(exportArtifactPath)||existsSync(releaseManifestPath)) throw new Error('V4 Export identity already exists; refusing to overwrite a canonical version');
+mkdirSync(dirname(masterPath),{recursive:true}); if(existsSync(partialPath)) rmSync(partialPath,{force:true});
+const encoded=spawnSync('ffmpeg',ffmpegArguments(exportDraft.sourceReviewPreview,partialPath),{cwd:root,encoding:'utf8',timeout:900_000}); if(encoded.status!==0){if(existsSync(partialPath))rmSync(partialPath,{force:true}); throw new Error(`FINAL_EXPORT_FAILED: ${(encoded.stderr||encoded.stdout).slice(-2000)}`);} renameSync(partialPath,masterPath);
+exportDraft.outputSha256=hash(masterPath); exportDraft.mediaInspection=inspectExportMedia(masterPath); exportDraft.decodedMediaEquivalence=inspectDecodedMediaEquivalence(exportDraft.sourceReviewPreview,masterPath);
+const finalQa=runExportQa(input,'production',true); if(!finalQa.pass) throw new Error(`EXPORT_HARD_GATE_BLOCKED:\n${finalQa.errors.join('\n')}`);
+const release:ReleaseManifest={...exportDraft,sourceReview:review,generatedAt:new Date().toISOString()}; atomicJson(releaseManifestPath,release);
+atomicWrite(exportArtifactPath,`---\nid: ${exportDraft.id}\ntype: short-form-final-export\ninput_eligibility: production\nsource_review_artifact: ${rel(reviewArtifactPath)}\nsource_review_artifact_sha256: ${exportDraft.sourceReviewArtifactSha256}\nsource_review_snapshot: ${rel(reviewSnapshotPath)}\nsource_review_snapshot_sha256: ${reviewSnapshotSha}\nsource_review_preview: ${rel(reviewPreviewPath)}\nsource_review_preview_sha256: ${acceptedPreviewSha}\noutput_path: ${relative(dirname(exportArtifactPath),masterPath).replaceAll('\\','/')}\noutput_sha256: ${exportDraft.outputSha256}\nexport_qa: PASS\nexport_review: pass\nhuman_decision: pending\npublish_handoff_status: BLOCKED\nrelease_state: PENDING_RELEASE_APPROVAL\nunresolved_blockers: Product Owner Release Approval pending\n---\n\n# CKAI-0004 V4 Final Export\n\nRelease remains PENDING_RELEASE_APPROVAL until Product Owner says Chốt for this exact output SHA-256.\n`);
+const packaged=assembleExistingReviewPackage({contentId,source:{artifactPath:rel(approvedScriptPath)}},bridgePaths(root)); if(!packaged||'blocked' in packaged) throw new Error(`FACEBOOK_PACKAGE_BLOCKED: ${packaged&&'message' in packaged?packaged.message:'package was not created'}`);
+const packageManifestPath=resolve(packaged.packageDir,'package-manifest.json'); const packageManifest=JSON.parse(readFileSync(packageManifestPath,'utf8')) as Record<string,unknown>;
+if(packageManifest.releaseState!=='PENDING_RELEASE_APPROVAL'||packageManifest.sourceMasterSha256!==exportDraft.outputSha256||packageManifest.videoSha256!==exportDraft.outputSha256||hash(packaged.videoPath)!==exportDraft.outputSha256) throw new Error('FACEBOOK_PACKAGE_INTEGRITY_BLOCKED');
+console.log(JSON.stringify({status:'PASS',sourceStep07Sha256:acceptedPreviewSha,master:rel(masterPath),masterSha256:exportDraft.outputSha256,inspection:exportDraft.mediaInspection,audioEquivalence:exportDraft.decodedMediaEquivalence,releaseManifest:rel(releaseManifestPath),facebookPackage:rel(packaged.packageDir),packageIntegrity:'PASS',releaseState:'PENDING_RELEASE_APPROVAL',publishing:false},null,2));

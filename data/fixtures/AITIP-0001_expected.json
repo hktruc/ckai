@@ -1,0 +1,28 @@
+{
+  "candidate_id": "AITIP-0001",
+  "fixture": "data/fixtures/AITIP-0001_sales.csv",
+  "row_count": 12,
+  "source_columns": ["Date", "Region", "Product", "Units", "Unit Price"],
+  "derived_column": "Revenue",
+  "derived_rule": "Revenue = Units * Unit Price",
+  "revenue_by_row": [360, 400, 300, 320, 240, 480, 150, 450, 480, 240, 80, 300],
+  "total_units": 35,
+  "total_revenue": 3800,
+  "revenue_by_region": {
+    "North": 1070,
+    "Central": 1170,
+    "South": 1560
+  },
+  "revenue_by_product": {
+    "Notebook": 1320,
+    "Mouse": 1280,
+    "Keyboard": 1200
+  },
+  "required_sheets": ["Raw Data", "Summary"],
+  "chart_contract": {
+    "type": "column_or_bar",
+    "semantic": "Revenue by Region",
+    "categories": ["North", "Central", "South"],
+    "values": [1070, 1170, 1560]
+  }
+}
