@@ -3,7 +3,7 @@ id: CKAI-0005
 type: short-form-script
 content_stream: chanh-kien
 format: vertical-9x16
-status: approved
+status: published
 editorial_review: pass
 human_decision: approved
 storyboard_handoff_status: READY
@@ -27,6 +27,8 @@ content_approval_fingerprint_sha256: B04CB5E06D920F7627EC401BD70CFDB164822D30A9F
 source_idea: content/ideas/CKAI-0005_dung-chua-chac-la-hieu.md
 created: 2026-08-29
 updated: 2026-08-29
+published:
+platform: Facebook Reels
 ---
 
 # Script — CKAI-0005
@@ -105,4 +107,3 @@ hay chỉ vì bắt đúng mẫu?”
 - Product Owner / ChatGPT Creative Director: `approved / Full Production READY`
 - Approval fingerprint: SHA-256 của exact Spoken Copy.
 - Any market-facing meaning change invalidates this approval.
-

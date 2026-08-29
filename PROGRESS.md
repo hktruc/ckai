@@ -268,11 +268,18 @@
 - Local audit implementation commit: `0f9c0fb`; LDP metadata commit: `8977228`. Push to `origin/main` was attempted but blocked by the execution security reviewer because the first canonical publication contains 391 files including previously uncommitted implementation and 22 audio assets. Local state is committed; GitHub remains stale until explicit approval for this payload.
 - CKAI-0005 publication is Product Owner-confirmed and its exact animated-voice transcript is recoverable from canonical narration segments, but `/ck-publish` lifecycle closure remains `NEEDS_RECONCILIATION` until the exact platform is supplied; no platform is guessed.
 
+### 2026-08-29 — CKAI-0005 publication lifecycle closure
+
+- Product Owner supplied the authoritative publication platform: `Facebook Reels`.
+- Closed `/ck-publish` with `delivery_mode: animated-voice`: moved the approved script to `content/published/`, preserved the exact narration `originalText` as transcript actual and recorded a zero-content-change delivery delta.
+- Updated `data/content-index.csv` to `published` with platform `Facebook Reels`. Publication date remains blank because no canonical date evidence exists; no date was invented.
+- Closed `LRN-03` and removed the CKAI-0005 reconciliation blocker. Audio Direction V1 remains active, Phase 2 Audio Engine remains frozen and CKAI-0007 remains inactive.
+
 ## Trạng thái hiện tại (snapshot)
 
 - **6 skill:** `/ck-idea`, `/ck-expand`, `/ck-script`, `/ck-review`, `/ck-publish`, `/ck-learn`.
 - **2 legacy content đã `approved`:** `CKAI-0001` và `CKAI-0002`; được giữ nguyên, có thể reverse-audit nhưng không giả là canonical production input đã qua schema STEP 02.
-- **1 content đã `published`:** `CKAI-0003` — đã có approved script, transcript actual và delivery-delta; đây là dữ liệu Delivery Learning đầu tiên.
+- **2 content đã `published`:** `CKAI-0003` và `CKAI-0005` — cả hai có approved script, transcript actual và delivery-delta; CKAI-0005 là `animated-voice` nên không tạo natural-voice observation.
 - **Chưa có performance data** (`data/performance.csv` còn trống) — chưa chạy `/ck-learn` lần nào.
 - **Calibration:** 4 round, tạm dừng theo yêu cầu Trực; còn khoảng trống (quan điểm giáo dục, mở rộng cơ chế "bẻ cong lý lẽ" sang lĩnh vực khác...) có thể hỏi tiếp khi Trực chủ động muốn.
 - **Creative quality:** `CKAI_MARKET_TASTE_STANDARD_V1` active; CKAI-0004 is the completed `Production Baseline V1` while its historical Phase 1K output remains the ≈2/10 Creative Reset baseline. CKAI-0005 Generalization Test 01 PASS; V1.1 remains ≈6.7/10/not Golden and Final Audio V2 was published. CKAI-0006 is locked at V1.2 as `Practical Visual Baseline V1`; no V1.3. Architecture expansion/Phase 1L remain frozen; Audio Direction V1 is not fully validated; Phase 2 Audio Engine is frozen; Golden status is unawarded.
