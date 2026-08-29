@@ -263,6 +263,7 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 |---|---|---|---|---|
 | LRN-01 | Delivery Learning workflow and first record | DONE | CKAI-0003 published delta + voice observations | COS-06 |
 | LRN-02 | Real performance ingestion and learned pattern | NOT_STARTED | `data/performance.csv` has no real rows | published metrics |
+| LRN-03 | Close CKAI-0005 publication lifecycle record | NEEDS_RECONCILIATION | publication confirmed; exact animated transcript exists; platform not supplied, so `/ck-publish` cannot guess | Product Owner platform confirmation |
 
 ### PHASE-09.2 — Production autonomy
 
@@ -321,6 +322,7 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 | RSK-02 | operations | ACTIVE | publishing/performance remain manual; document rather than hide handholding |
 | RSK-03 | repository | MITIGATED | previously missing project-state SSOT/LDP; validator now detects drift |
 | RSK-04 | provenance/storage | MONITORED | large local/generated media remain outside task truth; canonical music provenance is local and complete |
+| RSK-05 | record integrity | OPEN | CKAI-0005 is confirmed published but index remains `approved` until platform is supplied for `/ck-publish` closure |
 
 ## Update protocol
 

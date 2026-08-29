@@ -266,6 +266,7 @@
 - Added `MASTER_BLUEPRINT.md` as canonical architecture/task/dependency truth and `ldp.html` as its project-management visualization; added lightweight drift/reference/task-ID validation.
 - Formalized minimal THINKING vs PRACTICAL production routing without creating a new mode framework or engine.
 - Local audit implementation commit: `0f9c0fb`; LDP metadata commit: `8977228`. Push to `origin/main` was attempted but blocked by the execution security reviewer because the first canonical publication contains 391 files including previously uncommitted implementation and 22 audio assets. Local state is committed; GitHub remains stale until explicit approval for this payload.
+- CKAI-0005 publication is Product Owner-confirmed and its exact animated-voice transcript is recoverable from canonical narration segments, but `/ck-publish` lifecycle closure remains `NEEDS_RECONCILIATION` until the exact platform is supplied; no platform is guessed.
 
 ## Trạng thái hiện tại (snapshot)
 
