@@ -10,10 +10,10 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 
 ## Canonical focus
 
-- **NOW — `AUD-03`:** consolidate cross-content visual/audio evidence into Audio Direction V1; CKAI-0004/0005/0006 stay immutable.
-- **NEXT — `AUD-04`:** validate Audio Direction V1 sufficiently to make an evidence-based unfreeze decision for Phase 2 Audio Engine.
+- **NOW — `AUD-04` (NOT_STARTED):** Phase 2 Audio Engine is the next architectural task; Audio Direction V1 dependency is cleared, but implementation requires a separate explicit instruction.
+- **NEXT — post-`AUD-04`:** validate any bounded audio automation against Audio Direction V1 and human review before autonomy can expand.
 - **LATER — `LRN-02`, `AUT-02`, `GLD-02`:** performance ingestion, bounded autonomy expansion and Golden Master qualification.
-- **Hard stops:** no CKAI-0007, no V1.3 for CKAI-0006, no new demo/render/creative experiment, no Phase 2 Audio Engine before `AUD-04`, no publishing automation without explicit instruction.
+- **Hard stops:** no CKAI-0007, no V1.3 for CKAI-0006, no new demo/render/creative experiment, no `AUD-04` implementation without separate explicit instruction, no publishing automation without explicit instruction.
 
 ## ARC-01 — Governance & authority
 
@@ -252,8 +252,8 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 
 | Task ID | Deliverable | State | Evidence / DoD | Dependency |
 |---|---|---|---|---|
-| AUD-03 | Audio Direction V1 evidence consolidation | IN_PROGRESS | learning exists; cross-content validation incomplete | PRD-04, PRD-05, MUS-02 |
-| AUD-04 | Phase 2 Audio Engine | FROZEN | dependency gate: Audio Direction V1 not fully validated | AUD-03 validated |
+| AUD-03 | Audio Direction V1 evidence consolidation | VALIDATED | `engine/audio-direction-v1.md`; 0004 failure + 0005 published + 0006 locked + Music Library evidence | PRD-04, PRD-05, MUS-02 |
+| AUD-04 | Phase 2 Audio Engine | NOT_STARTED | evidence dependency cleared; no automation implemented or authorized in AUD-03 | explicit scoped instruction |
 
 ## ARC-09 — Learning, autonomy & Golden Master
 
@@ -291,7 +291,7 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 | Asset selection | ASSISTED | provenance/routing exist; key choice still judgment-led |
 | Visual production | MOSTLY_AUTONOMOUS | generic Remotion/runtime works; Golden consistency not proven |
 | Voice | MOSTLY_AUTONOMOUS | registry/provider/cache/QA; brand/cost gate retained |
-| Music/SFX | ASSISTED | library and QA ready; Audio Direction V1 incomplete |
+| Music/SFX | ASSISTED | Audio Direction V1 validated; selection/mix remains human-gated until AUD-04 |
 | Rendering/export | AUTONOMOUS | deterministic local runtime and hard QA |
 | Creative QA | QUALITY_GATED | machine diagnostics plus ChatGPT/Product Owner authority |
 | Facebook package | AUTONOMOUS | deterministic package generation |
@@ -309,14 +309,14 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 | Voice brand/provider/cost | brand and spend authority | A — retain human judgment | interrupt only when needed |
 | Job continuation after delegated acceptance | current one-chat bridge boundary | B — automate now within hashes/gates | bridge already supports bounded continuation |
 | Facebook upload and metrics entry | missing integration | B — technically automatable, not authorized | remain manual |
-| Music choice/mix correction | Audio Direction evidence incomplete | C — automate only after quality evidence | blocked by `AUD-03` |
+| Music choice/mix correction | direction validated; engine absent and taste remains human | B — technically bounded next | `AUD-04`; retain human listening gate |
 | Visual correction/prompt steering | consistency below Golden | C — automate only after quality evidence | feed proven patterns, not one-off taste |
 
 ## Critical dependencies and risks
 
 | ID | Type | State | Impact / response |
 |---|---|---|---|
-| DEP-01 | dependency | ACTIVE | `AUD-03` must validate before `AUD-04` can unfreeze |
+| DEP-01 | dependency | RESOLVED | `AUD-03` validated; `AUD-04` is now NOT_STARTED and remains separately scoped |
 | DEP-02 | dependency | ACTIVE | Golden evidence gates architecture expansion and bounded autonomy |
 | RSK-01 | quality | ACTIVE | system maturity exceeds output-quality maturity; never infer Golden from tests |
 | RSK-02 | operations | ACTIVE | publishing/performance remain manual; document rather than hide handholding |

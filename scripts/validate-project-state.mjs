@@ -42,8 +42,11 @@ check(tracks.length===22,`Music catalog count ${tracks.length} != 22`);
 for(const required of [
   ['PROJECT.md','CKAI-0005 FINAL AUDIO V2: PUBLISHED'],
   ['PROJECT.md','CKAI-0006 PRACTICAL CONSISTENCY TEST 01: V1.2 LOCKED'],
-  ['PROJECT.md','PHASE 2 AUDIO: NOT STARTED'],
-  ['MASTER_BLUEPRINT.md','AUD-04 | Phase 2 Audio Engine | FROZEN'],
+  ['PROJECT.md','AUDIO DIRECTION V1: VALIDATED'],
+  ['PROJECT.md','PHASE 2 AUDIO: NOT STARTED / DEPENDENCY CLEARED'],
+  ['MASTER_BLUEPRINT.md','AUD-03 | Audio Direction V1 evidence consolidation | VALIDATED'],
+  ['MASTER_BLUEPRINT.md','AUD-04 | Phase 2 Audio Engine | NOT_STARTED'],
+  ['engine/audio-direction-v1.md','Status: `VALIDATED`'],
   ['engine/visual-director.md','Practical != dashboard']
 ]) check(read(required[0]).includes(required[1]),`Canonical state missing: ${required[0]} -> ${required[1]}`);
 

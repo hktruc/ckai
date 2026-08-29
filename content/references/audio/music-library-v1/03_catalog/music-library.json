@@ -4,6 +4,8 @@
   "canonical_location": "content/references/audio/music-library-v1",
   "status": "ROUND_2_COMPLETE",
   "phase_2_audio_engine_status": "NOT_STARTED",
+  "audio_direction_v1_status": "VALIDATED",
+  "audio_direction_document": "engine/audio-direction-v1.md",
   "selection_target_approximate_tracks": 20,
   "current_track_count": 22,
   "downloaded_audio_count": 22,
@@ -13,26 +15,26 @@
     "recorded_date": "2026-08-29",
     "basis": "Explicit instruction in CKAI Music Library canonical migration request"
   },
-  "portfolio_note": "Round 1 remains weighted toward INVESTIGATIVE, TENSION and MOMENTUM. No Round 2 sourcing occurred because the seven tracks provide viable A/B prototype candidates.",
-  "candidate_audio_direction_rules": [
+  "portfolio_note": "Round 1 remains weighted toward INVESTIGATIVE, TENSION and MOMENTUM; Round 2 completes a 22-track six-family shelf ready for narration-context production audition.",
+  "audio_direction_rules": [
     {
       "id": "VOICE_FIRST_SELECTION",
-      "status": "CANDIDATE",
+      "status": "VERIFIED",
       "rule": "Prefer music that supports Vietnamese narration articulation, thinking rhythm and speaker-role contrast; reject otherwise impressive tracks when they compete with voice."
     },
     {
       "id": "VOICE_FIRST_NOT_MUSIC_INVISIBLE",
-      "status": "CANDIDATE",
+      "status": "VERIFIED",
       "rule": "Keep music perceptibly musical under narration; reject tracks that preserve voice only when reduced to near-inaudibility."
     },
     {
       "id": "FULL_BED_UTILITY",
-      "status": "CANDIDATE",
+      "status": "VERIFIED",
       "rule": "Assess 30–60 second full-bed suitability, restrained melody, editability and repetition comfort in addition to catalog mood."
     },
     {
       "id": "LOCAL_FIRST_PRODUCTION",
-      "status": "CANDIDATE",
+      "status": "VERIFIED",
       "rule": "Prefer approved canonical local assets before starting new web sourcing for a production."
     }
   ],

@@ -5,10 +5,10 @@ Thư viện nhạc nền cho CKAI Reels/Shorts.
 ## Trạng thái canonical
 
 - Vị trí canonical: `content/references/audio/music-library-v1/`
-- Trạng thái: `ACTIVE DEVELOPMENT`
-- Shortlist Round 1: `7 KEEP`
-- File audio đã tải: `7 / 7`, đã verify decode/duration/SHA-256.
-- Mục tiêu hiện hành: khoảng `20` track thực sự hữu ích, không chạy theo số lượng.
+- Trạng thái: `READY FOR PRODUCTION USE`
+- Round 1: `7 KEEP`; Round 2: `15 KEEP`; tổng canonical: `22 KEEP`.
+- File audio đã tải: `22 / 22`, đã verify decode/duration/SHA-256.
+- Sáu family hiện có: investigative/tension, lofi/chillhop, ambient, corporate/upbeat light, minimalist piano/classical và soft electronic/synthwave.
 - Registry: [`03_catalog/music-library.json`](03_catalog/music-library.json)
 - Round 1 CKAI-0005 audition report: [`03_catalog/round1-ckai0005-audition-report.md`](03_catalog/round1-ckai0005-audition-report.md)
 - Migration report: [`migration-report.md`](migration-report.md)
@@ -29,8 +29,10 @@ Nguồn cũ tại `C:\Users\Admin\Documents\Codex\2026-08-27\ti-p-t-c-d-n\output
 - Loại meditation/healing, corporate, sentimental piano, epic trailer quá mức và vocal rõ lời.
 - Function dùng để phân loại: HOOK / TENSION / INVESTIGATIVE / MOMENTUM / REFLECTIVE / REVEAL / PAYOFF / NEUTRAL BED.
 
-## Hướng tuyển chọn tiếp theo
+## Boundary sử dụng
 
-Round 1 hiện nghiêng về `INVESTIGATIVE / TENSION / MOMENTUM`. Khoảng track 8–20 cần ưu tiên đa dạng hóa vai trò, năng lượng và sắc độ; migration này không tìm nguồn hoặc tải thêm track.
+Audio direction canonical nằm tại [`../../../../engine/audio-direction-v1.md`](../../../../engine/audio-direction-v1.md). Music Library chỉ cung cấp local asset, provenance/license và descriptive fit metadata; không tự chọn track hoặc cấp production approval.
 
-`VOICE-FIRST` là Candidate Audio Direction Rule: nhạc phải hỗ trợ lời dẫn tiếng Việt và không che mất articulation, nhịp tư duy hoặc chuyển vai giọng. Một track nghe ấn tượng khi đứng một mình nhưng cạnh tranh với narration là ứng viên yếu cho CKAI. Đây là rule ứng viên cần tiếp tục kiểm chứng bằng Human/ChatGPT listening review, không phải Phase 2 Audio Engine hay production auto-selection.
+Music phải được audition dưới actual narration. `VOICE-FIRST` không có nghĩa là làm nhạc biến mất; full-bed suitability, repetition comfort, editability và spectral clearance đều phải được nghe trong content context. Family/fit score không phải deterministic selector.
+
+Không có expansion round nào đang active. Track mới chỉ được sourcing khi production thật chứng minh 22-track shelf không có ứng viên phù hợp; không mở rộng để đạt quota.
