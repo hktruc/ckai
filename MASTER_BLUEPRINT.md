@@ -10,8 +10,8 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 
 ## Canonical focus
 
-- **NOW — no active task:** `AUD-04` is validated. Golden-first policy makes `GLD-02` the next quality prerequisite; it remains `CANDIDATE` and was not started by AUD-04.
-- **NEXT — `GLD-02` then `AUT-02`:** obtain authoritative Golden evidence before expanding bounded production autonomy. `LRN-02` may proceed independently only when real published metrics are supplied.
+- **NOW — no active/executable task:** GLD-02 qualification audit found no existing authoritative Golden output. `GLD-02` remains `CANDIDATE`; no production was authorized to create new evidence.
+- **NEXT — Product Owner/ChatGPT decision on a future exact Golden candidate:** only an authorized candidate with overall ≥8, every critical floor ≥7, `STEP_CHANGE` and Human/ChatGPT Creative Director approval can close `GLD-02`. Afterward: understand/encode the proven capability, demonstrate repeatability on another content ID, then consider `AUT-02`. `LRN-02` remains independently available only when real published metrics are supplied.
 - **LATER — `PUB-01`:** publishing/performance integration remains separately authorized and manual meanwhile.
 - **Hard stops:** no CKAI-0007, no V1.3 for CKAI-0006, no new demo/render/creative experiment or publishing automation without separate explicit instruction; no Golden claim from architecture/tests.
 
@@ -277,7 +277,7 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 | Task ID | Deliverable | State | Evidence / DoD | Dependency |
 |---|---|---|---|---|
 | PM-01 | Canonical Blueprint/LDP/update protocol synchronized | DONE | this file, `PROGRESS.md`, `ldp.html`, validator | GOV-08 |
-| GLD-02 | Golden Master at authoritative score ≥8 | CANDIDATE | best confirmed visual ≈6.7; Golden unawarded; prerequisite to autonomy expansion | QLT-01 |
+| GLD-02 | Golden Master at authoritative score ≥8 | CANDIDATE | `content/reviews/GLD-02_golden-master-qualification.md`: existing evidence audited; best confirmed visual ≈6.7; Golden unawarded | QLT-01 |
 
 ## Production autonomy snapshot
 

@@ -53,5 +53,9 @@ for(const required of [
   ['engine/visual-director.md','Practical != dashboard']
 ]) check(read(required[0]).includes(required[1]),`Canonical state missing: ${required[0]} -> ${required[1]}`);
 
+for(const openTaskId of ['PUB-01','VIS-13','LRN-02','AUT-02','GLD-02']) check(ldp.includes(openTaskId),`LDP missing open task: ${openTaskId}`);
+check(ldp.includes('Golden remains unawarded'),'LDP does not show Golden as unawarded');
+check(read('content/reviews/GLD-02_golden-master-qualification.md').includes('GOLDEN MASTER NOT YET QUALIFIED'),'Golden qualification decision record missing');
+
 if(failures.length){console.error(JSON.stringify({status:'FAIL',failures},null,2));process.exit(1)}
 console.log(JSON.stringify({status:'PASS',arcs:arcs.length,phases:phases.length,tasks:taskRows.length,counts,musicTracks:tracks.length,musicLocalAssets:mp3s.length},null,2));
