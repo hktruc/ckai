@@ -10,8 +10,8 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 
 ## Canonical focus
 
-- **NOW — no active/executable production task:** Product Owner selected `CKAI-0001 — Bức bình phong` as the first Golden candidate. Preflight found it `NOT READY`: the exact legacy script estimates to 78 seconds versus the ≤55 STEP 02 gate and lacks current exact-package Content Approval authority.
-- **NEXT — current-schema STEP 02 editorial revision + Product Owner Content Approval:** preserve the CKAI-0001 core meaning/story evidence, reach ≤55 seconds, then obtain approval bound to exact Spoken Copy/hook/claims/ending/title/caption. Only afterward may Storyboard and the 10–15 second Golden Sequence begin. `LRN-02` remains independently available only when real published metrics are supplied.
+- **NOW — no active/executable production task:** `Golden Candidate = NOT YET SELECTED`. Product Owner rejected `CKAI-0001 — Bức bình phong` as a Golden benchmark because the underlying content quality is insufficient. Golden remains `UNAWARDED`; GLD-02 remains `CANDIDATE`.
+- **NEXT — reopen Golden candidate selection at the content gate:** Product Owner must first judge the content genuinely strong, worth publishing and worthy of representing CKAI. Only after `CONTENT QUALITY / PRODUCT OWNER CONVICTION` passes may visual potential, art direction, storytelling, motion, premium finish and template resistance be evaluated. Do not select or produce a replacement implicitly. `LRN-02` remains independently available only when real published metrics are supplied.
 - **LATER — `PUB-01`:** publishing/performance integration remains separately authorized and manual meanwhile.
 - **Hard stops:** no CKAI-0007, no V1.3 for CKAI-0006, no new demo/render/creative experiment or publishing automation without separate explicit instruction; no Golden claim from architecture/tests.
 
@@ -277,7 +277,7 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 | Task ID | Deliverable | State | Evidence / DoD | Dependency |
 |---|---|---|---|---|
 | PM-01 | Canonical Blueprint/LDP/update protocol synchronized | DONE | this file, `PROGRESS.md`, `ldp.html`, validator | GOV-08 |
-| GLD-02 | Golden Master at authoritative score ≥8 | CANDIDATE | `content/reviews/CKAI-0001_golden-production-preflight.md`: first candidate selected; production blocked by duration + current STEP 02 approval; Golden unawarded | QLT-01 |
+| GLD-02 | Golden Master at authoritative score ≥8 | CANDIDATE | Golden Candidate `NOT YET SELECTED`; CKAI-0001 historical preflight is `REJECTED_AS_GOLDEN_CANDIDATE_BY_PRODUCT_OWNER`; Golden unawarded | QLT-01 |
 
 ## Production autonomy snapshot
 

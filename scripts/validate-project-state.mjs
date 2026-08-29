@@ -56,6 +56,9 @@ for(const required of [
 for(const openTaskId of ['PUB-01','VIS-13','LRN-02','AUT-02','GLD-02']) check(ldp.includes(openTaskId),`LDP missing open task: ${openTaskId}`);
 check(ldp.includes('Golden remains unawarded'),'LDP does not show Golden as unawarded');
 check(read('content/reviews/GLD-02_golden-master-qualification.md').includes('GOLDEN MASTER NOT YET QUALIFIED'),'Golden qualification decision record missing');
+check(ldp.includes('Chưa chọn được nội dung đủ tốt để làm bài thử Golden 8/10.'),'LDP does not show Golden Candidate as not yet selected');
+check(blueprint.includes('Golden Candidate = NOT YET SELECTED'),'Blueprint does not show Golden Candidate as not yet selected');
+check(read('content/reviews/CKAI-0001_golden-production-preflight.md').includes('REJECTED_AS_GOLDEN_CANDIDATE_BY_PRODUCT_OWNER'),'CKAI-0001 historical preflight is not marked rejected');
 
 if(failures.length){console.error(JSON.stringify({status:'FAIL',failures},null,2));process.exit(1)}
 console.log(JSON.stringify({status:'PASS',arcs:arcs.length,phases:phases.length,tasks:taskRows.length,counts,musicTracks:tracks.length,musicLocalAssets:mp3s.length},null,2));

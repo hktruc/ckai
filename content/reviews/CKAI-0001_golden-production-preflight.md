@@ -2,15 +2,20 @@
 
 - Preflight date: `2026-08-29`
 - Candidate: `CKAI-0001 — Bức bình phong`
-- Candidate-selection authority: Product Owner instruction selecting the first Golden candidate
+- Historical candidate-selection authority: superseded Product Owner instruction that initially selected the first Golden candidate
+- Decision state: `REJECTED_AS_GOLDEN_CANDIDATE_BY_PRODUCT_OWNER`
+- Superseded on: `2026-08-29`
+- Superseding reason: Product Owner judged the underlying content too weak and not worthy of representing the CKAI Golden benchmark
 - Golden state: `UNAWARDED`
 - GLD-02 state: `CANDIDATE`
-- Decision: `CKAI-0001 GOLDEN PRODUCTION NOT READY`
+- Historical preflight decision: `CKAI-0001 GOLDEN PRODUCTION NOT READY`
 - Scope: planning/readiness only; no script rewrite, storyboard, media, render, provider call or production execution
+
+> **OBSOLETE PLANNING RECORD:** This file is preserved as historical evidence. CKAI-0001 is not the current Golden candidate, its planned creative direction is not an active production instruction, and its former next action is revoked.
 
 ## 1. Candidate authority and exact source
 
-The Product Owner has selected CKAI-0001 as the first Golden candidate. This authorizes candidate-specific preflight, not production and not direct STEP 02 Content Approval for the exact market-facing package.
+The Product Owner initially selected CKAI-0001 as the first Golden candidate, which authorized this historical candidate-specific preflight but not production or direct STEP 02 Content Approval. The Product Owner subsequently rejected CKAI-0001 as a Golden benchmark because the underlying content quality is insufficient. Golden Candidate selection is reopened.
 
 Exact legacy source: [`../approved/CKAI-0001_buc-binh-phong.md`](../approved/CKAI-0001_buc-binh-phong.md).
 
@@ -142,10 +147,12 @@ No reference is fetched, invented or added in this task.
 1. **DURATION GATE:** exact script estimates to 78 seconds; current STEP 02 requires ≤55. A wording/content revision is required.
 2. **CURRENT STEP 02 AUTHORITY:** CKAI-0001 is legacy approved and lacks the canonical exact-package Content Approval provenance/fingerprint and READY conjunction. After revision, Product Owner must approve the exact Spoken Copy, hook, claims, ending/CTA, title and Facebook caption.
 
-Decision: `CKAI-0001 GOLDEN PRODUCTION NOT READY`.
+Historical decision: `CKAI-0001 GOLDEN PRODUCTION NOT READY`.
+
+Current decision state: `REJECTED_AS_GOLDEN_CANDIDATE_BY_PRODUCT_OWNER`.
 
 GLD-02 remains `CANDIDATE`; Golden remains `UNAWARDED`; VIS-13 remains `FROZEN`; AUT-02 remains gated. No production task is opened.
 
-## 11. Exact next action — not executed
+## 11. Former next action — revoked and not executed
 
-ChatGPT Editorial must prepare a current-schema CKAI-0001 STEP 02 revision at ≤55 seconds while preserving the approved core meaning and personal-story evidence. Product Owner must then explicitly approve that exact market-facing package. Only after the canonical duration/evidence/approval conjunction is `READY` may Storyboard and the planned Golden Sequence begin.
+The former proposal to revise CKAI-0001 into a current-schema STEP 02 package is revoked. Do not revise or produce CKAI-0001 for Golden. The project must first select different content through the Product Owner content-quality/conviction gate recorded in the current Master Blueprint.
