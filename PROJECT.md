@@ -133,7 +133,7 @@ Content OS không chỉ sản xuất bài — nó phải dần phát hiện ý t
 
 ## 13. Performance Learning
 
-Mỗi video sau publish có thể lưu (qua `/ck-learn`): date, pillar, topic, angle, structure, hook, duration, views, average watch time, retention, completion, likes, comments, shares, saves, follows, affiliate clicks. Không tối ưu chỉ cho Views — tìm structure/hook/pillar hiệu quả theo từng mục tiêu (followers, shares, comments, authority...). Quy tắc phân biệt Observation / Hypothesis / Learned Pattern: [`engine/learning-rules.md`](engine/learning-rules.md).
+Mỗi video sau publish có thể lưu (qua `/ck-learn`): date, platform, pillar, topic, angle, structure, hook, duration, views, average watch time, retention, completion, likes, comments, shares, saves, follows, affiliate clicks. Canonical executable ingestion tại [`runtime/learning/`](runtime/learning/) giữ missing khác actual zero, validate published Content ID/platform, xử lý duplicate an toàn và chỉ tạo factual Observation; promotion vẫn theo governance. Không tối ưu chỉ cho Views — tìm structure/hook/pillar hiệu quả theo từng mục tiêu (followers, shares, comments, authority...). Quy tắc phân biệt Observation / Hypothesis / Learned Pattern: [`engine/learning-rules.md`](engine/learning-rules.md).
 
 Bỏ qua mọi entry có ID `TEST-*` khi phân tích performance, phát hiện pattern, hoặc đếm số lượng content đã sản xuất — đó là dữ liệu smoke test, không phản ánh hiệu năng content thật (xem mục 16).
 
@@ -143,7 +143,7 @@ Performance Learning (mục này) khác với **Delivery Learning** (§27 — so
 
 MVP ban đầu đã hoàn thành bằng Markdown, canonical repo skills, folder và CSV. Các giới hạn lịch sử “không API/không automation” không còn mô tả implementation hiện tại: repo đã có Video Factory, filesystem Production Bridge và các provider adapter có gate. Tuy vậy kiến trúc vẫn **local-first** và không tự mở rộng thành web app, database, Supabase, hosting, PM platform, uploader hoặc multi-agent architecture nếu chưa có yêu cầu rõ ràng.
 
-External API chỉ là capability provider có authorization/cost/evidence boundary; không phải architectural authority. OpenAI image/Vision là job-level opt-in, Vbee quota phải được cho phép rõ, secret chỉ ở environment, không auto-purchase hoặc paid fallback. Facebook posting hiện vẫn manual.
+External API chỉ là capability provider có authorization/cost/evidence boundary; không phải architectural authority. OpenAI image/Vision là job-level opt-in, Vbee quota phải được cho phép rõ, secret chỉ ở environment, không auto-purchase hoặc paid fallback. Facebook posting vẫn là Product Owner manual action; local publishing boundary trước/sau upload đã machine-readable và không cần Facebook API.
 
 ## 15. Kiến trúc file
 
@@ -199,6 +199,11 @@ External API chỉ là capability provider có authorization/cost/evidence bound
 ├── data/                     ← CSV log, đơn giản, đọc/ghi bằng tay hoặc skill
 │   ├── content-index.csv
 │   └── performance.csv
+│
+├── runtime/                  ← local bridge + publishing + performance-ingestion mechanics
+│   ├── production-bridge/
+│   ├── publishing/
+│   └── learning/
 │
 ├── insights/                 ← IP tích lũy theo thời gian
 │   ├── patterns.md
@@ -363,7 +368,7 @@ Release Approval chỉ gắn với exact final binary/version/hash. Bất kỳ b
 - **Mobile ChatGPT:** dùng cho nói ý tưởng, brainstorm, sửa/duyệt content và review video khi asset accessible; không giả định truy cập local Remotion/FFmpeg.
 - **Local computer:** production workshop gồm Codex, repo, Remotion, Voice, Final Review và FFmpeg/Export.
 - **GitHub:** engineering hygiene tùy chọn, không phải daily UX dependency.
-- **Facebook:** Product Owner tự đăng final video; không API, OAuth, scheduler hoặc auto-post trong MVP.
+- **Facebook:** Product Owner tự đăng final video; không API, OAuth, scheduler hoặc auto-post. System tạo package canonical, giữ exact release hash/version, và sau upload chỉ ghi `PUBLISHED` khi Product Owner confirmation + `/ck-publish` evidence hợp lệ. Contract: [`runtime/publishing/README.md`](runtime/publishing/README.md).
 
 ChatGPT translate ngôn ngữ tự nhiên như “Duyệt”, “Scene này chưa đẹp”, “Giọng nữ không hợp”, “Chốt” thành đúng task/layer cho Codex. Product Owner không cần terminal, command hoặc engine name trong normal workflow.
 
@@ -649,18 +654,18 @@ Pipeline hiện hành:
 - STEP 09 đã đi tới Phase 1/manual-test preparation cho AITIP-0001, sau đó được Product Owner pause để canonicalize operating model.
 - AITIP-0001 và fixture/ground truth/validator được preserve; manual Claude UI test không còn là active next action. Candidate vẫn chưa test hoàn tất, result unavailable, decision chưa recommend và human decision chưa approved.
 - Sau canonicalization, Codex không tự chọn candidate khác, không discovery mới, không Script và không sản xuất video. Product Owner + ChatGPT sẽ quyết định pilot production thật tiếp theo bằng explicit instruction.
-- Publishing integration vẫn chưa được build và không phải nội dung của operating-model correction này.
+- Historical operating-model correction did not build publishing integration; the later System Completion Pass now supplies the local package/publication and performance-ingestion mechanics without external posting.
 Video CKAI ở production layer tương lai đã chốt: **dưới 60 giây · 9:16 · 100% animation · không lấy AI video generation làm lõi**. Animation có thể gồm typography, UI, infographic, chart, diagram, browser/chat interface, cards, icon, transition và subtitle.
 
-Canonical pipeline direction: `CONTENT INTELLIGENCE → SCRIPT → STORYBOARD → VISUAL DIRECTOR → ANIMATION → VOICE → FINAL REVIEW / FINISHING → EXPORT → PUBLISH → LEARNING`. Implementation STEP 01–08 đã hoàn thành đến Final Export và Publish handoff; STEP 09 pilot đang PAUSED, còn publishing integration chưa được build.
+Canonical pipeline direction: `CONTENT INTELLIGENCE → SCRIPT → STORYBOARD → VISUAL DIRECTOR → ANIMATION → VOICE → FINAL REVIEW / FINISHING → EXPORT → PUBLISH → LEARNING`. Implementation STEP 01–08 đã hoàn thành; local Facebook package/publication boundary và validated performance-ingestion mechanics cũng đã hoàn thành. STEP 09 production pilot vẫn PAUSED; real upload, real metrics, Golden và repeatable autonomy remain evidence/human gated.
 
-Sau EXPORT, final asset có thể handoff vào cùng publishing boundary: Product Owner xác nhận đã publish → `/ck-publish` đóng record. Contract này không cần đổi theo production source.
+Sau EXPORT, final asset đi qua cùng publishing boundary: exact Release Approval tạo `READY_TO_PUBLISH` → Product Owner manual upload → `/ck-publish` đóng content/delivery record → package manifest liên kết canonical evidence và chuyển `PUBLISHED`. Platform + Product Owner confirmation là required; publication date/URL/external ID optional và không được bịa. Contract này không đổi theo production source.
 
 STEP 08 chỉ triển khai mechanical delivery encode/inspection/equivalence/Release Manifest/Publish handoff. **Code không được điều khiển content**; thứ tự quyết định luôn là:
 
 `Hữu ích → Dễ hiểu → Làm thử được → Tạo giá trị → Truyền đạt nhanh/rõ → Implementation kỹ thuật`.
 
-**Điểm dừng bắt buộc hiện tại:** không tiếp tục STEP 09 pilot, upload hoặc publishing automation cho tới khi Product Owner + ChatGPT có explicit instruction sau review operating model.
+**Điểm dừng bắt buộc hiện tại:** không tiếp tục STEP 09 pilot, real upload hoặc social auto-posting. Product Owner instruction ngày 2026-08-29 authorize local publishing/performance system completion only; không authorize production, credentials hay external Facebook action.
 
 ## 29. One-Chat Production Bridge — local runner
 

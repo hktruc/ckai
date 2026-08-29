@@ -4,6 +4,10 @@
   "private": true,
   "scripts": {
     "project-state:validate": "node scripts/validate-project-state.mjs",
+    "publishing:lifecycle": "node runtime/publishing/scripts/update-lifecycle.mjs",
+    "performance:ingest": "node runtime/learning/scripts/ingest-performance.mjs",
+    "publishing-learning:test": "node --test scripts/tests/publishing-learning.test.mjs",
+    "system:dry-run": "node scripts/system-completion-dry-run.mjs",
     "bridge:test": "node --test --test-isolation=none runtime/production-bridge/tests/*.test.mjs",
     "bridge:adapter-test": "tsx --test --test-isolation=none runtime/production-bridge/tests/canonical-adapter.test.ts",
     "bridge:once": "node runtime/production-bridge/src/runner.mjs",

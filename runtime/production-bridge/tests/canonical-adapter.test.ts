@@ -111,6 +111,11 @@ test('job queue and runner execute generic CKAI-9001 no-provider proof through F
   const packageManifest = JSON.parse(readFileSync(join(root, 'generated/facebook-packages/CKAI-9001/package-manifest.json'), 'utf8'));
   assert.equal(packageManifest.packageState, 'REVIEW_PACKAGE_VALIDATION_PROOF');
   assert.equal(packageManifest.releaseState, 'PENDING_RELEASE_APPROVAL');
+  assert.equal(packageManifest.lifecycleState, 'REVIEW_PACKAGE');
+  assert.equal(packageManifest.platform, 'Facebook Reels');
+  assert.equal(packageManifest.publicationState, 'NOT_PUBLISHED');
+  assert.deepEqual(packageManifest.publication.requiredFields, ['platform', 'productOwnerPublicationConfirmation']);
+  assert.deepEqual(packageManifest.publication.optionalFields, ['publishedDate', 'externalUrl', 'externalId']);
   assert.equal(packageManifest.providerUsage.vbeeSynthesisRequests, 0);
   assert.doesNotMatch(JSON.stringify(packageManifest), /VBEE_ACCESS_TOKEN|VBEE_APP_ID|Bearer /i);
 });

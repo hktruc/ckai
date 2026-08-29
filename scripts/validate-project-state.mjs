@@ -48,12 +48,13 @@ for(const required of [
   ['PROJECT.md','PHASE 2 AUDIO ENGINE V1: VALIDATED'],
   ['MASTER_BLUEPRINT.md','AUD-03 | Audio Direction V1 evidence consolidation | VALIDATED'],
   ['MASTER_BLUEPRINT.md','AUD-04 | Phase 2 Audio Engine | VALIDATED'],
+  ['MASTER_BLUEPRINT.md','PUB-01 | Platform publishing/performance system boundary | VALIDATED'],
   ['engine/audio-direction-v1.md','Status: `VALIDATED`'],
   ['engine/audio-engine-v1.md','Status: `VALIDATED`'],
   ['engine/visual-director.md','Practical != dashboard']
 ]) check(read(required[0]).includes(required[1]),`Canonical state missing: ${required[0]} -> ${required[1]}`);
 
-for(const openTaskId of ['PUB-01','VIS-13','LRN-02','AUT-02','GLD-02']) check(ldp.includes(openTaskId),`LDP missing open task: ${openTaskId}`);
+for(const openTaskId of ['VIS-13','LRN-02','AUT-02','GLD-02']) check(ldp.includes(openTaskId),`LDP missing open task: ${openTaskId}`);
 check(ldp.includes('Golden remains unawarded'),'LDP does not show Golden as unawarded');
 check(read('content/reviews/GLD-02_golden-master-qualification.md').includes('GOLDEN MASTER NOT YET QUALIFIED'),'Golden qualification decision record missing');
 check(ldp.includes('Chưa chọn được nội dung đủ tốt để làm bài thử Golden 8/10.'),'LDP does not show Golden Candidate as not yet selected');
@@ -62,6 +63,10 @@ check(read('content/reviews/CKAI-0001_golden-production-preflight.md').includes(
 check(ldp.includes('≈6/10 · V1.2 locked'),'LDP does not show CKAI-0006 Product Owner quality judgment');
 check(read('content/reviews/CKAI-0006_bat-ai-tu-phan-bien_full-production-v1.md').includes('APPROX_6_OF_10 / BELOW_MARKET_READY / NOT_GOLDEN'),'CKAI-0006 canonical review does not show the current Product Owner quality judgment');
 check(read('engine/creative-quality-standard.md').includes('CKAI-0005 V1.1 therefore remains the highest authoritative scored output'),'Canonical quality standard does not preserve CKAI-0005 V1.1 as the highest authoritative scored output');
+check(read('data/performance.csv').startsWith('id,date,platform,views,'),'Performance CSV is missing canonical platform-aware schema');
+check(ldp.includes('zero buildable system tasks'),'LDP does not separate completed system construction from evidence-gated work');
+check(read('runtime/publishing/README.md').includes('READY_TO_PUBLISH')&&read('runtime/publishing/README.md').includes('→ PUBLISHED'),'Publishing lifecycle contract is missing');
+check(read('runtime/learning/README.md').includes('Blank means unavailable; supplied `0` remains an actual zero'),'Performance missing-versus-zero contract is missing');
 
 if(failures.length){console.error(JSON.stringify({status:'FAIL',failures},null,2));process.exit(1)}
 console.log(JSON.stringify({status:'PASS',arcs:arcs.length,phases:phases.length,tasks:taskRows.length,counts,musicTracks:tracks.length,musicLocalAssets:mp3s.length},null,2));

@@ -317,12 +317,21 @@
 - Preserved `Practical Visual Baseline V1` as a learning/direction baseline: direct workflow/action/result imagery; `Practical != dashboard`; `Technical != presentation deck`; broadcast/editorial moving-image language; workflow is content and UI is one actor; animation is a tool rather than the visual philosophy. Voice + music remain judged OK.
 - CKAI-0005 V1.1 remains the highest authoritative scored output at approximately `6.7/10`; Golden target remains 8 and Golden remains `UNAWARDED`. No production artifact, lock, task count, production task or architecture state changed.
 
+### 2026-08-29 — System Completion Pass
+
+- Audited the real end-to-end repository path and separated buildable mechanics from real-world evidence gates and intentional human/quality boundaries.
+- Closed `PUB-01` as `VALIDATED`: the existing Facebook Review Package now uses a canonical machine-readable lifecycle with exact video/hash/version, platform, provenance, QA/release state, Product Owner upload state, required/optional publication fields and `READY_TO_PUBLISH → PUBLISHED` enforcement. Actual Facebook upload remains manual.
+- Added executable performance ingestion for `data/performance.csv`: published Content ID/platform validation, missing-versus-zero preservation, numeric/date checks, TEST exclusion, idempotent duplicate handling, explicit correction path, metadata join, factual Observation generation and evidence-count promotion review without automatic Hypothesis/Pattern claims.
+- Connected publication closure back to `/ck-publish`: a package cannot become `PUBLISHED` until content index plus published script, transcript actual and delivery delta exist. Animated voice remains delivery evidence, never natural-voice evidence.
+- TEST-only dry run proved review package → Release Approval → READY_TO_PUBLISH → publication evidence → PUBLISHED → fixture metric validation → excluded fixture classification, with zero persistent production writes.
+- `LRN-02` remains `NOT_STARTED` because real metrics and therefore real learning evidence do not exist. `GLD-02`/`AUT-02` remain `CANDIDATE`; `VIS-13` remains `FROZEN`. No video, provider call, CKAI-0007, locked artifact or Golden state changed.
+
 ## Trạng thái hiện tại (snapshot)
 
 - **6 skill:** `/ck-idea`, `/ck-expand`, `/ck-script`, `/ck-review`, `/ck-publish`, `/ck-learn`.
 - **2 legacy content đã `approved`:** `CKAI-0001` và `CKAI-0002`; được giữ nguyên, có thể reverse-audit nhưng không giả là canonical production input đã qua schema STEP 02.
 - **2 content đã `published`:** `CKAI-0003` và `CKAI-0005` — cả hai có approved script, transcript actual và delivery-delta; CKAI-0005 là `animated-voice` nên không tạo natural-voice observation.
-- **Chưa có performance data** (`data/performance.csv` còn trống) — chưa chạy `/ck-learn` lần nào.
+- **Chưa có performance data thật** (`data/performance.csv` chỉ có header) — ingestion mechanics đã validated nhưng chưa chạy `/ck-learn` với real metrics.
 - **Calibration:** 4 round, tạm dừng theo yêu cầu Trực; còn khoảng trống (quan điểm giáo dục, mở rộng cơ chế "bẻ cong lý lẽ" sang lĩnh vực khác...) có thể hỏi tiếp khi Trực chủ động muốn.
 - **Creative quality:** `CKAI_MARKET_TASTE_STANDARD_V1` active; CKAI-0004 is the completed `Production Baseline V1` while its historical Phase 1K output remains the ≈2/10 Creative Reset baseline. CKAI-0005 Generalization Test 01 PASS; V1.1 remains the highest authoritative scored output at ≈6.7/10/not Golden and Final Audio V2 was published. Product Owner assesses locked CKAI-0006 V1.2 at ≈6/10: `Practical Visual Baseline V1` preserves useful direction/learning but is below Market Ready, not Golden and not evidence of solved final Practical-mode quality; no V1.3. Architecture expansion/Phase 1L remain frozen; Audio Direction V1 and bounded Phase 2 Audio Engine V1 are VALIDATED; Golden status is unawarded.
 - **Voice/Provider:** existing Vbee quota is authorized for all CKAI production tasks; dual cast remains `HN - Minh Quân` + `HN - Ngọc Huyền`; auto-purchase and paid fallback remain false.
@@ -331,6 +340,6 @@
 ## Việc có thể làm tiếp
 
 - **NOW:** no active/executable production task. `Golden Candidate = NOT YET SELECTED`; CKAI-0001 is rejected as the benchmark and remains historical content only.
-- **NEXT:** reopen candidate selection at `CONTENT QUALITY / PRODUCT OWNER CONVICTION`; do not evaluate production potential until Product Owner considers the content genuinely strong, worth publishing and worthy of representing CKAI. Do not select another candidate implicitly. `LRN-02` can proceed independently when real published metrics are supplied.
-- **LATER:** publishing/performance integration remains separately authorized and manual meanwhile.
-- Do not start CKAI-0007, resume STEP 09/Phase 1L, produce a new creative test or build publishing automation without explicit Product Owner + ChatGPT instruction.
+- **NEXT:** no buildable system task remains. Golden candidate selection can reopen only at `CONTENT QUALITY / PRODUCT OWNER CONVICTION`; `LRN-02` can proceed independently when real published metrics are supplied.
+- **EVIDENCE-GATED:** GLD-02 needs an actual ≥8 output; AUT-02 needs Golden + repeatability; LRN-02 needs real metrics. VIS-13 stays intentionally frozen.
+- Do not start CKAI-0007, resume STEP 09/Phase 1L, produce a new creative test or add external Facebook auto-posting.

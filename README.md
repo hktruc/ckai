@@ -36,7 +36,7 @@ Mỗi video dùng một chat theo subject. Chat đó giữ toàn bộ idea, iter
 
 Sau “Duyệt”, ChatGPT Work persist exact approved STEP 02 artifact và ghi một local job. Runner nền đọc job/result theo [`runtime/production-bridge/README.md`](runtime/production-bridge/README.md). Nếu platform không tự push completion vào chat, Product Owner chỉ cần hỏi “Xong chưa?” trong cùng chat; Work đọc result hiện tại và trả package. Không ChatGPT API hoặc fake push notification.
 
-Review Package vẫn `PENDING_RELEASE_APPROVAL`. “Chốt” chỉ hợp lệ với exact version + SHA-256; Product Owner tự đăng Facebook. Default production voice là Vbee `HN - Minh Quân` qua alias `CKAI_NARRATOR_PRIMARY`; không random, auto-buy credit hoặc paid fallback.
+Review Package vẫn `PENDING_RELEASE_APPROVAL`. “Chốt” chỉ hợp lệ với exact version + SHA-256 và chuyển package thành `READY_TO_PUBLISH`; Product Owner tự đăng Facebook. Sau xác nhận upload, `/ck-publish` đóng delivery record và package chuyển `PUBLISHED`. Ngày đăng, URL và external ID được giữ blank/null khi chưa có. Default production voice là Vbee `HN - Minh Quân` qua alias `CKAI_NARRATOR_PRIMARY`; không random, auto-buy credit hoặc paid fallback.
 
 ## Product Owner UX — chỉ hai primary checkpoints
 
@@ -66,7 +66,7 @@ Normal setup:
 - Facebook posting là manual; không API/OAuth/scheduler/auto-post.
 
 Chi tiết đầy đủ: PROJECT.md §21 và §23.
-Canonical pipeline: `CONTENT INTELLIGENCE → SCRIPT → STORYBOARD → VISUAL DIRECTOR → ANIMATION → VOICE → FINAL REVIEW / FINISHING → EXPORT → PUBLISH → LEARNING`. Hiện implementation dừng tại STEP 08 Publish handoff; publishing integration chưa tồn tại.
+Canonical pipeline: `CONTENT INTELLIGENCE → SCRIPT → STORYBOARD → VISUAL DIRECTOR → ANIMATION → VOICE → FINAL REVIEW / FINISHING → EXPORT → PUBLISH → LEARNING`. Local system mechanics đã tồn tại end-to-end: Facebook package/release lifecycle tại [`runtime/publishing/`](runtime/publishing/) và validated performance ingestion tại [`runtime/learning/`](runtime/learning/). Upload vẫn manual; real learning vẫn chờ metrics thật.
 
 ## Tuyệt chiêu AI — intelligence trước production
 

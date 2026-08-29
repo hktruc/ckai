@@ -10,10 +10,10 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 
 ## Canonical focus
 
-- **NOW — no active/executable production task:** `Golden Candidate = NOT YET SELECTED`. Product Owner rejected `CKAI-0001 — Bức bình phong` as a Golden benchmark because the underlying content quality is insufficient. Golden remains `UNAWARDED`; GLD-02 remains `CANDIDATE`.
+- **NOW — system construction baseline complete; no active/executable production task:** `Golden Candidate = NOT YET SELECTED`. Product Owner rejected `CKAI-0001 — Bức bình phong` as a Golden benchmark because the underlying content quality is insufficient. Golden remains `UNAWARDED`; GLD-02 remains `CANDIDATE`.
 - **NEXT — reopen Golden candidate selection at the content gate:** Product Owner must first judge the content genuinely strong, worth publishing and worthy of representing CKAI. Only after `CONTENT QUALITY / PRODUCT OWNER CONVICTION` passes may visual potential, art direction, storytelling, motion, premium finish and template resistance be evaluated. Do not select or produce a replacement implicitly. `LRN-02` remains independently available only when real published metrics are supplied.
-- **LATER — `PUB-01`:** publishing/performance integration remains separately authorized and manual meanwhile.
-- **Hard stops:** no CKAI-0007, no V1.3 for CKAI-0006, no new demo/render/creative experiment or publishing automation without separate explicit instruction; no Golden claim from architecture/tests.
+- **SYSTEM WORK:** `PUB-01` is validated: deterministic Facebook Reels package, exact release transition, manual-upload boundary, publication evidence link, performance validator/upsert and governed learning handoff exist. `LRN-02` remains open only because no real metric row/learning evidence exists.
+- **Hard stops:** no CKAI-0007, no V1.3 for CKAI-0006, no new demo/render/creative experiment, external Facebook API/upload automation or Golden claim from architecture/tests.
 
 ## ARC-01 — Governance & authority
 
@@ -156,7 +156,7 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 | Task ID | Deliverable | State | Evidence / DoD | Dependency |
 |---|---|---|---|---|
 | BRG-05 | Deterministic Facebook Review Package | VALIDATED | `generated/facebook-packages/`; bridge tests | BRG-04 |
-| PUB-01 | Platform publishing/performance integration | NOT_STARTED | Facebook upload remains manual; no API/OAuth/scheduler | explicit future authorization |
+| PUB-01 | Platform publishing/performance system boundary | VALIDATED | canonical Facebook Reels package + `READY_TO_PUBLISH → PUBLISHED`; validated performance ingestor; TEST-only dry run; upload intentionally manual | BRG-05, COS-06 |
 
 ## ARC-06 — Visual intelligence & creative quality
 
@@ -262,7 +262,7 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 | Task ID | Deliverable | State | Evidence / DoD | Dependency |
 |---|---|---|---|---|
 | LRN-01 | Delivery Learning workflow and first record | DONE | CKAI-0003 published delta + voice observations | COS-06 |
-| LRN-02 | Real performance ingestion and learned pattern | NOT_STARTED | `data/performance.csv` has no real rows | published metrics |
+| LRN-02 | Real performance ingestion and learned pattern | NOT_STARTED | ingestion mechanics validated at `runtime/learning/`; `data/performance.csv` has no real rows, therefore no real Observation/Pattern evidence | published metrics |
 | LRN-03 | Close CKAI-0005 publication lifecycle record | VALIDATED | canonical published record + animated transcript/delta; Product Owner confirmed `Facebook Reels`; publication date remains unrecorded | LRN-01 |
 
 ### PHASE-09.2 — Production autonomy
@@ -300,10 +300,10 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 | Rendering/export | AUTONOMOUS | deterministic local runtime and hard QA |
 | Creative QA | QUALITY_GATED | machine diagnostics plus ChatGPT/Product Owner authority |
 | Facebook package | AUTONOMOUS | deterministic package generation |
-| Publish | MANUAL | Product Owner uploads; integration not built |
+| Publish | MANUAL | Product Owner upload retained; package lifecycle before/after upload is validated |
 | Delivery Learning | ASSISTED | workflow exists; transcript/confirmation supplied |
-| Performance ingestion | NOT_BUILT | no integration and no real performance rows |
-| Feedback into system | ASSISTED | production learning exists; promotion requires evidence |
+| Performance ingestion | IMPLEMENTED_NEEDS_EVIDENCE | validation/upsert/duplicates/platform/TEST exclusion built; no real rows |
+| Feedback into system | IMPLEMENTED_NEEDS_EVIDENCE | factual Observation handoff built; promotion requires consistent real evidence and review |
 
 ## Manual handholding classification
 
@@ -313,7 +313,8 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 | Creative/taste review | Golden and Market/Taste cannot be self-awarded | A — retain human judgment | keep quality-gated |
 | Voice brand/provider/cost | brand and spend authority | A — retain human judgment | interrupt only when needed |
 | Job continuation after delegated acceptance | current one-chat bridge boundary | B — automate now within hashes/gates | bridge already supports bounded continuation |
-| Facebook upload and metrics entry | missing integration | B — technically automatable, not authorized | remain manual |
+| Facebook upload | external platform action | A — intentional Product Owner action | remain manual; package lifecycle is system-ready |
+| Metrics entry | real-world data input | A — Product Owner supplies evidence | validated ingestor handles persistence and learning handoff |
 | Music choice/perceptual mix correction | candidate/mechanical support exists; taste remains human | A — retain human judgment | actual narration audition + decoded mix/phone listening |
 | Visual correction/prompt steering | consistency below Golden | C — automate only after quality evidence | feed proven patterns, not one-off taste |
 
@@ -324,7 +325,7 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 | DEP-01 | dependency | RESOLVED | `AUD-03` and bounded `AUD-04` are validated; human creative audio gates remain intentionally open per production |
 | DEP-02 | dependency | ACTIVE | Golden evidence gates architecture expansion and bounded autonomy |
 | RSK-01 | quality | ACTIVE | system maturity exceeds output-quality maturity; never infer Golden from tests |
-| RSK-02 | operations | ACTIVE | publishing/performance remain manual; document rather than hide handholding |
+| RSK-02 | operations | MITIGATED | package/publication/performance mechanics validated; only external upload and supply of real metrics remain intentional human inputs |
 | RSK-03 | repository | MITIGATED | previously missing project-state SSOT/LDP; validator now detects drift |
 | RSK-04 | provenance/storage | MONITORED | large local/generated media remain outside task truth; canonical music provenance is local and complete |
 | RSK-05 | record integrity | RESOLVED | CKAI-0005 publication lifecycle closed on Product Owner-confirmed `Facebook Reels`; no publication date was invented |

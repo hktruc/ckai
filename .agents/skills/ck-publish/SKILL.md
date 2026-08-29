@@ -30,8 +30,9 @@ Manual Facebook posting is canonical MVP UX: this workflow starts only after Pro
 - **Final delivered transcript** (bắt buộc): nguyên văn audio/voice track thực sự có trong final asset. Có thể là delivery thủ công legacy hoặc voice track của animation; không chuẩn hóa câu chữ.
 - **Delivery mode** (bắt buộc cho record mới): `manual-human` | `animated-voice` | `other`. `manual-human` chỉ dùng khi đây là lời Trực thực sự nói; nếu không rõ, hỏi lại hoặc dùng `other`, không suy đoán.
 - **Release Manifest** (optional, dành cho asset qua STEP 08): exact local manifest/path + final master SHA-256. Nếu được cung cấp, phải verify Content ID, current file hash, Product Owner release approval và `publish_handoff_status: READY` trước khi đóng record. Legacy/manual content không bị ép có STEP 08 manifest.
-- **Platform** (nếu Trực cung cấp): facebook | tiktok | youtube-shorts | ... — nếu không có, hỏi lại thay vì đoán hoặc để trống mập mờ.
-- **Ngày đăng** (nếu Trực cung cấp): mặc định ngày hôm nay nếu không nói khác.
+- **Platform** (bắt buộc): `Facebook Reels` | tiktok | youtube-shorts | ... — nếu không có, hỏi lại thay vì đoán hoặc để trống mập mờ.
+- **Ngày đăng** (optional): chỉ ghi khi Product Owner cung cấp hoặc local canonical evidence đã có; nếu không có thì để trống, không tự lấy ngày hôm nay.
+- **External URL/ID** (optional): chỉ ghi khi có; thiếu các field này không chặn lifecycle closure.
 
 Chỉ chạy khi Product Owner xác nhận asset/video đã publish. Nếu Content ID không tồn tại trong `content/approved/` (chưa qua editorial PUBLISH **và** Product Owner Content Approval), dừng lại và báo rõ lý do — không đoán, không tự tạo script mới ở bước này. Nếu Content ID là `TEST-*`, từ chối — đó là dữ liệu smoke test, không publish thật (xem `PROJECT.md` mục 16).
 
@@ -42,9 +43,10 @@ Chỉ chạy khi Product Owner xác nhận asset/video đã publish. Nếu Conte
 2. **Lưu transcript actual nguyên văn** vào `content/published/CKAI-000N_slug_transcript-actual.md` (format bên dưới) — không sửa chính tả, không chuẩn hóa câu, không làm "đẹp" lên. `actual` nghĩa là delivery có trong final asset, không phải một production method.
 3. **Di chuyển approved script** từ `content/approved/CKAI-000N_slug.md` sang `content/published/CKAI-000N_slug.md` — giữ nguyên tên file, giữ nguyên nội dung Full Script (chỉ cập nhật đúng phần metadata ở bước 5, không sửa nội dung script).
 4. **Tạo delivery-delta.md** — so sánh Full Script (bản approved) với transcript actual, theo đúng 6 mục ở "Format delivery-delta.md" bên dưới. Ưu tiên insight thực tế, **không** diff từng từ.
-5. **Cập nhật metadata**: trong script (giờ ở `content/published/`) đổi `status: published`, điền `published: YYYY-MM-DD`, điền `platform:`. Cập nhật đúng dòng trong `data/content-index.csv`: `status → published`, `published_date`, `platform`.
+5. **Cập nhật metadata**: trong script (giờ ở `content/published/`) đổi `status: published`, điền `platform:`; chỉ điền `published: YYYY-MM-DD` khi có evidence ngày đăng. Cập nhật đúng dòng trong `data/content-index.csv`: `status → published`, `platform`, còn `published_date` để trống nếu chưa biết.
 6. **Voice learning có điều kiện:** nếu `delivery_mode: manual-human`, ghi 1 Observation vào `insights/voice-observations.md` và áp dụng ngưỡng Possible/Confirmed Pattern hiện có. Với `animated-voice` hoặc `other`, vẫn hoàn tất delivery-delta nhưng không ghi natural-voice Observation và không dùng record đó làm evidence cho voice pattern của Trực.
 7. Báo lại cho Trực: đường dẫn 3 file trong `content/published/`, delivery mode, tóm tắt nhanh delivery-delta (2–4 điểm chính), và (chỉ với `manual-human`) đề xuất Possible/Confirmed Voice Pattern nếu đủ căn cứ.
+8. Nếu có Facebook Package machine-readable, chỉ chuyển package lifecycle `READY_TO_PUBLISH → PUBLISHED` sau khi ba file `/ck-publish` và content index đã canonical; package record liên kết các path này nhưng không thay thế chúng. Contract: `runtime/publishing/README.md`.
 
 ## Ràng buộc bắt buộc
 

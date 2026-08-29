@@ -59,6 +59,8 @@ Review deliverable path: `generated/facebook-packages/<CONTENT-ID>/`:
 
 No package is marked release-approved before **“Chốt.”** ChatGPT Work records STEP 08 direct Release Approval against the exact release version and output SHA-256. Any binary/content/version/hash change invalidates it. The MVP never uploads to Facebook.
 
+The manifest also carries canonical target `Facebook Reels`, lifecycle state, Product Owner upload state, provenance, QA and required/optional publication fields. After “Chốt”, the publishing boundary may move it to `READY_TO_PUBLISH`; after manual upload, `/ck-publish` must first create the canonical content index + published script + transcript actual + delivery delta evidence before the manifest can become `PUBLISHED`. Publication date, external URL and external ID remain optional/null when unavailable. See [`../publishing/README.md`](../publishing/README.md).
+
 ## Maintainer-only commands
 
 ```text

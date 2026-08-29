@@ -40,7 +40,7 @@ Không phải mọi field đều bắt buộc có — chỉ dùng field nào use
 
 ## Việc phải làm (đúng thứ tự)
 
-1. **Lưu dữ liệu thô** — thêm 1 dòng vào `data/performance.csv` theo đúng cột (`id,date,views,avg_watch_pct,completion_pct,likes,comments,shares,saves,follows,affiliate_clicks,notes`). Field không có → để trống.
+1. **Lưu dữ liệu thô** — validate/append qua canonical ingestor vào `data/performance.csv` theo đúng cột (`id,date,platform,views,avg_watch_pct,completion_pct,likes,comments,shares,saves,follows,affiliate_clicks,notes`). Field không có → để trống; số 0 chỉ ghi khi thực sự được cung cấp. Duplicate key là `id + date + platform`: exact repeat không ghi lại, conflict phải fail trừ khi Product Owner xác nhận đây là correction.
 2. **Liên kết với metadata** — tra `data/content-index.csv` theo Content ID để lấy `pillar,topic,angle,structure,objective`.
 3. **Tìm insight** — so sánh với các video khác cùng structure/pillar/loại hook đã có trong `insights/patterns.md`.
 4. **Cập nhật pattern theo đúng cấp độ** (xem `engine/learning-rules.md`):
@@ -51,7 +51,8 @@ Không phải mọi field đều bắt buộc có — chỉ dùng field nào use
 
 ## Ràng buộc bắt buộc
 
-- **Bỏ qua mọi Content ID dạng `TEST-*`** khi phân tích performance, phát hiện pattern, hoặc đếm số lượng content đã sản xuất — đó là dữ liệu smoke test, không phải content thật (xem `PROJECT.md` mục 16). Nếu user đưa performance của một ID `TEST-*`, vẫn có thể ghi vào `data/performance.csv` nếu user thật sự muốn, nhưng **không** dùng nó để tính Observation/Hypothesis/Learned Pattern hay bất kỳ thống kê content production nào.
+- **Từ chối Content ID dạng `TEST-*` trong real-data commit path.** Fixture mode chỉ chạy isolated test/dry-run, không ghi vào canonical `data/performance.csv`, không tạo Observation thật và không được tính vào bất kỳ thống kê/pattern nào.
+- Content ID phải tồn tại, đang `published`, và platform phải khớp canonical publication metadata. Dữ liệu malformed, percentage ngoài 0–100 hoặc metric âm phải fail rõ.
 - Phân biệt rõ 3 nhãn Observation / Hypothesis / Learned Pattern trong mọi output — không dùng chung chung "insight".
 - Không tối ưu chỉ cho Views — luôn tách rõ đang nói về trục nào (views, followers, shares, comments, authority, brand-strength) theo `engine/learning-rules.md` mục "Không tối ưu chỉ cho Views".
 - Nếu chỉ có 1 video dữ liệu, output chỉ nên là Observation, không được bịa ra Hypothesis/Pattern để nghe "có insight".

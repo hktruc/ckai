@@ -27,6 +27,8 @@ Quy tắc dùng trong `/ck-learn` để biến số liệu performance thô thà
 4. **Kiểm tra xem có đủ video cùng điều kiện chưa** (cùng structure, hoặc cùng pillar, hoặc cùng loại hook) để nâng cấp thành Hypothesis hoặc Learned Pattern.
 5. Nếu phát hiện một nguyên lý/framework có thể tái sử dụng nhiều lần (không chỉ về performance mà về nội dung/tư tưởng), ghi vào [`../insights/frameworks.md`](../insights/frameworks.md) thay vì `patterns.md`.
 
+Executable ingestion contract: [`../runtime/learning/README.md`](../runtime/learning/README.md). Platform is part of the canonical performance key. Missing metric remains blank/unavailable; an actual supplied zero remains `0`. Exact `Content ID + date + platform` repeats are idempotent, while conflicting duplicates fail unless explicitly corrected. The machine may calculate sample-count eligibility for review, but it never auto-promotes a qualitative Hypothesis or Learned Pattern.
+
 ## Không tối ưu chỉ cho Views
 
 Khi phân tích, luôn tách các trục:

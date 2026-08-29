@@ -48,7 +48,7 @@ Six workflow canonical nằm tại .agents/skills/ck-*/SKILL.md. .claude/skills/
 - Direct Product Owner Content/Release Approval, ChatGPT editorial/delegated operator review và technical/evidence gates là state độc lập; không state nào tự override state khác.
 - Content scope bao phủ mọi AI/AI-related technology; không provider lock-in.
 - STEP 01–08 đã hoàn thành và phải được bảo toàn.
-- STEP 09 First Production Pilot đang PAUSED sau Phase 1/manual-test preparation. Không chạy candidate mới, Script, production runtime, publishing integration hoặc automation trước explicit instruction của Product Owner + ChatGPT.
+- STEP 09 First Production Pilot đang PAUSED sau Phase 1/manual-test preparation. Local publishing/performance system boundary đã validated; không chạy candidate mới, Script, production runtime, external upload/auto-post hoặc architecture expansion trước explicit instruction của Product Owner + ChatGPT.
 
 ## One-Chat Production Bridge
 

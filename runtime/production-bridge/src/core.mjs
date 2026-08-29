@@ -2,6 +2,7 @@ import {createHash} from 'node:crypto';
 import {existsSync, mkdirSync, readFileSync, readdirSync, renameSync, writeFileSync, copyFileSync} from 'node:fs';
 import {basename, dirname, isAbsolute, join, relative, resolve, sep} from 'node:path';
 import {spawnSync} from 'node:child_process';
+import {createFacebookReelsPackageManifest} from '../../publishing/src/lifecycle.mjs';
 
 export const TERMINAL_STATUSES = new Set(['COMPLETED', 'BLOCKED', 'FAILED']);
 export const JOB_ACTIONS = new Set(['smoke-no-provider', 'production-preflight', 'generic-adapter-proof', 'produce-to-review-package']);
@@ -293,18 +294,21 @@ export const assembleExistingReviewPackage = (job, paths) => {
   atomicWrite(headlinePath, `${headline}\n`);
   const cover = spawnSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', '-i', videoPath, '-frames:v', '1', coverPath], {cwd: paths.repoRoot, encoding: 'utf8', timeout: 120_000});
   if (cover.status !== 0 || !existsSync(coverPath)) return {blocked: true, code: 'FACEBOOK_COVER_FAILED', message: 'Deterministic first-frame cover extraction failed; package was not declared complete.'};
-  atomicWriteJson(join(packageDir, 'package-manifest.json'), {
+  atomicWriteJson(join(packageDir, 'package-manifest.json'), createFacebookReelsPackageManifest({
     contentId: job.contentId,
-    packageState: 'REVIEW_PACKAGE',
-    releaseState: 'PENDING_RELEASE_APPROVAL',
-    sourceExportArtifact: relative(paths.repoRoot, artifactPath).replaceAll('\\', '/'),
-    sourceMasterSha256: sha256File(sourceOutput),
+    releaseVersion: Number.isFinite(Number(fields.release_version)) ? Number(fields.release_version) : null,
     video: relative(paths.repoRoot, videoPath).replaceAll('\\', '/'),
     videoSha256: sha256File(videoPath),
     caption: relative(paths.repoRoot, captionPath).replaceAll('\\', '/'),
     headline: relative(paths.repoRoot, headlinePath).replaceAll('\\', '/'),
     cover: relative(paths.repoRoot, coverPath).replaceAll('\\', '/'),
-  });
+    provenance: {
+      sourceExportArtifact: relative(paths.repoRoot, artifactPath).replaceAll('\\', '/'),
+      sourceMaster: relative(paths.repoRoot, sourceOutput).replaceAll('\\', '/'),
+      sourceMasterSha256: sha256File(sourceOutput),
+    },
+    qa: {exportQa: fields.export_qa, exportReview: fields.export_review},
+  }));
   return {packageDir, videoPath, captionPath, headlinePath, coverPath};
 };
 

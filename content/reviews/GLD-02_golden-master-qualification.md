@@ -51,13 +51,12 @@ Therefore Golden remains `UNAWARDED`, GLD-02 remains open as `CANDIDATE`, Phase 
 
 | Task | State | Current blocker / dependency | Can work now? | Correct sequence |
 |---|---|---|---|---|
-| PUB-01 · Platform publishing/performance integration | `NOT_STARTED` | explicit future authorization; upload remains manual | No | Only after separate authorization |
 | VIS-13 · Phase 1L architecture expansion | `FROZEN` | GLD-02 / Golden-first policy | No | After Golden evidence, then encode proven capability |
-| LRN-02 · Real performance ingestion and learned pattern | `NOT_STARTED` | real published metrics | Only when Product Owner supplies real rows | Independent of Golden; ingest then review learning |
+| LRN-02 · Real performance ingestion and learned pattern | `NOT_STARTED` | validated ingestion mechanics have no real published metrics | Only when Product Owner supplies real rows | Independent of Golden; ingest then review learning |
 | AUT-02 · Bounded autonomous repeatable production | `CANDIDATE` | AUD-04 is satisfied; GLD-02 and repeatable Golden-quality evidence are absent | No | Golden → understand/encode → prove on another content ID → bounded autonomy |
 | GLD-02 · Golden Master at authoritative score ≥8 | `CANDIDATE` | no qualifying existing output or authoritative Golden verdict | No under this audit-only authorization | Product Owner/ChatGPT must later authorize or identify an exact candidate for qualification |
 
-For LRN-02, the existing CSV contract requires real `id`, `date`, `views`, `avg_watch_pct`, `completion_pct`, `likes`, `comments`, `shares`, `saves`, `follows`, `affiliate_clicks` and `notes`; unavailable platform fields must remain explicitly unavailable rather than fabricated.
+`PUB-01` was subsequently validated by the System Completion Pass; manual Facebook upload remains an intentional boundary rather than an open system-build task. For LRN-02, the executable CSV contract accepts real `id`, `date`, `platform` and any supplied metric fields; unavailable metrics remain blank rather than fabricated, and TEST fixtures cannot enter real learning.
 
 ## Independent axes
 
