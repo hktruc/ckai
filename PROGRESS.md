@@ -49,16 +49,27 @@
 - `git init`, commit đầu tiên (42 file).
 - Push lên [github.com/hktruc/ckai](https://github.com/hktruc/ckai), branch `main`.
 
+### 2026-08-29 — Master Blueprint + QLDA Web Status Board
+- Tạo `MASTER_BLUEPRINT.md` v1.0 làm bản đồ tổng công trình theo hệ mã canonical `ARC → PHASE → TASK → Evidence`.
+- Thiết lập 8 architecture blocks: Governance & Content OS; Visual Production System; Creative Quality & Art Direction; Audio/Music/Voice; Content Modes; Production Consistency & Generalization; Golden Master; Publishing/Delivery/Learning Loop.
+- Gắn CKAI-0004 / 0005 / 0006 vào đúng phase như production evidence, không xem là dự án riêng.
+- Thêm Risk Register, learning governance, Definition of Done, continuity protocol và priority stack.
+- Tạo `index.html` làm Web Status Board, `docs/ckai-master-architecture.svg` làm sơ đồ kiến trúc, và `.github/workflows/deploy-pages.yml` để GitHub Pages tự deploy từ `main`.
+- Quy định mới: sau mỗi task đáng kể, phải đồng bộ `MASTER_BLUEPRINT.md` + `PROGRESS.md` + Web Status Board trong cùng work unit.
+- Phát hiện remote GitHub trước mốc này đang **stale** so với các report Codex/local mới hơn; mở P0 reconciliation task thay vì giả định trạng thái đã sync.
+
 ## Trạng thái hiện tại (snapshot)
 
-- **6 skill:** `/ck-idea`, `/ck-expand`, `/ck-script`, `/ck-review`, `/ck-publish`, `/ck-learn`.
-- **2 content đã `approved`**, sẵn sàng quay: `CKAI-0001` ("Bức bình phong"), `CKAI-0002` ("1 prompt dọn sạch tài liệu thành Markdown").
-- **Chưa có content nào `published`** — chưa video nào thật sự quay/đăng + chạy `/ck-publish`.
-- **Chưa có performance data** (`data/performance.csv` còn trống) — chưa chạy `/ck-learn` lần nào.
-- **Calibration:** 4 round, tạm dừng theo yêu cầu Trực; còn khoảng trống (quan điểm giáo dục, mở rộng cơ chế "bẻ cong lý lẽ" sang lĩnh vực khác...) có thể hỏi tiếp khi Trực chủ động muốn.
+- **QLDA canonical map:** `MASTER_BLUEPRINT.md` v1.0.
+- **Web Status Board:** `index.html`, auto-deploy qua GitHub Pages workflow.
+- **Architecture:** 8 ARC / 31 phase-level workstreams được mã hóa; task chi tiết nằm trong Blueprint.
+- **Production evidence:** CKAI-0004 = baseline; CKAI-0005 = generalization/audio learning; CKAI-0006 = practical/consistency test đang active.
+- **Current P0:** reconcile local/Codex repo state với GitHub; hoàn tất CKAI-0006; làm rõ Audio Direction V1 trước khi mở Phase 2 Audio Engine.
+- **Golden objective:** market-ready ≈ 7+, Golden ≈ 8, aspirational ≈ 9+; chưa coi architecture completeness là hoàn thành dự án.
 
 ## Việc có thể làm tiếp
 
-- Quay & đăng `CKAI-0001`/`CKAI-0002` thật, rồi chạy `/ck-publish` để test đầu-cuối workflow Delivery Learning.
-- Tiếp tục calibration nếu Trực muốn đào sâu thêm.
-- Chạy `/ck-learn` khi có số liệu performance thật đầu tiên.
+- Đồng bộ toàn bộ implementation/report mới nhất từ local/Codex lên GitHub để đóng risk project-state fragmentation.
+- Hoàn tất CKAI-0006 và đưa learning về đúng ARC/PH/T thay vì ghi rời theo video.
+- Hoàn thiện Audio Direction + licensed music library; giữ Phase 2 Audio Engine ở trạng thái FROZEN cho tới khi hướng âm thanh đủ rõ.
+- Populate Creative North Star / benchmark set để tiến tới Golden Master có tiêu chuẩn đo rõ hơn.
