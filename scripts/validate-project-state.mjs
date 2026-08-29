@@ -43,7 +43,7 @@ check(catalog.phase_2_audio_engine_document==='engine/audio-engine-v1.md','Music
 
 for(const required of [
   ['PROJECT.md','CKAI-0005 FINAL AUDIO V2: PUBLISHED'],
-  ['PROJECT.md','CKAI-0006 PRACTICAL CONSISTENCY TEST 01: V1.2 LOCKED'],
+  ['PROJECT.md','CKAI-0006 PRACTICAL CONSISTENCY TEST 01: V1.2 LOCKED / PRODUCT OWNER ~6/10'],
   ['PROJECT.md','AUDIO DIRECTION V1: VALIDATED'],
   ['PROJECT.md','PHASE 2 AUDIO ENGINE V1: VALIDATED'],
   ['MASTER_BLUEPRINT.md','AUD-03 | Audio Direction V1 evidence consolidation | VALIDATED'],
@@ -59,6 +59,9 @@ check(read('content/reviews/GLD-02_golden-master-qualification.md').includes('GO
 check(ldp.includes('Chưa chọn được nội dung đủ tốt để làm bài thử Golden 8/10.'),'LDP does not show Golden Candidate as not yet selected');
 check(blueprint.includes('Golden Candidate = NOT YET SELECTED'),'Blueprint does not show Golden Candidate as not yet selected');
 check(read('content/reviews/CKAI-0001_golden-production-preflight.md').includes('REJECTED_AS_GOLDEN_CANDIDATE_BY_PRODUCT_OWNER'),'CKAI-0001 historical preflight is not marked rejected');
+check(ldp.includes('≈6/10 · V1.2 locked'),'LDP does not show CKAI-0006 Product Owner quality judgment');
+check(read('content/reviews/CKAI-0006_bat-ai-tu-phan-bien_full-production-v1.md').includes('APPROX_6_OF_10 / BELOW_MARKET_READY / NOT_GOLDEN'),'CKAI-0006 canonical review does not show the current Product Owner quality judgment');
+check(read('engine/creative-quality-standard.md').includes('CKAI-0005 V1.1 therefore remains the highest authoritative scored output'),'Canonical quality standard does not preserve CKAI-0005 V1.1 as the highest authoritative scored output');
 
 if(failures.length){console.error(JSON.stringify({status:'FAIL',failures},null,2));process.exit(1)}
 console.log(JSON.stringify({status:'PASS',arcs:arcs.length,phases:phases.length,tasks:taskRows.length,counts,musicTracks:tracks.length,musicLocalAssets:mp3s.length},null,2));

@@ -97,7 +97,7 @@ GENERALIZATION TEST 01: PASS / HUMAN CONFIRMATION RECORDED
 CKAI-0005 FULL V1: 6.3–6.6 / NOT GOLDEN
 CKAI-0005 V1.1 TARGETED REPAIR: HUMAN REVIEWED ~6.7 / CURRENT BEST VISUAL / NOT GOLDEN
 CKAI-0005 FINAL AUDIO V2: PUBLISHED / AUDIO LEARNING INGESTED
-CKAI-0006 CONSISTENCY TEST: V1.2 LOCKED / PRACTICAL VISUAL BASELINE V1
+CKAI-0006 CONSISTENCY TEST: V1.2 LOCKED / PRODUCT OWNER ~6/10 / PRACTICAL VISUAL BASELINE V1 / BELOW MARKET READY / NOT GOLDEN
 ```
 
 Canonical next-development sequence:
@@ -112,7 +112,7 @@ GOLDEN CREATIVE OUTPUT
 
 The initial Golden Sequence is 10–15 seconds, not a full ~42-second video. It must demonstrate premium art direction, scroll-stop, authorship, professional composition and motion/editing, memorable visual idea, strong finish, and low template feel. Completion requires Market/Taste score at least 8, no critical dimension below the configured floor, `STEP_CHANGE`, and Human/ChatGPT Creative Director authority. Machine cannot declare completion.
 
-Human/ChatGPT review of CKAI-0005 Full V1 records approximately `6.3–6.6/10`; V1.1 is approximately `6.7/10`. Generalization Test 01 passed and Final Audio V2 was published, but neither visual score is Golden. CKAI-0006 closes at locked V1.2 as `Practical Visual Baseline V1`; that evidence does not award Golden status.
+Human/ChatGPT review of CKAI-0005 Full V1 records approximately `6.3–6.6/10`; V1.1 is approximately `6.7/10`. Generalization Test 01 passed and Final Audio V2 was published, but neither visual score is Golden. CKAI-0006 closes at locked V1.2 as `Practical Visual Baseline V1`, with the current authoritative Product Owner judgment at approximately `6/10`. Its baseline designation preserves the practical visual direction and learnings; it does not establish quality ≥7, Market Ready status, solved Practical-mode quality or Golden status. CKAI-0005 V1.1 therefore remains the highest authoritative scored output.
 
 The canonical reference placeholder is [`../content/references/creative-north-star/README.md`](../content/references/creative-north-star/README.md). It remains empty until real references are deliberately selected.
 

@@ -311,6 +311,12 @@
 - Reopened Golden Candidate selection: `Golden Candidate = NOT YET SELECTED`. Golden remains `UNAWARDED`, GLD-02 remains `CANDIDATE`, VIS-13 remains `FROZEN` and AUT-02 remains gated.
 - Added the minimal first gate: `CONTENT QUALITY / PRODUCT OWNER CONVICTION`. Product Owner must consider the content genuinely strong, worth publishing and worthy of representing CKAI before visual potential, art direction, storytelling, motion, premium finish or template resistance are evaluated.
 
+### 2026-08-29 — CKAI-0006 Product Owner quality judgment reconciliation
+
+- Product Owner explicitly assessed locked CKAI-0006 V1.2 at approximately `6/10`: below CKAI Market Ready, not Golden and not evidence that final Practical-mode visual quality is solved.
+- Preserved `Practical Visual Baseline V1` as a learning/direction baseline: direct workflow/action/result imagery; `Practical != dashboard`; `Technical != presentation deck`; broadcast/editorial moving-image language; workflow is content and UI is one actor; animation is a tool rather than the visual philosophy. Voice + music remain judged OK.
+- CKAI-0005 V1.1 remains the highest authoritative scored output at approximately `6.7/10`; Golden target remains 8 and Golden remains `UNAWARDED`. No production artifact, lock, task count, production task or architecture state changed.
+
 ## Trạng thái hiện tại (snapshot)
 
 - **6 skill:** `/ck-idea`, `/ck-expand`, `/ck-script`, `/ck-review`, `/ck-publish`, `/ck-learn`.
@@ -318,7 +324,7 @@
 - **2 content đã `published`:** `CKAI-0003` và `CKAI-0005` — cả hai có approved script, transcript actual và delivery-delta; CKAI-0005 là `animated-voice` nên không tạo natural-voice observation.
 - **Chưa có performance data** (`data/performance.csv` còn trống) — chưa chạy `/ck-learn` lần nào.
 - **Calibration:** 4 round, tạm dừng theo yêu cầu Trực; còn khoảng trống (quan điểm giáo dục, mở rộng cơ chế "bẻ cong lý lẽ" sang lĩnh vực khác...) có thể hỏi tiếp khi Trực chủ động muốn.
-- **Creative quality:** `CKAI_MARKET_TASTE_STANDARD_V1` active; CKAI-0004 is the completed `Production Baseline V1` while its historical Phase 1K output remains the ≈2/10 Creative Reset baseline. CKAI-0005 Generalization Test 01 PASS; V1.1 remains ≈6.7/10/not Golden and Final Audio V2 was published. CKAI-0006 is locked at V1.2 as `Practical Visual Baseline V1`; no V1.3. Architecture expansion/Phase 1L remain frozen; Audio Direction V1 and bounded Phase 2 Audio Engine V1 are VALIDATED; Golden status is unawarded.
+- **Creative quality:** `CKAI_MARKET_TASTE_STANDARD_V1` active; CKAI-0004 is the completed `Production Baseline V1` while its historical Phase 1K output remains the ≈2/10 Creative Reset baseline. CKAI-0005 Generalization Test 01 PASS; V1.1 remains the highest authoritative scored output at ≈6.7/10/not Golden and Final Audio V2 was published. Product Owner assesses locked CKAI-0006 V1.2 at ≈6/10: `Practical Visual Baseline V1` preserves useful direction/learning but is below Market Ready, not Golden and not evidence of solved final Practical-mode quality; no V1.3. Architecture expansion/Phase 1L remain frozen; Audio Direction V1 and bounded Phase 2 Audio Engine V1 are VALIDATED; Golden status is unawarded.
 - **Voice/Provider:** existing Vbee quota is authorized for all CKAI production tasks; dual cast remains `HN - Minh Quân` + `HN - Ngọc Huyền`; auto-purchase and paid fallback remain false.
 - **Music Library:** CKAI Music Library V1 Round 2 is complete with `22 KEEP / 22 downloaded` across six practical families. Engine ranking reads canonical metadata directly; CKAI-0006's `CKAI-MUSIC-0015 — Close Up` remains content-specific and no rank grants final approval.
 

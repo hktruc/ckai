@@ -151,7 +151,7 @@ STEP 09 First Production Pilot đang **PAUSED** sau Phase 1/manual-test preparat
 
 - `CKAI-0004` — `Production Baseline V1`, complete.
 - `CKAI-0005` — Generalization Test 01 PASS; Final Audio V2 published; not Golden.
-- `CKAI-0006` — V1.2 locked as `Practical Visual Baseline V1`; voice + music accepted; not published unless separately confirmed.
+- `CKAI-0006` — V1.2 locked as `Practical Visual Baseline V1`; Product Owner ≈6/10, below Market Ready and not Golden; baseline preserves practical visual learning, while voice + music remain accepted; not published unless separately confirmed.
 - CKAI Music Library V1 — 22 canonical local tracks across six families, license/provenance/local-asset QA PASS, ready for production use.
 - Audio Direction V1 — in progress, not fully validated. Phase 2 Audio Engine — frozen by dependency.
 

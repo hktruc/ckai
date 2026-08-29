@@ -211,4 +211,5 @@ This is production-process learning, not publish-performance learning and not a 
 - **CANDIDATE QA RULE:** freeze-frame review must ask both whether the frame avoids slide grammar and whether it reads as a shot from a media piece.
 - **CANDIDATE PHILOSOPHY:** animation is a tool inside moving-image communication, not the defining visual philosophy.
 - **Evidence:** V1.2 actual final MP4 passes full decode, 12-frame shot-variety/media-shot review, phone-size readability and a 16-frame critique/rewrite motion-story strip. V1.1/V1.2 AAC payloads are byte-identical.
-- **Governance:** slide/presentation grammar is conservatively `PARTIAL` because UI hero shots remain prominent. Human review is pending; no universal baseline, Golden award, V1.3, publishing, CKAI-0007 or engine work is implied.
+- **PRODUCT OWNER QUALITY JUDGMENT:** locked V1.2 is approximately `6/10`, below CKAI Market Ready and not Golden. `Practical Visual Baseline V1` preserves useful direction and learning; it is not evidence of quality ≥7 or that final Practical-mode quality is solved. Voice + music remain judged OK.
+- **Governance:** slide/presentation grammar is conservatively `PARTIAL` because UI hero shots remain prominent. No Golden award, V1.3, publishing, CKAI-0007 or engine work is implied.

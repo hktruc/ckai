@@ -229,8 +229,8 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 
 | Task ID | Deliverable | State | Evidence / DoD | Dependency |
 |---|---|---|---|---|
-| PRD-05 | Practical/Consistency Test closed at V1.2 | VALIDATED | V1/V1.1/V1.2 reports + Product Owner lock | PRD-03 |
-| PRD-06 | Practical Visual Baseline V1 formalized | VALIDATED | `engine/visual-director.md`; Product Owner learning | PRD-05 |
+| PRD-05 | Practical/Consistency Test closed at V1.2 | VALIDATED | V1/V1.1/V1.2 reports + Product Owner lock and current ≈6/10 judgment; below Market Ready, not Golden | PRD-03 |
+| PRD-06 | Practical Visual Baseline V1 formalized | VALIDATED | `engine/visual-director.md`; Product Owner learning baseline, not evidence of quality ≥7 or solved Practical-mode quality | PRD-05 |
 
 ## ARC-08 — Audio system
 
