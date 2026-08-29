@@ -10,8 +10,8 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 
 ## Canonical focus
 
-- **NOW — no active/executable task:** GLD-02 qualification audit found no existing authoritative Golden output. `GLD-02` remains `CANDIDATE`; no production was authorized to create new evidence.
-- **NEXT — Product Owner/ChatGPT decision on a future exact Golden candidate:** only an authorized candidate with overall ≥8, every critical floor ≥7, `STEP_CHANGE` and Human/ChatGPT Creative Director approval can close `GLD-02`. Afterward: understand/encode the proven capability, demonstrate repeatability on another content ID, then consider `AUT-02`. `LRN-02` remains independently available only when real published metrics are supplied.
+- **NOW — no active/executable production task:** Product Owner selected `CKAI-0001 — Bức bình phong` as the first Golden candidate. Preflight found it `NOT READY`: the exact legacy script estimates to 78 seconds versus the ≤55 STEP 02 gate and lacks current exact-package Content Approval authority.
+- **NEXT — current-schema STEP 02 editorial revision + Product Owner Content Approval:** preserve the CKAI-0001 core meaning/story evidence, reach ≤55 seconds, then obtain approval bound to exact Spoken Copy/hook/claims/ending/title/caption. Only afterward may Storyboard and the 10–15 second Golden Sequence begin. `LRN-02` remains independently available only when real published metrics are supplied.
 - **LATER — `PUB-01`:** publishing/performance integration remains separately authorized and manual meanwhile.
 - **Hard stops:** no CKAI-0007, no V1.3 for CKAI-0006, no new demo/render/creative experiment or publishing automation without separate explicit instruction; no Golden claim from architecture/tests.
 
@@ -277,7 +277,7 @@ Task states are mutually exclusive: `DONE`, `VALIDATED`, `IN_PROGRESS`, `NOT_STA
 | Task ID | Deliverable | State | Evidence / DoD | Dependency |
 |---|---|---|---|---|
 | PM-01 | Canonical Blueprint/LDP/update protocol synchronized | DONE | this file, `PROGRESS.md`, `ldp.html`, validator | GOV-08 |
-| GLD-02 | Golden Master at authoritative score ≥8 | CANDIDATE | `content/reviews/GLD-02_golden-master-qualification.md`: existing evidence audited; best confirmed visual ≈6.7; Golden unawarded | QLT-01 |
+| GLD-02 | Golden Master at authoritative score ≥8 | CANDIDATE | `content/reviews/CKAI-0001_golden-production-preflight.md`: first candidate selected; production blocked by duration + current STEP 02 approval; Golden unawarded | QLT-01 |
 
 ## Production autonomy snapshot
 

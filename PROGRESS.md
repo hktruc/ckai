@@ -297,6 +297,13 @@
 - Added `content/reviews/GLD-02_golden-master-qualification.md` as the qualification record. No dedicated award schema was invented; the record derives the minimum future evidence bundle from the existing status contract, dimension floors and authority rules.
 - `GLD-02` remains `CANDIDATE`, `VIS-13` remains `FROZEN` and `AUT-02` remains gated. `LRN-02` remains independently available only when real performance rows exist. No video/render, CKAI-0007, CKAI-0006 V1.3, Phase 1L, AUT-02 implementation, engine change or locked-output mutation occurred.
 
+### 2026-08-29 — CKAI-0001 Golden production preflight
+
+- Product Owner selected `CKAI-0001 — Bức bình phong` as the first Golden candidate; this candidate choice does not itself grant production or STEP 02 Content Approval.
+- Read-only canonical duration audit counted 213 spoken units and three pause markers: `round((213 / 170) × 60 + 3) = 78 seconds`, therefore `REVISE` against the current ≤55-second production-entry gate.
+- Added `content/reviews/CKAI-0001_golden-production-preflight.md` with one candidate-specific creative thesis, a non-rendered 10–15 second Golden Sequence plan, observable six-dimension criteria, anti-patterns, visual/audio intent and North Star risk boundary.
+- Decision: `CKAI-0001 GOLDEN PRODUCTION NOT READY`. Hard blockers are the duration revision and current-schema exact-package Product Owner Content Approval. No approved script, storyboard, visual direction, runtime, media, provider, locked evidence or Golden state was changed.
+
 ## Trạng thái hiện tại (snapshot)
 
 - **6 skill:** `/ck-idea`, `/ck-expand`, `/ck-script`, `/ck-review`, `/ck-publish`, `/ck-learn`.
@@ -310,7 +317,7 @@
 
 ## Việc có thể làm tiếp
 
-- **NOW:** no active/executable task. The GLD-02 audit is complete, but Golden remains `UNAWARDED` and GLD-02 remains `CANDIDATE`; this audit did not authorize production of new evidence.
-- **NEXT:** Product Owner/ChatGPT must later identify or authorize an exact Golden candidate. Only after authoritative ≥8 evidence with all critical floors may the proven capability be understood/encoded, tested on another content ID and then considered for `AUT-02`. `LRN-02` can proceed independently when real published metrics are supplied.
+- **NOW:** no active/executable production task. CKAI-0001 is the selected first Golden candidate but is `NOT READY`: exact legacy copy estimates to 78 seconds and lacks current exact-package STEP 02 approval authority.
+- **NEXT:** ChatGPT Editorial prepares a ≤55-second current-schema revision preserving the approved meaning/story evidence; Product Owner approves that exact market-facing package. Only then may Storyboard and the 10–15 second Golden Sequence begin. `LRN-02` can proceed independently when real published metrics are supplied.
 - **LATER:** publishing/performance integration remains separately authorized and manual meanwhile.
 - Do not start CKAI-0007, resume STEP 09/Phase 1L, produce a new creative test or build publishing automation without explicit Product Owner + ChatGPT instruction.
