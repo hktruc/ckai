@@ -23,7 +23,19 @@ Claude, Gemini, ChatGPT, Vbee và các công nghệ AI khác vẫn có thể là
 
 Đọc [`PROJECT.md`](PROJECT.md) — đó là Single Source of Truth, mô tả toàn bộ mục tiêu, định vị, 6 trụ cột nội dung, brand voice, content matrix, video structures, hook engine, Chánh Kiến Filter, và workflow.
 
-Project-management truth nằm tại [`MASTER_BLUEPRINT.md`](MASTER_BLUEPRINT.md); construction history tại [`PROGRESS.md`](PROGRESS.md); trang theo dõi ghim trình duyệt tại [`ldp.html`](ldp.html). Local repository là implementation truth, GitHub là published mirror.
+### Nhà điều hành mới
+
+| File | Mục đích |
+|------|----------|
+| [`OPERATIONS_RUNBOOK.md`](OPERATIONS_RUNBOOK.md) | Quick reference cho operator (cách bắt đầu task, QA sequence, approval boundary) |
+| [`content/reports/FACTORY_HANDOVER_SNAPSHOT_2026-08-30.md`](content/reports/FACTORY_HANDOVER_SNAPSHOT_2026-08-30.md) | Factory state chi tiết sau HANDOVER PASS |
+
+### Project management
+
+- `MASTER_BLUEPRINT.md` — project-management truth
+- `PROGRESS.md` — construction history
+- `ldp.html` — browser tracking page
+- Local repository là implementation truth; GitHub là published mirror.
 
 ## DAILY USE — ONE CONTENT = ONE CHAT
 

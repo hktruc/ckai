@@ -1,0 +1,1476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CKAI AI Production Stack — Audit 2026-08-30</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-alt: #f1f5f9;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --text: #0f172a;
+  --text-2: #475569;
+  --text-3: #94a3b8;
+  --accent: #059669;
+  --accent-surface: #ecfdf5;
+  --accent-hover: #047857;
+  --danger: #dc2626;
+  --danger-surface: #fef2f2;
+  --warning: #d97706;
+  --warning-surface: #fffbeb;
+  --info: #2563eb;
+  --info-surface: #eff6ff;
+  --mono-bg: #f1f5f9;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1220;
+    --surface: #131d2e;
+    --surface-alt: #1a2540;
+    --border: #243050;
+    --border-strong: #334166;
+    --text: #f1f5f9;
+    --text-2: #94a3b8;
+    --text-3: #64748b;
+    --accent: #10b981;
+    --accent-surface: #022c22;
+    --accent-hover: #34d399;
+    --danger: #f87171;
+    --danger-surface: #1c0f0f;
+    --warning: #fbbf24;
+    --warning-surface: #1c1500;
+    --info: #60a5fa;
+    --info-surface: #0c1a2e;
+    --mono-bg: #1a2540;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1220;
+  --surface: #131d2e;
+  --surface-alt: #1a2540;
+  --border: #243050;
+  --border-strong: #334166;
+  --text: #f1f5f9;
+  --text-2: #94a3b8;
+  --text-3: #64748b;
+  --accent: #10b981;
+  --accent-surface: #022c22;
+  --accent-hover: #34d399;
+  --danger: #f87171;
+  --danger-surface: #1c0f0f;
+  --warning: #fbbf24;
+  --warning-surface: #1c1500;
+  --info: #60a5fa;
+  --info-surface: #0c1a2e;
+  --mono-bg: #1a2540;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: #fff; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); }
+img { max-width: 100%; }
+
+/* ── NAV ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 56px;
+}
+.nav-logo {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links {
+  display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  transition: background 0.15s, color 0.15s;
+}
+.nav-links a:hover { background: var(--surface-alt); color: var(--text); }
+.nav-links a.active { background: var(--accent-surface); color: var(--accent); }
+.nav-date {
+  margin-left: auto;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+/* ── LAYOUT ── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px 80px; }
+.section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+.section:last-child { border-bottom: none; }
+.section-header { margin-bottom: 28px; }
+.section-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1.2;
+}
+.section-sub {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+/* ── STAT CARDS ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+.stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+  margin-bottom: 6px;
+}
+.stat-value {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  line-height: 1;
+}
+.stat-value.accent { color: var(--accent); }
+.stat-value.warning { color: var(--warning); }
+.stat-note {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: 4px;
+}
+
+/* ── TABLES ── */
+.table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; background: var(--surface); }
+thead { background: var(--surface-alt); }
+th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+td {
+  padding: 11px 14px;
+  font-size: 13px;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--surface-alt); }
+.td-mono {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  background: var(--mono-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--accent);
+}
+.td-mono.warn { color: var(--warning); }
+
+/* ── BADGES ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-green { background: var(--accent-surface); color: var(--accent); }
+.badge-red { background: var(--danger-surface); color: var(--danger); }
+.badge-yellow { background: var(--warning-surface); color: var(--warning); }
+.badge-blue { background: var(--info-surface); color: var(--info); }
+.badge-grey { background: var(--surface-alt); color: var(--text-2); }
+.badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.8;
+}
+
+/* ── PROVIDER CARDS ── */
+.provider-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+.provider-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.provider-header {
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.provider-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.provider-type {
+  font-size: 12px;
+  color: var(--text-3);
+  margin-top: 2px;
+}
+.provider-body { padding: 14px 18px; }
+.provider-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 6px 0;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+}
+.provider-row:last-child { border-bottom: none; padding-bottom: 0; }
+.provider-row:first-child { padding-top: 0; }
+.provider-row-label {
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 500;
+  flex-shrink: 0;
+  width: 110px;
+}
+.provider-row-value {
+  font-size: 13px;
+  color: var(--text);
+  text-align: right;
+}
+
+/* ── FINDINGS ── */
+.findings-list { display: flex; flex-direction: column; gap: 12px; }
+.finding-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+.finding-card.warning { border-left-color: var(--warning); }
+.finding-card.danger { border-left-color: var(--danger); }
+.finding-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-3);
+  margin-bottom: 6px;
+}
+.finding-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.finding-body { font-size: 13px; color: var(--text-2); line-height: 1.55; }
+
+/* ── ACTIONS ── */
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+.action-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow);
+}
+.action-priority {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.action-priority.p0 { background: var(--danger-surface); color: var(--danger); }
+.action-priority.p1 { background: var(--warning-surface); color: var(--warning); }
+.action-priority.p2 { background: var(--accent-surface); color: var(--accent); }
+.action-priority.p3 { background: var(--info-surface); color: var(--info); }
+.action-text { font-size: 13px; color: var(--text); line-height: 1.4; }
+.action-owner {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: 2px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ── CHECKLIST ── */
+.checklist { display: flex; flex-direction: column; gap: 0; }
+.check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.check-row:last-child { border-bottom: none; }
+.check-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.check-icon.yes { background: var(--accent-surface); color: var(--accent); }
+.check-icon.partial { background: var(--warning-surface); color: var(--warning); }
+.check-icon.no { background: var(--danger-surface); color: var(--danger); }
+.check-text { color: var(--text); line-height: 1.4; }
+.check-sub { font-size: 12px; color: var(--text-3); margin-top: 1px; }
+
+/* ── DEPENDENCY DIAGRAM ── */
+.dep-flow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+}
+.dep-node {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+.dep-node.accent-node { background: var(--accent-surface); border-color: var(--accent); color: var(--accent); }
+.dep-node.opt-node { background: var(--info-surface); border-color: var(--info); color: var(--info); }
+.dep-node.local-node { background: var(--surface-alt); color: var(--text-2); }
+.dep-arrow { color: var(--text-3); font-size: 14px; }
+
+/* ── TAG LIST ── */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--surface-alt);
+  color: var(--text-2);
+  border: 1px solid var(--border);
+}
+
+/* ── THEME TOGGLE ── */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--text-2);
+  transition: border-color 0.15s;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── GRID 2 COL ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* ── TEXT UTILS ── */
+.text-mono { font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
+.text-sm { font-size: 13px; }
+.text-xs { font-size: 11px; }
+.text-2 { color: var(--text-2); }
+.text-3 { color: var(--text-3); }
+.mt-4 { margin-top: 16px; }
+.mt-6 { margin-top: 24px; }
+.gap-8 { gap: 8px; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.flex-wrap { flex-wrap: wrap; }
+
+/* ── HERO INTRO ── */
+.intro {
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--border);
+}
+.intro-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.intro-sub {
+  font-size: 15px;
+  color: var(--text-2);
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.intro-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-3);
+  font-family: 'IBM Plex Mono', monospace;
+}
+.intro-meta span { display: flex; align-items: center; gap: 5px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">CKAI <span>AI Stack</span></div>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#providers">Providers</a>
+      <a href="#costs">Costs</a>
+      <a href="#alternatives">Alternatives</a>
+      <a href="#failures">Failures</a>
+      <a href="#quality">Quality</a>
+      <a href="#actions">Actions</a>
+      <a href="#findings">Findings</a>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">◐ Theme</button>
+    <div class="nav-date">2026-08-30</div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- INTRO -->
+  <div class="intro" id="overview">
+    <div class="intro-title">CKAI AI Production Stack</div>
+    <div class="intro-sub">
+      Complete audit of every AI provider, model, cost driver, failure mode, and governance mechanism in the CKAI content operating system. Covers voice synthesis, image generation, vision QA, animation rendering, audio processing, and export — with model alternatives and recommended actions.
+    </div>
+    <div class="intro-meta">
+      <span>📅 2026-08-30</span>
+      <span>👤 Auditor: Claude Code</span>
+      <span>📁 14 production layers</span>
+      <span>🔒 0 auto-purchase providers</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">At a Glance</div>
+      <div class="section-title">Production Stack Snapshot</div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">AI Providers</div>
+        <div class="stat-value accent">2</div>
+        <div class="stat-note">Vbee + OpenAI</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Production Models</div>
+        <div class="stat-value">4</div>
+        <div class="stat-note">2 voice, 1 image, 1 vision</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Local Services</div>
+        <div class="stat-value">5</div>
+        <div class="stat-note">Remotion, FFmpeg, Piper, Mixkit, Pixabay</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Music Tracks</div>
+        <div class="stat-value">22</div>
+        <div class="stat-note">All downloaded, 0 cloud stream</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Auto-Purchase</div>
+        <div class="stat-value accent">0</div>
+        <div class="stat-note">Disabled on all providers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Tech Risk Level</div>
+        <div class="stat-value warning">Medium</div>
+        <div class="stat-note">OpenAI model churn primary risk</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Quality League</div>
+        <div class="stat-value">AO_LANG</div>
+        <div class="stat-note">Level 1 — market-ready ≥7.0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Viewer Reality Gates</div>
+        <div class="stat-value">3</div>
+        <div class="stat-note">HARD_GATE_A, GATE_B, GATE_C</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROVIDERS -->
+  <div class="section" id="providers">
+    <div class="section-header">
+      <div class="section-eyebrow">§1 — AI Providers</div>
+      <div class="section-title">External Services in Production</div>
+      <div class="section-sub">Two AI cloud providers power all production: Vbee for Vietnamese voice synthesis and OpenAI for image generation + vision QA. All other infrastructure runs locally.</div>
+    </div>
+
+    <div class="provider-grid">
+      <div class="provider-card">
+        <div class="provider-header">
+          <div>
+            <div class="provider-name">Vbee TTS</div>
+            <div class="provider-type">Vietnamese Text-to-Speech · vbee.vn</div>
+          </div>
+          <span class="badge badge-green">Primary</span>
+        </div>
+        <div class="provider-body">
+          <div class="provider-row">
+            <div class="provider-row-label">Realtime API</div>
+            <div class="provider-row-value text-mono">api.vbee.vn/v1/tts</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Async API</div>
+            <div class="provider-row-value text-mono">vbee.vn/api/v1/tts</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Char limit</div>
+            <div class="provider-row-value">≤300 realtime · async fallback automatic</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Credential env</div>
+            <div class="provider-row-value text-mono">VBEE_APP_ID · VBEE_ACCESS_TOKEN</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Billing</div>
+            <div class="provider-row-value">Per-character credit · Contact sales for rate</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Authorization</div>
+            <div class="provider-row-value"><span class="badge badge-green">Product Owner 2026-08-29</span></div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Auto-purchase</div>
+            <div class="provider-row-value"><span class="badge badge-red">Disabled</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-card">
+        <div class="provider-header">
+          <div>
+            <div class="provider-name">OpenAI</div>
+            <div class="provider-type">Image Generation + Vision QA · platform.openai.com</div>
+          </div>
+          <span class="badge badge-blue">Opt-in</span>
+        </div>
+        <div class="provider-body">
+          <div class="provider-row">
+            <div class="provider-row-label">Image model</div>
+            <div class="provider-row-value text-mono">gpt-image-2</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Vision model</div>
+            <div class="provider-row-value text-mono warn">gpt-5.6-terra ⚠️</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Credential env</div>
+            <div class="provider-row-value text-mono">OPENAI_API_KEY</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Billing</div>
+            <div class="provider-row-value">Per-request with usage tracking</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Max calls/video</div>
+            <div class="provider-row-value">9 (hard cap)</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Budget cap</div>
+            <div class="provider-row-value"><span class="badge badge-blue">Opt-in per job</span></div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Auto-purchase</div>
+            <div class="provider-row-value"><span class="badge badge-red">Disabled</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-card">
+        <div class="provider-header">
+          <div>
+            <div class="provider-name">Remotion</div>
+            <div class="provider-type">Animation Framework · remotion.dev</div>
+          </div>
+          <span class="badge badge-grey">Local</span>
+        </div>
+        <div class="provider-body">
+          <div class="provider-row">
+            <div class="provider-row-label">Version</div>
+            <div class="provider-row-value text-mono">4.0.515</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Runtime</div>
+            <div class="provider-row-value">Local npm install</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Format</div>
+            <div class="provider-row-value">1080×1920 @ 30fps · React 19 + TypeScript</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Cost</div>
+            <div class="provider-row-value"><span class="badge badge-green">Free (Apache 2.0)</span></div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Studio (cloud)</div>
+            <div class="provider-row-value"><span class="badge badge-yellow">Not used</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-card">
+        <div class="provider-header">
+          <div>
+            <div class="provider-name">FFmpeg</div>
+            <div class="provider-type">Video Encoding · ffmpeg.org</div>
+          </div>
+          <span class="badge badge-grey">Local</span>
+        </div>
+        <div class="provider-body">
+          <div class="provider-row">
+            <div class="provider-row-label">Version</div>
+            <div class="provider-row-value text-mono">9.0.1 (Gyan build)</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Install</div>
+            <div class="provider-row-value">WinGet auto-install documented in CLAUDE.md</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Codecs</div>
+            <div class="provider-row-value">H.264/AAC · MP4 container</div>
+          </div>
+          <div class="provider-row">
+            <div class="provider-row-label">Cost</div>
+            <div class="provider-row-value"><span class="badge badge-green">Free (GPL/LGPL)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <div class="section-header">
+        <div class="section-title" style="font-size:16px">Production Voice Registry</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Alias</th>
+              <th>Voice Code</th>
+              <th>Display</th>
+              <th>Gender</th>
+              <th>Role</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="td-mono">CKAI_NARRATOR_PRIMARY</span></td>
+              <td><span class="td-mono">hn_male_minhquan_yt-stable</span></td>
+              <td>HN – Minh Quân</td>
+              <td>Male</td>
+              <td>Primary narration</td>
+              <td><span class="badge badge-green">Production</span></td>
+            </tr>
+            <tr>
+              <td><span class="td-mono">CKAI_SECONDARY</span></td>
+              <td><span class="td-mono">hn_female_ngochuyen_full_48k-fhg</span></td>
+              <td>HN – Ngọc Huyền</td>
+              <td>Female</td>
+              <td>AI-quoted prompts (V5+)</td>
+              <td><span class="badge badge-green">Production</span></td>
+            </tr>
+            <tr>
+              <td><span class="td-mono">LOCAL_VI_NARRATOR_PROOF</span></td>
+              <td><span class="td-mono">vi_VN-vais1000-medium</span></td>
+              <td>—</td>
+              <td>Male</td>
+              <td>Proof-only narration</td>
+              <td><span class="badge badge-yellow">Piper · Proof</span></td>
+            </tr>
+            <tr>
+              <td><span class="td-mono">LOCAL_VI_AI_PROOF</span></td>
+              <td><span class="td-mono">vi_VN-vivos-x_low</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>Proof-only AI voice</td>
+              <td><span class="badge badge-yellow">Piper · Proof</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- COSTS -->
+  <div class="section" id="costs">
+    <div class="section-header">
+      <div class="section-eyebrow">§2 — Cost Model</div>
+      <div class="section-title">Per-Unit Costs &amp; Per-Video Breakdown</div>
+      <div class="section-sub">Vbee + optional OpenAI are the only AI cost drivers. All rendering, encoding, and music are local. Pricing gaps exist where providers do not publish public rates.</div>
+    </div>
+
+    <div class="table-wrap" style="margin-bottom:20px">
+      <table>
+        <thead>
+          <tr>
+            <th>AI Operation</th>
+            <th>Provider</th>
+            <th>Unit</th>
+            <th>CKAI Cost</th>
+            <th>Governance</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Voice synthesis (realtime)</td>
+            <td>Vbee</td>
+            <td class="td-mono">Per character</td>
+            <td class="td-mono warn">Contact sales</td>
+            <td><span class="badge badge-red">No auto-purchase</span></td>
+            <td>≤300 chars per call; async fallback automatic</td>
+          </tr>
+          <tr>
+            <td>Voice synthesis (async)</td>
+            <td>Vbee</td>
+            <td class="td-mono">Per character</td>
+            <td class="td-mono warn">Contact sales</td>
+            <td><span class="badge badge-red">No auto-purchase</span></td>
+            <td>>300 chars, up to 120s polling wait</td>
+          </tr>
+          <tr>
+            <td>Image generation</td>
+            <td>OpenAI</td>
+            <td class="td-mono">Per image</td>
+            <td class="td-mono warn">Est. ~$0.02–0.12</td>
+            <td><span class="badge badge-blue">Opt-in + cap</span></td>
+            <td>Size 1024×1536, medium quality; verify current rate</td>
+          </tr>
+          <tr>
+            <td>Vision QA</td>
+            <td>OpenAI</td>
+            <td class="td-mono">Per call</td>
+            <td class="td-mono warn">Verify model rate</td>
+            <td><span class="badge badge-blue">Max 9 calls/video</span></td>
+            <td>Up to 9 API calls per video; model ID unverified</td>
+          </tr>
+          <tr>
+            <td>Animation render</td>
+            <td>Local (Remotion)</td>
+            <td>—</td>
+            <td><span class="badge badge-green">$0</span></td>
+            <td>—</td>
+            <td>Local CPU; no cloud dependency</td>
+          </tr>
+          <tr>
+            <td>Audio processing</td>
+            <td>Local (FFmpeg)</td>
+            <td>—</td>
+            <td><span class="badge badge-green">$0</span></td>
+            <td>—</td>
+            <td>Local CPU; no cloud dependency</td>
+          </tr>
+          <tr>
+            <td>Background music</td>
+            <td>Local files</td>
+            <td>—</td>
+            <td><span class="badge badge-green">$0</span></td>
+            <td>—</td>
+            <td>Mixkit Free + Pixabay — both permissive licenses</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-header" style="margin-top:24px">
+      <div class="section-title" style="font-size:16px">Typical Video Cost Breakdown (CKAI-0007 V5 model)</div>
+    </div>
+    <div class="stats-grid" style="max-width:700px">
+      <div class="stat-card">
+        <div class="stat-label">Voice (Vbee)</div>
+        <div class="stat-value" style="font-size:20px">~700 chars</div>
+        <div class="stat-note">42s narration × rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Image gen (OpenAI)</div>
+        <div class="stat-value" style="font-size:20px">2–4 images</div>
+        <div class="stat-note">Opt-in · budget capped</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Vision QA (OpenAI)</div>
+        <div class="stat-value" style="font-size:20px">≤9 calls</div>
+        <div class="stat-note">Hard max enforced</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Annual AI cloud ceiling</div>
+        <div class="stat-value accent" style="font-size:20px">&lt;$500</div>
+        <div class="stat-note">At 1–3 videos/week, conservative</div>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <div class="section-header">
+        <div class="section-title" style="font-size:16px">Cost Governance Controls</div>
+      </div>
+      <div class="checklist">
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">Vbee auto-purchase: Disabled</div>
+            <div class="check-sub">auto_purchase_credits: false · No surprise bills</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">Vbee paid fallback: Disabled</div>
+            <div class="check-sub">allow_paid_fallback: false · Quota exhaustion halts production</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">OpenAI image budget: Opt-in only</div>
+            <div class="check-sub">CKAI_MAX_IMAGE_USD_PER_VIDEO optional cap per job</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">OpenAI call cap: Hard max 9 per video</div>
+            <div class="check-sub">GenerationBudget enforces max_calls_per_video = 9</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon partial">!</div>
+          <div>
+            <div class="check-text">Per-video cost logging: Not implemented</div>
+            <div class="check-sub">runtime/learning/ has no cost records · Recommend adding</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALTERNATIVES -->
+  <div class="section" id="alternatives">
+    <div class="section-header">
+      <div class="section-eyebrow">§3 — Alternatives</div>
+      <div class="section-title">What Else Could Be Used</div>
+      <div class="section-sub">For each AI layer, viable alternatives exist. The most important: Vbee is the correct primary choice; DALL-E 3 is the simplest OpenAI fallback; <code>gpt-4o</code> is the safest vision QA fallback.</div>
+    </div>
+
+    <div class="table-wrap" style="margin-bottom:20px">
+      <table>
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Current</th>
+            <th>Best Alternative</th>
+            <th>Why Not Primary</th>
+            <th>Fit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Voice (primary)</td>
+            <td><span class="td-mono">Vbee</span></td>
+            <td><span class="td-mono">FPT AI TTS</span></td>
+            <td>VI-optimized, not integrated</td>
+            <td><span class="badge badge-green">Best fit</span></td>
+          </tr>
+          <tr>
+            <td>Voice (proof)</td>
+            <td><span class="td-mono">Piper local</span></td>
+            <td>—</td>
+            <td>Not production-ready quality</td>
+            <td><span class="badge badge-yellow">Proof only</span></td>
+          </tr>
+          <tr>
+            <td>Image gen</td>
+            <td><span class="td-mono">gpt-image-2</span></td>
+            <td><span class="td-mono">DALL-E 3</span></td>
+            <td>Proven, lower churn risk</td>
+            <td><span class="badge badge-blue">Fallback</span></td>
+          </tr>
+          <tr>
+            <td>Vision QA</td>
+            <td><span class="td-mono warn">gpt-5.6-terra ⚠️</span></td>
+            <td><span class="td-mono">gpt-4o</span></td>
+            <td>Verified model, stable</td>
+            <td><span class="badge badge-green">Verified fallback</span></td>
+          </tr>
+          <tr>
+            <td>Animation</td>
+            <td><span class="td-mono">Remotion 4</span></td>
+            <td>Hand-coded HTML5 Canvas</td>
+            <td>Major re-engineering required</td>
+            <td><span class="badge badge-grey">Not viable</span></td>
+          </tr>
+          <tr>
+            <td>Encoding</td>
+            <td><span class="td-mono">FFmpeg</span></td>
+            <td>HandBrake CLI</td>
+            <td>FFmpeg is the standard; no benefit</td>
+            <td><span class="badge badge-grey">Not needed</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-4">
+      <div class="finding-card warning">
+        <div class="finding-num">⚠ Gap — gpt-5.6-terra</div>
+        <div class="finding-title">Vision QA model ID is unverified</div>
+        <div class="finding-body">This model designation does not appear in OpenAI's public model registry as of May 2026. Verify the exact model ID with the OpenAI dashboard or API <code>/models</code> endpoint before relying on it for production. Safe fallback: <code>gpt-4o</code> or <code>gpt-4o-mini</code>.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAILURES -->
+  <div class="section" id="failures">
+    <div class="section-header">
+      <div class="section-eyebrow">§4 — Failure Modes</div>
+      <div class="section-title">Risk Matrix</div>
+      <div class="section-sub">Vbee quota exhaustion is the highest-probability production blocker. OpenAI model churn is the highest-consequence technology risk.</div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Failure</th>
+            <th>Layer</th>
+            <th>Probability</th>
+            <th>Impact</th>
+            <th>Mitigation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vbee quota exhausted</td>
+            <td>Voice</td>
+            <td><span class="badge badge-yellow">Medium</span></td>
+            <td><span class="badge badge-red">High</span></td>
+            <td>No auto-purchase — job blocked until Product Owner re-authorizes</td>
+          </tr>
+          <tr>
+            <td>Vbee async timeout (>120s)</td>
+            <td>Voice</td>
+            <td><span class="badge badge-green">Low</span></td>
+            <td><span class="badge badge-red">High</span></td>
+            <td>Job fails gracefully, no data loss</td>
+          </tr>
+          <tr>
+            <td>OpenAI model deprecation</td>
+            <td>Visual</td>
+            <td><span class="badge badge-green">Low</span></td>
+            <td><span class="badge badge-yellow">Medium</span></td>
+            <td>Env overrides <code>CKAI_IMAGE_MODEL</code>, <code>CKAI_VISION_MODEL</code></td>
+          </tr>
+          <tr>
+            <td>Image quality below threshold</td>
+            <td>Visual</td>
+            <td><span class="badge badge-yellow">Medium</span></td>
+            <td><span class="badge badge-green">Low</span></td>
+            <td>Max 3 attempts, then placeholder — non-blocking</td>
+          </tr>
+          <tr>
+            <td>Vision QA fails</td>
+            <td>Visual</td>
+            <td><span class="badge badge-green">Low</span></td>
+            <td><span class="badge badge-green">Low</span></td>
+            <td>Informational only — does not block production</td>
+          </tr>
+          <tr>
+            <td>Remotion render OOM</td>
+            <td>Animation</td>
+            <td><span class="badge badge-yellow">Medium</span></td>
+            <td><span class="badge badge-red">High</span></td>
+            <td>Reduce frame count or resolution</td>
+          </tr>
+          <tr>
+            <td>FFmpeg not found</td>
+            <td>Export</td>
+            <td><span class="badge badge-green">Low</span></td>
+            <td><span class="badge badge-red">High</span></td>
+            <td>WinGet auto-install documented in CLAUDE.md</td>
+          </tr>
+          <tr>
+            <td>Piper model file link broken</td>
+            <td>Voice (proof)</td>
+            <td><span class="badge badge-yellow">Medium</span></td>
+            <td><span class="badge badge-yellow">Medium</span></td>
+            <td>External hosting — proof pipeline only, not production-critical</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- DEPENDENCY FLOW -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-eyebrow">§5 — Dependency Map</div>
+      <div class="section-title">Critical Production Chain</div>
+      <div class="section-sub">Human → Vbee → Remotion → FFmpeg → Package. OpenAI image/Vision is opt-in and non-blocking.</div>
+    </div>
+    <div class="dep-flow" style="padding:16px 0">
+      <div class="dep-node accent-node">Human Approval</div>
+      <div class="dep-arrow">→</div>
+      <div class="dep-node accent-node">Vbee TTS</div>
+      <div class="dep-arrow">→</div>
+      <div class="dep-node accent-node">Remotion</div>
+      <div class="dep-arrow">→</div>
+      <div class="dep-node accent-node">FFmpeg</div>
+      <div class="dep-arrow">→</div>
+      <div class="dep-node accent-node">Package</div>
+    </div>
+    <div class="dep-flow">
+      <div class="dep-node opt-node">OpenAI Image (opt-in)</div>
+      <div class="dep-arrow">→</div>
+      <div class="dep-node opt-node">Vision QA (opt-in)</div>
+    </div>
+    <div class="dep-flow" style="margin-top:8px">
+      <div class="dep-node local-node">Local: FFmpeg, Remotion, Music Library, Piper (proof)</div>
+    </div>
+  </div>
+
+  <!-- QUALITY -->
+  <div class="section" id="quality">
+    <div class="section-header">
+      <div class="section-eyebrow">§6 — Quality Governance</div>
+      <div class="section-title">Standards, Gates &amp; League</div>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="section-header" style="margin-bottom:14px">
+          <div class="section-title" style="font-size:16px">Market Taste Standard</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr>
+                <td>Active standard</td>
+                <td><span class="td-mono">CKAI_MARKET_TASTE_STANDARD_V1</span></td>
+              </tr>
+              <tr>
+                <td>Effective date</td>
+                <td>2026-08-28</td>
+              </tr>
+              <tr>
+                <td>Market-ready minimum</td>
+                <td><strong>7.0 / 10</strong></td>
+              </tr>
+              <tr>
+                <td>Golden target</td>
+                <td><strong>8.0 / 10</strong></td>
+              </tr>
+              <tr>
+                <td>Aspirational target</td>
+                <td><strong>9.0 / 10</strong></td>
+              </tr>
+              <tr>
+                <td>Critical floor</td>
+                <td><strong>7.0 / 10</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-header" style="margin-bottom:14px">
+          <div class="section-title" style="font-size:16px">Viewer Reality Gates</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <tbody>
+              <tr>
+                <td><span class="td-mono">HARD_GATE_A</span></td>
+                <td>4 questions</td>
+                <td><span class="badge badge-red">PRODUCT_REJECT</span></td>
+              </tr>
+              <tr>
+                <td><span class="td-mono">EXPERIENCE_GATE_B</span></td>
+                <td>3 questions</td>
+                <td><span class="badge badge-yellow">NOT_MARKET_READY</span></td>
+              </tr>
+              <tr>
+                <td><span class="td-mono">COMMERCIAL_GATE_C</span></td>
+                <td>1 question</td>
+                <td><span class="badge badge-red">NO_COMMERCIAL_VALUE</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-4">
+          <div class="section-header" style="margin-bottom:14px">
+            <div class="section-title" style="font-size:16px">Quality League</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <tbody>
+                <tr><td>Current level</td><td><strong>AO_LANG</strong> (Level 1)</td></tr>
+                <tr><td>Score</td><td>6.0 / 10</td></tr>
+                <tr><td>Next unlock</td><td>HUYEN (7.0) → TINH (7.5) → THANH_PHO (8.0)</td></tr>
+                <tr><td>Promotion eligible</td><td><span class="badge badge-red">No</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <div class="section-header">
+        <div class="section-title" style="font-size:16px">Stack Completeness Checklist</div>
+      </div>
+      <div class="checklist">
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">Voice synthesis (Vbee)</div>
+            <div class="check-sub">Production-ready · 2 voices approved · Authorizer: Product Owner 2026-08-29</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon partial">~</div>
+          <div>
+            <div class="check-text">Voice fallback (Piper proof)</div>
+            <div class="check-sub">Implemented but proof-quality only · Not production-ready</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">Animation (Remotion)</div>
+            <div class="check-sub">Local rendering · 1080×1920 @ 30fps · Production tested</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon partial">~</div>
+          <div>
+            <div class="check-text">Image generation (OpenAI)</div>
+            <div class="check-sub">Opt-in, bounded budget · Model gpt-image-2 needs rate verification</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon partial">~</div>
+          <div>
+            <div class="check-text">Vision QA (OpenAI)</div>
+            <div class="check-sub">Model ID gpt-5.6-terra unverified · Needs confirmation</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">Audio mixing (local FFmpeg)</div>
+            <div class="check-sub">Production tested · LUFS normalization working</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">Video export (FFmpeg H.264/AAC)</div>
+            <div class="check-sub">Production tested · Container: MP4 · Max 60s</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">Production bridge (job runner)</div>
+            <div class="check-sub">One-Chat job runner · Job directory isolation · Canonical adapter</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">Two-voice narration (V5)</div>
+            <div class="check-sub">Minh Quân (primary) + Ngọc Huyền (AI prompts) · Tested in CKAI-0007 V5</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">Music library (22 tracks)</div>
+            <div class="check-sub">All downloaded · Mixkit (15) + Pixabay (7) · No cloud streaming</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon partial">!</div>
+          <div>
+            <div class="check-text">Cost-per-video tracking</div>
+            <div class="check-sub">runtime/learning/ has no cost records · Governance gap</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">Quality gates (Viewer Reality Gates)</div>
+            <div class="check-sub">3 gates with explicit failure modes · Source SHA-256 chain integrity</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon yes">✓</div>
+          <div>
+            <div class="check-text">Publishing package assembly</div>
+            <div class="check-sub">Local assembly · Facebook package format · Manual upload by Product Owner</div>
+          </div>
+        </div>
+        <div class="check-row">
+          <div class="check-icon partial">~</div>
+          <div>
+            <div class="check-text">Performance learning</div>
+            <div class="check-sub">Schema in place · Tracking: views, retention, completion, engagement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="section" id="actions">
+    <div class="section-header">
+      <div class="section-eyebrow">§7 — Recommended Actions</div>
+      <div class="section-title">Prioritized Fix List</div>
+    </div>
+    <div class="actions-grid">
+      <div class="action-row">
+        <div class="action-priority p0">P0</div>
+        <div>
+          <div class="action-text">Verify <span class="text-mono">gpt-5.6-terra</span> model ID with OpenAI</div>
+          <div class="action-owner">Owner: Product Owner · Effort: 5 min</div>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="action-priority p1">P1</div>
+        <div>
+          <div class="action-text">Add per-video cost logging to <span class="text-mono">runtime/learning/</span></div>
+          <div class="action-owner">Owner: Codex · Effort: 2 hrs</div>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="action-priority p1">P1</div>
+        <div>
+          <div class="action-text">Document Vbee credit cost per character</div>
+          <div class="action-owner">Owner: Product Owner · Effort: 10 min</div>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="action-priority p1">P1</div>
+        <div>
+          <div class="action-text">Add <span class="text-mono">gpt-4o</span> as verified Vision QA fallback in code</div>
+          <div class="action-owner">Owner: Codex · Effort: 30 min</div>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="action-priority p2">P2</div>
+        <div>
+          <div class="action-text">Test DALL-E 3 as image generation alternative</div>
+          <div class="action-owner">Owner: Product Owner · Effort: 1 hr</div>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="action-priority p2">P2</div>
+        <div>
+          <div class="action-text">Add FPT AI TTS as Vbee contingency</div>
+          <div class="action-owner">Owner: Codex · Effort: 4 hrs</div>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="action-priority p3">P3</div>
+        <div>
+          <div class="action-text">Investigate Remotion 5 migration path</div>
+          <div class="action-owner">Owner: Codex · Effort: 2 hrs</div>
+        </div>
+      </div>
+      <div class="action-row">
+        <div class="action-priority p3">P3</div>
+        <div>
+          <div class="action-text">Add Mixkit license long-term monitoring</div>
+          <div class="action-owner">Owner: Codex · Effort: 1 hr</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINDINGS -->
+  <div class="section" id="findings">
+    <div class="section-header">
+      <div class="section-eyebrow">§8 — Key Findings</div>
+      <div class="section-title">8 Audit Conclusions</div>
+    </div>
+    <div class="findings-list">
+      <div class="finding-card">
+        <div class="finding-num">Finding 01</div>
+        <div class="finding-title">Vbee is the correct primary TTS provider</div>
+        <div class="finding-body">Native Vietnamese quality, production-approved, with proper per-job authorization controls. Piper is proof-only and not suitable for production. FPT AI TTS is the only viable secondary if Vbee becomes unavailable.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-num">Finding 02</div>
+        <div class="finding-title">OpenAI image generation is opt-in and bounded</div>
+        <div class="finding-body">Maximum 9 API calls and optional USD cap prevent runaway costs. This is the right governance model. <code>gpt-image-2</code> is the correct default; DALL-E 3 is the simplest fallback.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-num">Finding 03</div>
+        <div class="finding-title">No auto-purchase anywhere in the stack</div>
+        <div class="finding-body">Vbee credits and OpenAI usage require explicit per-job authorization. The <code>allowVbeeQuota</code> contract field and disabled <code>auto_purchase_credits</code> flag are the strongest cost control mechanisms in place.</div>
+      </div>
+      <div class="finding-card warning">
+        <div class="finding-num">Finding 04 ⚠</div>
+        <div class="finding-title">gpt-5.6-terra model ID needs verification</div>
+        <div class="finding-body">This is the only unconfirmed model designation in the production stack. Standard OpenAI model naming does not include a "terra" suffix as of May 2026. Verify via the OpenAI platform dashboard or API <code>/models</code> endpoint before relying on it.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-num">Finding 05</div>
+        <div class="finding-title">Local infrastructure dominates the stack</div>
+        <div class="finding-body">Remotion (local), FFmpeg (local), and music library (local files) mean AI cloud cost is only Vbee + optional OpenAI. This is a genuinely low-cost production model. Annual cloud ceiling likely under $500 at 1–3 videos/week.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-num">Finding 06</div>
+        <div class="finding-title">Zero vendor lock-in on rendering</div>
+        <div class="finding-body">FFmpeg and Remotion are open/local standards. The only real dependencies are Vbee for voice and OpenAI for visual intelligence. Both have parameterized env-var overrides for model selection.</div>
+      </div>
+      <div class="finding-card">
+        <div class="finding-num">Finding 07</div>
+        <div class="finding-title">Quality governance is well-structured</div>
+        <div class="finding-body">Viewer Reality Gates with explicit failure modes (PRODUCT_REJECT, NOT_MARKET_READY, NO_COMMERCIAL_VALUE), Quality League with 8 progression levels, and SHA-256 source chain integrity are all production-grade mechanisms.</div>
+      </div>
+      <div class="finding-card warning">
+        <div class="finding-num">Finding 08 ⚠</div>
+        <div class="finding-title">Cost logging is the main operational gap</div>
+        <div class="finding-body">No per-video cost records exist in <code>runtime/learning/</code>. Adding automatic cost logging to the production bridge would complete the governance loop and enable volume economics analysis.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+  }
+}
+
+// Active nav link
+const sections = document.querySelectorAll('section[id], div[id="overview"]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.2 });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
